@@ -1,0 +1,51 @@
+BackendBundle\Entity\Autorizaciones:
+    type: entity
+    table: autorizaciones
+    indexes:
+        fk_autorizaciones_solicitudes1_idx:
+            columns:
+                - solicitud
+        fk_autorizaciones_usuario1_idx:
+            columns:
+                - autorizado_por
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        fechaAutorizacion:
+            type: datetime
+            nullable: true
+            column: fecha_autorizacion
+        comentario:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+    manyToOne:
+        solicitud:
+            targetEntity: Solicitudes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                solicitud:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        autorizadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                autorizado_por:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

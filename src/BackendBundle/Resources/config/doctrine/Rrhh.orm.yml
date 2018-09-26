@@ -1,0 +1,132 @@
+BackendBundle\Entity\Rrhh:
+    type: entity
+    table: rrhh
+    indexes:
+        fk_rrhh_empresa1_idx:
+            columns:
+                - empresa
+        fk_rrhh_config1_idx:
+            columns:
+                - cargo
+        fk_rrhh_config2_idx:
+            columns:
+                - AFP
+        fk_rrhh_config3_idx:
+            columns:
+                - institucion_salud
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        apellidoPaterno:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: apellido_paterno
+        apellidoMaterno:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: apellido_materno
+        rut:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        comuna:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        ciudad:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        region:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        sueldoBruto:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: sueldo_bruto
+        correoElectronico:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: correo_electronico
+    manyToOne:
+        cargo:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cargo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        afp:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                AFP:
+                    referencedColumnName: id
+            orphanRemoval: false
+        institucionSalud:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                institucion_salud:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

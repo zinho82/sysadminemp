@@ -1,0 +1,13 @@
+BackendBundle\Entity\Notificaciones:
+    type: entity
+    table: notificaciones
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

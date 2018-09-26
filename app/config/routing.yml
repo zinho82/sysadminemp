@@ -1,0 +1,15 @@
+rrhh:
+    resource: "@RrhhBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    resource: "@LoginBundle/Resources/config/routing.yml"
+    prefix:   /
+
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,71 @@
+BackendBundle\Entity\Solicitudes:
+    type: entity
+    table: solicitudes
+    indexes:
+        fk_solicitudes_campos_formularios1_idx:
+            columns:
+                - campos_formularios_id
+        fk_solicitudes_empresa1_idx:
+            columns:
+                - empresa
+        fk_solicitudes_usuario1_idx:
+            columns:
+                - solicitado_por
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        fechaSolicitud:
+            type: datetime
+            nullable: true
+            column: fecha_solicitud
+        numeroSolicitud:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: numero_solicitud
+    manyToOne:
+        camposFormularios:
+            targetEntity: CamposFormularios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                campos_formularios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        solicitadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                solicitado_por:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

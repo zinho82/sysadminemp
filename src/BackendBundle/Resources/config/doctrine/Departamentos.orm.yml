@@ -1,0 +1,36 @@
+BackendBundle\Entity\Departamentos:
+    type: entity
+    table: departamentos
+    indexes:
+        fk_departamentos_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombreDepartamento:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: nombre_departamento
+    manyToOne:
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

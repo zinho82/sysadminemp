@@ -1,0 +1,60 @@
+BackendBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        fk_usuario_rrhh1_idx:
+            columns:
+                - rrhh
+        fk_usuario_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        role:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        rrhh:
+            targetEntity: Rrhh
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrhh:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

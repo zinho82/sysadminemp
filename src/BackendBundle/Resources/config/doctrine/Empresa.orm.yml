@@ -1,0 +1,78 @@
+BackendBundle\Entity\Empresa:
+    type: entity
+    table: empresa
+    indexes:
+        fk_empresa_config1_idx:
+            columns:
+                - estado_empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+        rut:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        nombreFantasia:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: nombre_fantasia
+        empresaOrigen:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: empresa_origen
+        direccion:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        comuna:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        ciudad:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        region:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        estadoEmpresa:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado_empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

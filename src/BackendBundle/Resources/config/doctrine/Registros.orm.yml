@@ -1,0 +1,52 @@
+BackendBundle\Entity\Registros:
+    type: entity
+    table: registros
+    indexes:
+        fk_registros_empresa1_idx:
+            columns:
+                - empresa
+        fk_registros_usuario1_idx:
+            columns:
+                - realizado_por
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        registro:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+        fechaRegistro:
+            type: datetime
+            nullable: true
+            column: fecha_registro
+    manyToOne:
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        realizadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                realizado_por:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

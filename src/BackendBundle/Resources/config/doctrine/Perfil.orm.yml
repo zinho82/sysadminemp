@@ -1,0 +1,41 @@
+BackendBundle\Entity\Perfil:
+    type: entity
+    table: perfil
+    indexes:
+        fk_perfil_menu1_idx:
+            columns:
+                - menu
+        fk_perfil_config1_idx:
+            columns:
+                - tipo_perfil
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        menu:
+            targetEntity: Menu
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                menu:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoPerfil:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_perfil:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,54 @@
+BackendBundle\Entity\Documentos:
+    type: entity
+    table: documentos
+    indexes:
+        fk_documentos_config_idx:
+            columns:
+                - tipo_documento
+        fk_documentos_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        archivo:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+        nombre:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        tipoDocumento:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_documento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

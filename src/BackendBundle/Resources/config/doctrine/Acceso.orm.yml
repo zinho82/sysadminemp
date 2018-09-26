@@ -1,0 +1,41 @@
+BackendBundle\Entity\Acceso:
+    type: entity
+    table: acceso
+    indexes:
+        fk_acceso_usuario1_idx:
+            columns:
+                - usuario
+        fk_acceso_menu1_idx:
+            columns:
+                - menu
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        menu:
+            targetEntity: Menu
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                menu:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

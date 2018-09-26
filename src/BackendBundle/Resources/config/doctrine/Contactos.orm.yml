@@ -1,0 +1,53 @@
+BackendBundle\Entity\Contactos:
+    type: entity
+    table: contactos
+    indexes:
+        fk_contactos_proveedores_clientes1_idx:
+            columns:
+                - proveedores_clientes
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+        telefono:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        correo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        cargo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        proveedoresClientes:
+            targetEntity: ProveedoresClientes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedores_clientes:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

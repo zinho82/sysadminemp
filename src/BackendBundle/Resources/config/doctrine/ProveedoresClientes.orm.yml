@@ -1,0 +1,47 @@
+BackendBundle\Entity\ProveedoresClientes:
+    type: entity
+    table: proveedores_clientes
+    indexes:
+        fk_proveedores_clientes_config1_idx:
+            columns:
+                - proveedor_cliente
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        rut:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        telefono:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        proveedorCliente:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedor_cliente:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

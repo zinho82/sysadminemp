@@ -1,0 +1,28 @@
+BackendBundle\Entity\Inventario:
+    type: entity
+    table: inventario
+    indexes:
+        fk_inventario_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

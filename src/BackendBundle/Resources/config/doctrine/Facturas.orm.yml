@@ -1,0 +1,98 @@
+BackendBundle\Entity\Facturas:
+    type: entity
+    table: facturas
+    indexes:
+        fk_facturas_empresa1_idx:
+            columns:
+                - empresa
+        fk_facturas_ordenescompra1_idx:
+            columns:
+                - ordenescompra
+        fk_facturas_departamentos1_idx:
+            columns:
+                - departamento
+        fk_facturas_config1_idx:
+            columns:
+                - estado_pago
+        fk_facturas_proveedores_clientes1_idx:
+            columns:
+                - proveedores_clientes
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: true
+        fechaIngreso:
+            type: datetime
+            nullable: true
+            column: fecha_ingreso
+        fechaPago:
+            type: datetime
+            nullable: true
+            column: fecha_pago
+        numeroFactura:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: numero_factura
+    manyToOne:
+        departamento:
+            targetEntity: Departamentos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                departamento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estadoPago:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado_pago:
+                    referencedColumnName: id
+            orphanRemoval: false
+        proveedoresClientes:
+            targetEntity: ProveedoresClientes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedores_clientes:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        ordenescompra:
+            targetEntity: Ordenescompra
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordenescompra:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

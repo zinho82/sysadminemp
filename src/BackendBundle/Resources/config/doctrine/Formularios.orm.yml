@@ -1,0 +1,52 @@
+BackendBundle\Entity\Formularios:
+    type: entity
+    table: formularios
+    indexes:
+        fk_formularios_empresa1_idx:
+            columns:
+                - empresa
+        fk_formularios_usuario1_idx:
+            columns:
+                - creado_por
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+    manyToOne:
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        creadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                creado_por:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

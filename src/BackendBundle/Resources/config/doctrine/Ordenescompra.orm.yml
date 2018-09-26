@@ -1,0 +1,69 @@
+BackendBundle\Entity\Ordenescompra:
+    type: entity
+    table: ordenescompra
+    indexes:
+        fk_ordenescompra_config1_idx:
+            columns:
+                - tipo_oc
+        fk_ordenescompra_empresa1_idx:
+            columns:
+                - empresa
+        fk_ordenescompra_proveedores_clientes1_idx:
+            columns:
+                - proveedores_clientes
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        numeroOc:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: numero_oc
+        fechaEstimadaCompra:
+            type: datetime
+            nullable: true
+            column: fecha_estimada_compra
+        fechaIngreso:
+            type: datetime
+            nullable: true
+            column: fecha_ingreso
+    manyToOne:
+        proveedoresClientes:
+            targetEntity: ProveedoresClientes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedores_clientes:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoOc:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_oc:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
