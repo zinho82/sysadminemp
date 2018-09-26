@@ -28,6 +28,7 @@
                 </li>
                 {% endif %}
             {% if app.user !=null %}
+                {% include 'AppBundle:Layouts/menu:administrador.html.twig' %}
                  {% include 'AppBundle:Layouts/menu:rrhh.html.twig' %}
                  {% include 'AppBundle:Layouts/menu:usuario.html.twig' %}
             {% endif %}

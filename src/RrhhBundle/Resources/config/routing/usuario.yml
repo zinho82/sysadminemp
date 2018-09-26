@@ -1,0 +1,42 @@
+usuario:
+    path:  /usuario
+    defaults: { _controller: "RrhhBundle:Usuario:index" }
+
+usuario_show:
+    path:  /usuario/{id}/show
+    defaults: { _controller: "RrhhBundle:Usuario:show" }
+
+usuario_new:
+    path:  /usuario/new
+    defaults: { _controller: "RrhhBundle:Usuario:new" }
+
+usuario_create:
+    path:  /usuario/create
+    defaults: { _controller: "RrhhBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    path:  /usuario/{id}/edit
+    defaults: { _controller: "RrhhBundle:Usuario:edit" }
+
+usuario_update:
+    path:  /usuario/{id}/update
+    defaults: { _controller: "RrhhBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_delete:
+    path:  /usuario/{id}/delete
+    defaults: { _controller: "RrhhBundle:Usuario:delete" }
+    requirements: { _method: post|delete }
+    
+usuario_by_id_delete:
+    path:  /usuario/delete/{id}
+    defaults: { _controller: "RrhhBundle:Usuario:deleteById" }
+    requirements: { _method: get }
+    
+
+usuario_bulk_action:
+    path:  /usuario/bulk-action
+    defaults: { _controller: "RrhhBundle:Usuario:bulk" }
+    requirements: { _method: post }
+    

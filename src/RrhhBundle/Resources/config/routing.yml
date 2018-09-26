@@ -1,3 +1,6 @@
 backend_rrhh:
     resource: "@RrhhBundle/Resources/config/routing/rrhh.yml"
     prefix:   /
+backend_usuario:
+    resource: "@RrhhBundle/Resources/config/routing/usuario.yml"
+    prefix:   /
