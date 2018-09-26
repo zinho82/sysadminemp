@@ -21,9 +21,9 @@ class AppKernel extends Kernel {
             new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new LoginBundle\LoginBundle(),
-            new RrhhBundle\RrhhBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new HomeBundle\HomeBundle(),
+            new RrhhBundle\RrhhBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
