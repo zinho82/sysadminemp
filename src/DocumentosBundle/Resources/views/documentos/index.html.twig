@@ -130,7 +130,7 @@
                     <tr>
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{documento.id}}"/></td>
                         <td><a href="{{ path('documentos_edit', { 'id': documento.id }) }}">{{ documento.id }}</a></td>
-                        <td>{{ documento.archivo }}</td>
+                        <td><a href="{{asset('uploads/rrhh/'~documento.archivo)}}">{{ documento.archivo }}<a></td> 
                         <td>{{ documento.nombre }}</td>
     
                         <td class="actions">

@@ -3,7 +3,7 @@ documentos:
     defaults: { _controller: "DocumentosBundle:Documentos:index" }
 documentos_add:
     path:  /documentos/agregar/{id}/{seccion}/{empresa}
-    defaults: { _controller: "DocumentosBundle:Documentos:new",id:null,seccion:null,empresa:null}
+    defaults: { _controller: "DocumentosBundle:Documentos:agregar",id:null,seccion:null,empresa:null}
     methods: [get|post]
 
 documentos_show:

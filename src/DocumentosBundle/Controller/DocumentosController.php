@@ -41,14 +41,15 @@ class DocumentosController extends Controller {
      *
      */
     public function agregarAction(Request $request, $id = null, $seccion = null, $empresa = null) {
-
+ $em = $this->getDoctrine()->getManager();
+            $documento = new Documentos();
         $form = $this->createForm('DocumentosBundle\Form\DocumentosType', $documento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $documento = new Documentos();
+           
 $dempresa=$em->getRepository("BackendBundle:empresa")->find($empresa);
+$drh=$em->getRepository("BackendBundle:rrhh")->find($id);
             $file = $form['archivo']->getData();
 
 // Sacamos la extensión del fichero
@@ -57,13 +58,13 @@ $dempresa=$em->getRepository("BackendBundle:empresa")->find($empresa);
 // Le ponemos un nombre al fichero
             $fileName = time() . "." . $ext;
             $file->move("uploads/rrhh", $fileName);
-
-//            $documento->setFechaCarga(new \DateTime);
-//            $documento->setCargadoPor($this->getUser());
-//            $documento->setArchivo($fileName);
-//            $documento->setEmpresa($dempresa);
-//            $em->persist($documento);
-//            $em->flush();
+            $documento->setFechaCarga(new \DateTime);
+            $documento->setCargadoPor($this->getUser());
+            $documento->setArchivo($fileName);
+            $documento->setRrhh($drh);
+            $documento->setEmpresa($dempresa);
+            $em->persist($documento);
+            $em->flush();
  
             $editLink = $this->generateUrl('documentos_edit', array('id' => $documento->getId()));
             $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New documento was created successfully.</a>");
