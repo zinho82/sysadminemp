@@ -1,0 +1,26 @@
+user_home:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+user_crud:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+    
+    
+archivos:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+private_message_index:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+notifications_page   :
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index} 
+lotes:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+informes:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
+user_edit:
+    path: /home
+    defaults: { _controller: HomeBundle:Home:index}
