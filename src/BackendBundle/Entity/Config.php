@@ -81,4 +81,3 @@ class Config
         return $this->pertenece;
     }
 }
-

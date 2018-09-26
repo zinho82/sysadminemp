@@ -8,6 +8,12 @@ BackendBundle\Entity\Documentos:
         fk_documentos_empresa1_idx:
             columns:
                 - empresa
+        fk_documentos_rrhh1_idx:
+            columns:
+                - rrhh
+        fk_documentos_usuario1_idx:
+            columns:
+                - cargado_por
     id:
         id:
             type: integer
@@ -30,6 +36,10 @@ BackendBundle\Entity\Documentos:
             length: 45
             options:
                 fixed: false
+        fechaCarga:
+            type: datetime
+            nullable: true
+            column: fecha_carga
     manyToOne:
         tipoDocumento:
             targetEntity: Config
@@ -49,6 +59,26 @@ BackendBundle\Entity\Documentos:
             inversedBy: null
             joinColumns:
                 empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        rrhh:
+            targetEntity: Rrhh
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrhh:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cargadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cargado_por:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

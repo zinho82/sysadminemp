@@ -284,4 +284,3 @@ class Presupuesto
         return $this->facturas;
     }
 }
-

@@ -138,5 +138,120 @@ class Documentos
     {
         return $this->empresa;
     }
-}
+    /**
+     * @var \DateTime
+     */
+    private $fechaCarga;
 
+    /**
+     * @var string
+     */
+    private $documentoscol;
+
+    /**
+     * @var \BackendBundle\Entity\Usuario
+     */
+    private $cargadoPor;
+
+    /**
+     * @var \BackendBundle\Entity\Rrhh
+     */
+    private $rrhh;
+
+
+    /**
+     * Set fechaCarga
+     *
+     * @param \DateTime $fechaCarga
+     *
+     * @return Documentos
+     */
+    public function setFechaCarga($fechaCarga)
+    {
+        $this->fechaCarga = $fechaCarga;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCarga
+     *
+     * @return \DateTime
+     */
+    public function getFechaCarga()
+    {
+        return $this->fechaCarga;
+    }
+
+    /**
+     * Set documentoscol
+     *
+     * @param string $documentoscol
+     *
+     * @return Documentos
+     */
+    public function setDocumentoscol($documentoscol)
+    {
+        $this->documentoscol = $documentoscol;
+
+        return $this;
+    }
+
+    /**
+     * Get documentoscol
+     *
+     * @return string
+     */
+    public function getDocumentoscol()
+    {
+        return $this->documentoscol;
+    }
+
+    /**
+     * Set cargadoPor
+     *
+     * @param \BackendBundle\Entity\Usuario $cargadoPor
+     *
+     * @return Documentos
+     */
+    public function setCargadoPor(\BackendBundle\Entity\Usuario $cargadoPor = null)
+    {
+        $this->cargadoPor = $cargadoPor;
+
+        return $this;
+    }
+
+    /**
+     * Get cargadoPor
+     *
+     * @return \BackendBundle\Entity\Usuario
+     */
+    public function getCargadoPor()
+    {
+        return $this->cargadoPor;
+    }
+
+    /**
+     * Set rrhh
+     *
+     * @param \BackendBundle\Entity\Rrhh $rrhh
+     *
+     * @return Documentos
+     */
+    public function setRrhh(\BackendBundle\Entity\Rrhh $rrhh = null)
+    {
+        $this->rrhh = $rrhh;
+
+        return $this;
+    }
+
+    /**
+     * Get rrhh
+     *
+     * @return \BackendBundle\Entity\Rrhh
+     */
+    public function getRrhh()
+    {
+        return $this->rrhh;
+    }
+}

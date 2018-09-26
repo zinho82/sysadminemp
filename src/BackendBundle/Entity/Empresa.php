@@ -287,4 +287,3 @@ class Empresa
         return $this->nombreFantasia;
     }
 }
-

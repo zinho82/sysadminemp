@@ -168,4 +168,3 @@ class Contactos
         return $this->proveedoresClientes;
     }
 }
-

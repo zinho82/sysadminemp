@@ -199,4 +199,3 @@ class Usuario implements UserInterface, \Serializable
         return null;
     }
 }
-

@@ -21,13 +21,13 @@ BackendBundle\Entity\Usuario:
         username:
             type: string
             nullable: true
-            length: 45
+            length: 255
             options:
                 fixed: false
         password:
             type: string
             nullable: true
-            length: 45
+            length: 255
             options:
                 fixed: false
         role:
@@ -37,16 +37,6 @@ BackendBundle\Entity\Usuario:
             options:
                 fixed: false
     manyToOne:
-        rrhh:
-            targetEntity: Rrhh
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                rrhh:
-                    referencedColumnName: id
-            orphanRemoval: false
         empresa:
             targetEntity: Empresa
             cascade: {  }
@@ -55,6 +45,16 @@ BackendBundle\Entity\Usuario:
             inversedBy: null
             joinColumns:
                 empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        rrhh:
+            targetEntity: Rrhh
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrhh:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

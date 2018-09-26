@@ -284,4 +284,3 @@ class Facturas
         return $this->ordenescompra;
     }
 }
-

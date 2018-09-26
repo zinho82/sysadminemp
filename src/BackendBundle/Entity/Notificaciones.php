@@ -23,4 +23,3 @@ class Notificaciones
         return $this->id;
     }
 }
-

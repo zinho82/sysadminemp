@@ -52,4 +52,3 @@ class Inventario
         return $this->empresa;
     }
 }
-

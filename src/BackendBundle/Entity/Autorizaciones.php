@@ -153,4 +153,3 @@ class Autorizaciones
         return $this->solicitud;
     }
 }
-
