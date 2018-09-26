@@ -1,0 +1,3 @@
+backend_documentos:
+    resource: "@DocumentosBundle/Resources/config/routing/documentos.yml"
+    prefix:   /documentos

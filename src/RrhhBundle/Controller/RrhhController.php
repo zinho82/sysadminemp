@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace RrhhBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class RrhhController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('rrhh/index.html.twig', array(
+        return $this->render('RrhhBundle:rrhh:index.html.twig', array(
             'rrhhs' => $rrhhs,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class RrhhController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\RrhhFilterType');
+        $filterForm = $this->createForm('RrhhBundle\Form\RrhhFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class RrhhController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\RrhhFilterType', $filterData);
+                $filterForm = $this->createForm('RrhhBundle\Form\RrhhFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class RrhhController extends Controller
     {
     
         $rrhh = new Rrhh();
-        $form   = $this->createForm('BackendBundle\Form\RrhhType', $rrhh);
+        $form   = $this->createForm('RrhhBundle\Form\RrhhType', $rrhh);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class RrhhController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'rrhh' : 'rrhh_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('rrhh/new.html.twig', array(
+        return $this->render('RrhhBundle:rrhh:new.html.twig', array(
             'rrhh' => $rrhh,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class RrhhController extends Controller
     public function showAction(Rrhh $rrhh)
     {
         $deleteForm = $this->createDeleteForm($rrhh);
-        return $this->render('rrhh/show.html.twig', array(
+        return $this->render('RrhhBundle:rrhh:show.html.twig', array(
             'rrhh' => $rrhh,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class RrhhController extends Controller
     public function editAction(Request $request, Rrhh $rrhh)
     {
         $deleteForm = $this->createDeleteForm($rrhh);
-        $editForm = $this->createForm('BackendBundle\Form\RrhhType', $rrhh);
+        $editForm = $this->createForm('RrhhBundle\Form\RrhhType', $rrhh);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class RrhhController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('rrhh_edit', array('id' => $rrhh->getId()));
         }
-        return $this->render('rrhh/edit.html.twig', array(
+        return $this->render('RrhhBundle:rrhh:edit.html.twig', array(
             'rrhh' => $rrhh,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

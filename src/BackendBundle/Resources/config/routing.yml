@@ -1,6 +1,6 @@
-backend_rrhh:
-    resource: "@BackendBundle/Resources/config/routing/rrhh.yml"
-    prefix:   /rrhh
+
+
+
 
 backend_homepage:
     path:     /

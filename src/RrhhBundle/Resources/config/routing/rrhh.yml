@@ -1,0 +1,42 @@
+rrhh:
+    path:  /rrhh
+    defaults: { _controller: "RrhhBundle:Rrhh:index" }
+
+rrhh_show:
+    path:  /rrhh/{id}/show
+    defaults: { _controller: "RrhhBundle:Rrhh:show" }
+
+rrhh_new:
+    path:  /rrhh/new
+    defaults: { _controller: "RrhhBundle:Rrhh:new" }
+
+rrhh_create:
+    path:  /rrhh/create
+    defaults: { _controller: "RrhhBundle:Rrhh:create" }
+    requirements: { _method: post }
+
+rrhh_edit:
+    path:  /rrhh/{id}/edit
+    defaults: { _controller: "RrhhBundle:Rrhh:edit" }
+
+rrhh_update:
+    path:  /rrhh/{id}/update
+    defaults: { _controller: "RrhhBundle:Rrhh:update" }
+    requirements: { _method: post|put }
+
+rrhh_delete:
+    path:  /rrhh/{id}/delete
+    defaults: { _controller: "RrhhBundle:Rrhh:delete" }
+    requirements: { _method: post|delete }
+    
+rrhh_by_id_delete:
+    path:  /rrhh/delete/{id}
+    defaults: { _controller: "RrhhBundle:Rrhh:deleteById" }
+    requirements: { _method: get }
+    
+
+rrhh_bulk_action:
+    path:  /rrhh/bulk-action
+    defaults: { _controller: "RrhhBundle:Rrhh:bulk" }
+    requirements: { _method: post }
+    

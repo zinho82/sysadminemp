@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Form;
+namespace RrhhBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

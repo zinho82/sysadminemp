@@ -1,0 +1,42 @@
+documentos:
+    path:  /documentos
+    defaults: { _controller: "DocumentosBundle:Documentos:index" }
+
+documentos_show:
+    path:  /documentos/{id}/show
+    defaults: { _controller: "DocumentosBundle:Documentos:show" }
+
+documentos_new:
+    path:  /documentos/new
+    defaults: { _controller: "DocumentosBundle:Documentos:new" }
+
+documentos_create:
+    path:  /documentos/create
+    defaults: { _controller: "DocumentosBundle:Documentos:create" }
+    requirements: { _method: post }
+
+documentos_edit:
+    path:  /documentos/{id}/edit
+    defaults: { _controller: "DocumentosBundle:Documentos:edit" }
+
+documentos_update:
+    path: /documentos/{id}/update
+    defaults: { _controller: "DocumentosBundle:Documentos:update" }
+    requirements: { _method: post|put }
+
+documentos_delete:
+    path:  /documentos/{id}/delete
+    defaults: { _controller: "DocumentosBundle:Documentos:delete" }
+    requirements: { _method: post|delete }
+    
+documentos_by_id_delete:
+    path:  /documentos/delete/{id}
+    defaults: { _controller: "DocumentosBundle:Documentos:deleteById" }
+    requirements: { _method: get }
+    
+
+documentos_bulk_action:
+    path:  /documentos/bulk-action
+    defaults: { _controller: "DocumentosBundle:Documentos:bulk" }
+    requirements: { _method: post }
+    

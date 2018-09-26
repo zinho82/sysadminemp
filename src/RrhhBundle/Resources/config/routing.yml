@@ -1,3 +1,3 @@
-rrhh_homepage:
-    path:     /
-    defaults: { _controller: RrhhBundle:Default:index }
+backend_rrhh:
+    resource: "@RrhhBundle/Resources/config/routing/rrhh.yml"
+    prefix:   /rrhh
