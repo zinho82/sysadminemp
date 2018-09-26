@@ -6,18 +6,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Panel Notificaciones</div>
                     <div class="panel-body">
-                        {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_FINANZAS' %}
-                            {% for   finanzas in notiFinanzas%}
-                                <div class=" box-form alert-info ">
-                                    <b><i>  {{finanzas.fecha| date('d-m-Y G:i:s')}}</i></b><br>
-                                    <b>{{finanzas.area|upper}}</b>: <br>
-                                    {{finanzas.texto}}, por <strong>{{finanzas.creadopor}}</strong>.<br>
-                                </div>
-                            {% endfor %}
-                            <div class="paginator">
-                                {{ knp_pagination_render(notiFinanzas) }}
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -40,119 +28,6 @@
                     </div>
                 </div>
             {% endif %}
-            {% if app.user.role=='ROLE_ADMIN'  %}
-                <div class="col-lg8 col-sm-8 col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Panel Admin</div>
-                        <div class="panel-body"></div>
-                    </div>
-                </div>
-            {% endif %}   
-            {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_TECNICO' or app.user.role=='ROLE_SUPERTECNICO' %}
-                <div class="col-lg8 col-sm-8 col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Panel Tecnicos</div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-8 col-sm-8 col-md-8">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">Carteleria Claro</div>
-                                <div class="panel-body">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <th>Fecha Realizado</th>
-                                        <th>Centro Comercial</th>
-                                        <th>Modulo</th>
-                                        <th>Fecha</th>
-                                        <th>Hora llegada</th>
-                                        <th>Hora Salida</th>
-                                        <th>Tecnico</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for pan in pantallas %}
-                                                <tr>
-                                                    <td>{{ pan.horaIngreso|date('d-m-Y G:i')}}</td>
-                                                    <td>{{ pan.modulo.nombre}}</td>
-                                                    <td>{{ pan.modulo.modulo}}</td>
-                                                    <td>{{ pan.fecha }}</td>
-                                                    <td>{{ pan.horaLlegada|date('G:i') }}</td>
-                                                    <td>{{ pan.horaSalida |date('G:i')}}</td>
-                                                    <td>{{ pan.tecnico.nombre  }} {{pan.tecnico.app}}</td>
-                                                </tr>
-                                            {% endfor%}
-
-                                        </tbody>
-                                    </table>
-                                    <div class="paginator">
-                                        {{ knp_pagination_render(pantallas) }}
-                                    </div>
-                                </div>
-                            </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_SUPERVISOR' %}
-                    <div class="col-lg8 col-sm-8 col-md-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Panel Supervisor</div>
-                            <div class="panel-body"></div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_EJECUTIVO' %}
-                    <div class="col-lg8 col-sm-8 col-md-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Panel Ejecutivo</div>
-                            <div class="panel-body"></div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_FINANZAS' %}
-                    <div class="col-lg8 col-sm-8 col-md-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Panel Finanzas</div>
-                            <div class="panel-body">
-                                <div class="panel panel-info">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-sm-6 col-md-6">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">Factuas Pendientes</div>
-                                                <div class="panel-body">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                        <th>Cliente</th>
-                                                        <th>Fecha Emisión</th>
-                                                        <th>Total</th>
-                                                        <th>Tipo Factura</th>
-                                                        <th>Estado Factura</th>
-                                                        </thead>
-                                                        <tbody>
-                                                            {% for fact in facturas %}
-                                                                <tr>
-                                                                    <td>{{fact.cliente}}</td>
-                                                                    <td>{{fact.fechaemision|date('d-m-Y')}}</td>
-                                                                    <td>{{fact.total|number_format(0,',','.')}}</td>
-                                                                    <td>{{fact.tipofactura}}</td>
-                                                                    <td>{{fact.estado}}</td>
-                                                                </tr>
-                                                            {% endfor %}
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="paginator">
-                                                        {{ knp_pagination_render(facturas) }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
             </div>
         </div>
     </div>

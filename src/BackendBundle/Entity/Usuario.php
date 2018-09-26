@@ -2,7 +2,6 @@
 
 namespace BackendBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * Usuario
  */
@@ -13,16 +12,6 @@ class Usuario implements UserInterface, \Serializable
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string
      */
@@ -36,28 +25,28 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @var string
      */
-    private $nombre;
-
-    /**
-     * @var string
-     */
-    private $app;
-
-    /**
-     * @var string
-     */
-    private $apm;
-
-    /**
-     * @var string
-     */
     private $role;
 
     /**
-     * @var string
+     * @var \BackendBundle\Entity\Rrhh
      */
-    private $correo;
+    private $rrhh;
 
+    /**
+     * @var \BackendBundle\Entity\Empresa
+     */
+    private $empresa;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set username
@@ -108,78 +97,6 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Usuario
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * Set app
-     *
-     * @param string $app
-     *
-     * @return Usuario
-     */
-    public function setApp($app)
-    {
-        $this->app = $app;
-
-        return $this;
-    }
-
-    /**
-     * Get app
-     *
-     * @return string
-     */
-    public function getApp()
-    {
-        return $this->app;
-    }
-
-    /**
-     * Set apm
-     *
-     * @param string $apm
-     *
-     * @return Usuario
-     */
-    public function setApm($apm)
-    {
-        $this->apm = $apm;
-
-        return $this;
-    }
-
-    /**
-     * Get apm
-     *
-     * @return string
-     */
-    public function getApm()
-    {
-        return $this->apm;
-    }
-
-    /**
      * Set role
      *
      * @param string $role
@@ -202,100 +119,6 @@ class Usuario implements UserInterface, \Serializable
     {
         return $this->role;
     }
-
-    /**
-     * Set correo
-     *
-     * @param string $correo
-     *
-     * @return Usuario
-     */
-    public function setCorreo($correo)
-    {
-        $this->correo = $correo;
-
-        return $this;
-    }
-
-    /**
-     * Get correo
-     *
-     * @return string
-     */
-    public function getCorreo()
-    {
-        return $this->correo;
-    }
-     public function __toString() {
-        return (string)$this->username;
-    }
-    public function serialize() {
-        return serialize(array(
-        $this->id,
-        $this->username,
-        $this->password
-        ));
-    }
-    public function unserialize($serialized) {
-        list(
-        $this->id,
-        $this->username,
-        $this->password
-                )= unserialize($serialized);
-        
-    }
-
-    public function eraseCredentials() {
-        
-    }
-
-    public function getRoles() {
-        return array("ROLE_ADMIN");
-        
-    }
-
-    public function getSalt() {
-        return null;
-    }
-    /**
-     * @var string
-     */
-    private $image;
-
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Usuario
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-    /**
-     * @var \BackendBundle\Entity\Rrhh
-     */
-    private $rrhh;
-
-    /**
-     * @var \BackendBundle\Entity\Empresa
-     */
-    private $empresa;
-
 
     /**
      * Set rrhh
@@ -344,4 +167,36 @@ class Usuario implements UserInterface, \Serializable
     {
         return $this->empresa;
     }
+     public function __toString() {
+        return (string)$this->username;
+    }
+    public function serialize() {
+        return serialize(array(
+        $this->id,
+        $this->username,
+        $this->password
+        ));
+    }
+    public function unserialize($serialized) {
+        list(
+        $this->id,
+        $this->username,
+        $this->password
+                )= unserialize($serialized);
+        
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return array("ROLE_ADMIN");
+        
+    }
+
+    public function getSalt() {
+        return null;
+    }
 }
+
