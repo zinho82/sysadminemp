@@ -1,0 +1,42 @@
+empresa:
+    path:  /empresa
+    defaults: { _controller: "EmpresaBundle:Empresa:index" }
+
+empresa_show:
+    path:  /empresa/{id}/show
+    defaults: { _controller: "EmpresaBundle:Empresa:show" }
+
+empresa_new:
+    path:  /empresa/new
+    defaults: { _controller: "EmpresaBundle:Empresa:new" }
+
+empresa_create:
+    path:  /empresa/create
+    defaults: { _controller: "EmpresaBundle:Empresa:create" }
+    requirements: { _method: post }
+
+empresa_edit:
+    path:  /empresa/{id}/edit
+    defaults: { _controller: "EmpresaBundle:Empresa:edit" }
+
+empresa_update:
+    path:  /empresa/{id}/update
+    defaults: { _controller: "EmpresaBundle:Empresa:update" }
+    requirements: { _method: post|put }
+
+empresa_delete:
+    path:  /empresa/{id}/delete
+    defaults: { _controller: "EmpresaBundle:Empresa:delete" }
+    requirements: { _method: post|delete }
+    
+empresa_by_id_delete:
+    path:  /empresa/delete/{id}
+    defaults: { _controller: "EmpresaBundle:Empresa:deleteById" }
+    requirements: { _method: get }
+    
+
+empresa_bulk_action:
+    path:  /empresa/bulk-action
+    defaults: { _controller: "EmpresaBundle:Empresa:bulk" }
+    requirements: { _method: post }
+    

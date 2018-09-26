@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace EmpresaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class EmpresaController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('empresa/index.html.twig', array(
+        return $this->render('EmpresaBundle:empresa:index.html.twig', array(
             'empresas' => $empresas,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class EmpresaController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\EmpresaFilterType');
+        $filterForm = $this->createForm('EmpresaBundle\Form\EmpresaFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class EmpresaController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\EmpresaFilterType', $filterData);
+                $filterForm = $this->createForm('EmpresaBundle\Form\EmpresaFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class EmpresaController extends Controller
     {
     
         $empresa = new Empresa();
-        $form   = $this->createForm('BackendBundle\Form\EmpresaType', $empresa);
+        $form   = $this->createForm('EmpresaBundle\Form\EmpresaType', $empresa);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class EmpresaController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'empresa' : 'empresa_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('empresa/new.html.twig', array(
+        return $this->render('EmpresaBundle:empresa:new.html.twig', array(
             'empresa' => $empresa,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class EmpresaController extends Controller
     public function showAction(Empresa $empresa)
     {
         $deleteForm = $this->createDeleteForm($empresa);
-        return $this->render('empresa/show.html.twig', array(
+        return $this->render('EmpresaBundle:empresa:show.html.twig', array(
             'empresa' => $empresa,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class EmpresaController extends Controller
     public function editAction(Request $request, Empresa $empresa)
     {
         $deleteForm = $this->createDeleteForm($empresa);
-        $editForm = $this->createForm('BackendBundle\Form\EmpresaType', $empresa);
+        $editForm = $this->createForm('EmpresaBundle\Form\EmpresaType', $empresa);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class EmpresaController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('empresa_edit', array('id' => $empresa->getId()));
         }
-        return $this->render('empresa/edit.html.twig', array(
+        return $this->render('EmpresaBundle:empresa:edit.html.twig', array(
             'empresa' => $empresa,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,6 +1,4 @@
-backend_usuario:
-    resource: "@BackendBundle/Resources/config/routing/usuario.yml"
-    prefix:   /usuario
+
 
 
 
