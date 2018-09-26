@@ -1,0 +1,58 @@
+<!DOCTIPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/> 
+        <title>
+            {%block title %} Asisto SPA{% endblock %}
+        </title>
+        {%block stylesheets %}
+            <link rel="icon" type="image/png" href="{{asset('assets/images/Logo.png')}}" />
+            <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('assets/css/styles.css')}}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+            <link href="{{ asset('assets/css/bootstrap.cosmo.min.css')}}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        {%block javascript %}
+            <script type="text/javascript">
+                var URL = "{{ app.request.getSchemeAndHttpHost()}}/frutas/web/app_dev.php";
+
+            </script>
+            <script src=" {{ asset('assets/js/jquery.min.js')}}"></script>
+            <script src=" {{ asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+            <script src=" {{ asset('assets/js/jquery-ias.min.js')}}"></script>
+            <script src=" {{ asset('assets/js/custom/common.js')}}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+             {% include 'AppBundle:Layouts:menu.html.twig'%}
+        </header>
+        <section id="content">
+            <div id="cointainer">
+                {% for message in app.session.flashbag().get('status')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('success')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('danger')%}
+                    <div class="alert alert-danger"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('info')%}
+                    <div class="alert alert-info"> {{message|raw}} </div>
+                {% endfor%}
+            </div>
+            <div class="clearfix"></div>
+            {% block body %}
+                conetnt default
+            {% endblock %}
+        </section>
+        <footer class="col-lg-12 col-md-12 col-sm-12">
+            <hr/>
+            <div class="container">
+                <p class="text-muted">Asisto Spa <i class="fa fa-registered"></i></p>
+            </div>
+        </footer>
+    </body>
+
+</html>

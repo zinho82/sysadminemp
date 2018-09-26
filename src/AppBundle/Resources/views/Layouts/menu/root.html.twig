@@ -1,0 +1,25 @@
+
+
+
+{% if app.user.role=='ROLE_ADMIN' or app.user=='zinho'%}
+    <ul class="nav navbar-nav ">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Root
+                <span class="caret"></span> 
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown"><a href="{{path("menu")}}">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true" ></span>&nbsp
+                        Menu
+                    </a>
+                </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+
+{% endif %}
+
+

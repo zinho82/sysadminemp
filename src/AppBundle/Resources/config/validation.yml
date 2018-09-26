@@ -1,0 +1,13 @@
+BackenBundle\Entity\User:
+    properties:
+        name:
+            - NotBlank: {message: "El nombre no puede estar Vacio"}
+        surname:
+            - NotBlank: {message: "El apellido no puede estar Vacio"}
+        nick:
+            - NotBlank: {message: "El Nick no puede estar Vacio"}
+        email:
+            - Email:
+                message: El Email {{ value }}  no es valido
+                checkMX: false
+            - NotBlank: {message: "El nombre no puede estar Vacio"}

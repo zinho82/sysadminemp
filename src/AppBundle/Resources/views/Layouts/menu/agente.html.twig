@@ -1,0 +1,110 @@
+{% if app.user.role=='ROLE_VENTAS' or app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_EJECUTIVO' or  app.user.role=='ROLE_SUPERVISOR' or  app.user.role=='ROLE_VENTAS' %}
+    <ul class="nav navbar-nav ">
+        <li class="menu-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Agente<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                 <li class="menu-item ">
+                                <a href="{{path('Inbound')}}">Inbound</a>
+                            </li>
+                {% if app.user.role=='ROLE_ADMIN'%}
+                    <!--<li class="menu-item dropdown dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Netline Pyme</a>
+                        <ul class="dropdown-menu"> 
+                            <li class="menu-item ">
+                                <a href="{{path("campana_datos_netline_pyme")}}">Datos</a>
+                            </li>
+                            <!--  <li class="menu-item dropdown dropdown-submenu">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                                  <ul class="dropdown-menu">
+                                      <li>
+                                          <a href="#">Link 3</a>
+                                      </li>
+                                  </ul> 
+                              </li>--
+                        </ul>
+                    </li>--
+                    <li class="menu-item dropdown dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Netline Farma</a>
+                        <ul class="dropdown-menu">
+                        <!--    <li class="menu-item ">
+                                <a href="{{path("campana_carga_netline_pyme")}}">Cargar BD</a>
+                            </li>--
+
+                            <!--  <li class="menu-item dropdown dropdown-submenu">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                                  <ul class="dropdown-menu">
+                                      <li>
+                                          <a href="#">Link 3</a>
+                                      </li>
+                                  </ul>
+                              </li>--
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_SUPERVISOR' or app.user.role=='ROLE_ASISTENCIA'%}
+                    <li class="menu-item dropdown dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consalud</a>
+                        <ul class="dropdown-menu"> 
+                           <!-- <li class="menu-item ">
+                                <a href="{{path("consalud_datos")}}">Datos</a>
+                            </li>-->
+                            <!--  <li class="menu-item dropdown dropdown-submenu">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                                  <ul class="dropdown-menu">
+                                      <li>
+                                          <a href="#">Link 3</a>
+                                      </li>
+                                  </ul> 
+                              </li>--
+                        </ul>
+                    </li>
+                    <li class="menu-item dropdown dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Netline Farma</a>
+                        <ul class="dropdown-menu">
+                           <!-- <li class="menu-item ">
+                                <a href="{{path("campana_carga_netline_pyme")}}">Cargar BD</a>
+                            </li>-->
+
+                            <!--  <li class="menu-item dropdown dropdown-submenu">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                                  <ul class="dropdown-menu">
+                                      <li>
+                                          <a href="#">Link 3</a>
+                                      </li>
+                                  </ul>
+                              </li>--
+                        </ul>
+                    </li>
+                {% endif %} 
+                <li class="menu-item dropdown dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vendomatica</a>
+                    <ul class="dropdown-menu">
+                       <!-- <li class="menu-item ">
+                            <a href="{{path("campana_datos_vendomatica")}}">Datos</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="{{path("campana_buzon_vendomatica")}}">Buzones de Voz</a>
+                        </li>-->
+                        <!--  <li class="menu-item dropdown dropdown-submenu">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2</a>
+                              <ul class="dropdown-menu">
+                                  <li>
+                                      <a href="#">Link 3</a>
+                                  </li>
+                              </ul> 
+                          </li>--
+                    </ul>
+                </li>
+                {% if app.user.role=="ROLE_VENTAS" or app.user.role=='ROLE_ADMIN' %}
+                  <!--  <li class="menu-item ">
+                        <a href="{{path("campana_predictivo")}}">Predictivo</a>
+                    </li>-->
+                {% endif%}
+                
+
+
+
+            </ul>
+        </li>
+    </ul>
+{% endif %}

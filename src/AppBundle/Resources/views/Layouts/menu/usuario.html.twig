@@ -1,0 +1,51 @@
+
+     {% if app.user!=null %}
+         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="{{ path('private_message_index')}}">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true" ></span>&nbsp
+                </a>
+            </li>
+            <li>
+                <a href="{{path('notifications_page')}}">
+                    <span class="glyphicon glyphicon-bell" aria-hidden="true" ></span>&nbsp
+                    <span class="label label-success label-notifications">
+                    </span>
+                </a>
+            </li>
+        {% endif%}
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar">
+                {%if app.user.image==null %}
+                    <img src="{{asset('assets/images/default.png')}}"/>
+                {%else%}
+                    <img src="{{asset('uploads/users/'~app.user.image)}}"/>
+                {%endif%}
+            </div>
+            {{app.user.nombre }} {{app.user.app}}
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{path("user_edit")}}">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true" ></span>&nbsp
+                    Mis Datos
+                </a>
+            </li>
+            <li role="separator" class="divider"> </li>
+            <li>
+                <a href="{{path("logout")}}">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true" ></span>&nbsp
+                    Salir
+                </a>
+            </li>
+            <li>
+                <a href="}">
+                    <span class="glyphicon glyphicon-exclamation-signt" aria-hidden="true" ></span>&nbsp
+                    Ayuda
+                </a>
+            </li>
+        </ul>
+
+    </li>
+</ul>

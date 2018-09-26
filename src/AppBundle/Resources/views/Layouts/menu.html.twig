@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#bs-example-bavbar-collapse-1" aria-expanded="false" >
+                <span class="sr-only">Navega </span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>                    
+            <a class="navbar-brand" href="{{ path("user_home")}}">
+                <span class="" aria-hidden="true"><img src="{{asset('assets/images/Logo.png')}}" class="img-logo"/></span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar"> 
+                {% if app.user ==null %}
+                 <li class="dropdown"><a href="{{path("login")}}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" ></span>&nbsp
+                        Login
+                    </a>
+                </li>
+                {% else %}
+                 <li class="dropdown"><a href="{{path("user_home")}}">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true" ></span>&nbsp
+                        Home
+                    </a>
+                </li>
+                {% endif %}
+            {% if app.user !=null %}
+                 {% include 'AppBundle:Layouts/menu:administrador.html.twig' %}
+                 {% include 'AppBundle:Layouts/menu:tecnico.html.twig' %}
+                  {% include 'AppBundle:Layouts/menu:campanas.html.twig' %}
+                   {% include 'AppBundle:Layouts/menu:supervisor.html.twig' %}
+                 {% include 'AppBundle:Layouts/menu:finanzas.html.twig' %}
+                  {% include 'AppBundle:Layouts/menu:agente.html.twig' %}
+                 {% include 'AppBundle:Layouts/menu:usuario.html.twig' %}
+            {% endif %}
+        </ul>
+        </div>
+    </div>
+</nav>

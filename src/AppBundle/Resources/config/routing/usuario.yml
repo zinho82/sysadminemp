@@ -1,0 +1,42 @@
+usuario:
+    path:  /usuario
+    defaults: { _controller: "AppBundle:Usuario:index" }
+
+usuario_show:
+    path:  /usuario/{id}/show
+    defaults: { _controller: "AppBundle:Usuario:show" }
+
+usuario_new:
+    path:  /usuario/new
+    defaults: { _controller: "AppBundle:Usuario:new" }
+
+usuario_create:
+    path:  /usuario/create
+    defaults: { _controller: "AppBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    path:  /usuario/{id}/edit
+    defaults: { _controller: "AppBundle:Usuario:edit" }
+
+usuario_update:
+    path:  /usuario/{id}/update
+    defaults: { _controller: "AppBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_delete:
+    path:  /usuario/{id}/delete
+    defaults: { _controller: "AppBundle:Usuario:delete" }
+    requirements: { _method: post|delete }
+    
+usuario_by_id_delete:
+    path:  /usuario/delete/{id}
+    defaults: { _controller: "AppBundle:Usuario:deleteById" }
+    requirements: { _method: get }
+    
+
+usuario_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Usuario:bulk" }
+    requirements: { _method: post }
+    
