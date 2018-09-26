@@ -283,5 +283,8 @@ class Empresa
     {
         return $this->estadoEmpresa;
     }
+    public function __toString() {
+        return $this->nombreFantasia;
+    }
 }
 

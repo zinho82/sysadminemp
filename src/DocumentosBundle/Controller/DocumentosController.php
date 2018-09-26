@@ -40,6 +40,40 @@ class DocumentosController extends Controller
         ));
     }
 
+     /**
+     * Agrega registro segun el depto que existe 
+     *
+     */
+   public function agregarAction(Request $request)
+    {
+    
+        $documento = new Documentos();
+        $form   = $this->createForm('DocumentosBundle\Form\DocumentosType', $documento);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            
+            
+            
+            
+            
+            
+            
+            $em->persist($documento);
+            $em->flush();
+            
+            $editLink = $this->generateUrl('documentos_edit', array('id' => $documento->getId()));
+            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New documento was created successfully.</a>" );
+            
+            $nextAction=  $request->get('submit') == 'save' ? 'documentos' : 'documentos_new';
+            return $this->redirectToRoute($nextAction);
+        }
+        return $this->render('DocumentosBundle:documentos:new.html.twig', array(
+            'documento' => $documento,
+            'form'   => $form->createView(),
+        ));
+    }
     /**
     * Create filter form and process filter request.
     *

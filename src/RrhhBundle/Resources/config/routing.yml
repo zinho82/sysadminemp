@@ -1,3 +1,3 @@
 backend_rrhh:
     resource: "@RrhhBundle/Resources/config/routing/rrhh.yml"
-    prefix:   /rrhh
+    prefix:   /
