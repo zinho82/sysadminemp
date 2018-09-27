@@ -162,6 +162,11 @@ class UsuarioController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $factory = $this->get("security.encoder_factory");
+                    $encoder = $factory->getEncoder($usuario);
+                    $password = $encoder->encodePassword($form->get("password")->getData(), $usuario->getSalt());
+
+                    $usuario->setPassword($password);
             $em->persist($usuario);
             $em->flush();
             
@@ -205,6 +210,11 @@ class UsuarioController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $factory = $this->get("security.encoder_factory");
+                    $encoder = $factory->getEncoder($usuario);
+                    $password = $encoder->encodePassword($editForm->get("password")->getData(), $usuario->getSalt());
+
+                    $usuario->setPassword($password);
             $em->persist($usuario);
             $em->flush();
             

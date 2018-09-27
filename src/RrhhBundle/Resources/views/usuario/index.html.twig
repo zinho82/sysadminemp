@@ -122,7 +122,7 @@
                 {% import "PetkoparaCrudGeneratorBundle::macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'usuario')}}</th>
                             <th>{{macros.th_sortable('username',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'usuario')}}</th>
-                            <th>{{macros.th_sortable('password',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'usuario')}}</th>
+                            <th>{{macros.th_sortable('rrhh',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'usuario')}}</th>
                             <th>{{macros.th_sortable('role',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'usuario')}}</th>
     
                        
@@ -135,7 +135,7 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{usuario.id}}"/></td>
                         <td><a href="{{ path('usuario_edit', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
                         <td>{{ usuario.username }}</td>
-                        <td>{{ usuario.password }}</td>
+                        <td>{{ usuario.rrhh.nombre }} {{usuario.rrhh.apellidopaterno}} {{usuario.rrhh.apellidomaterno}}</td>
                         <td>{{ usuario.role }}</td>
     
                         <td class="actions">

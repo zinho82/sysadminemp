@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UsuarioType extends AbstractType
 {
@@ -16,15 +18,30 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password')
-            ->add('role')
+            ->add('username',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' => 'form-control',
+                ),
+                'required'  =>  true,
+            ))
+            ->add('password', PasswordType::class,array(
+                'attr'  =>  array(
+                    'class' => 'form-control',
+                ),
+                'required'  =>  true,
+            ))
+            ->add('role',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' => 'form-control',
+                ),
+                'required'  =>  true,
+            ))
             ->add('empresa', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Empresa',
                 'choice_label' => 'nombre',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
-                'required' => false
+                'required' => true
  
             )) 
             ->add('rrhh', EntityType::class, array(
@@ -32,7 +49,7 @@ class UsuarioType extends AbstractType
                 'choice_label' => 'nombre',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
-                'required' => false
+                'required' => true
  
             )) 
         ;
