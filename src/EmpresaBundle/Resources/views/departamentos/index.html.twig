@@ -116,6 +116,8 @@
                 {% import "PetkoparaCrudGeneratorBundle::macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'departamentos')}}</th>
                             <th>{{macros.th_sortable('nombreDepartamento',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'departamentos')}}</th>
+                            <th>{{macros.th_sortable('descripcion',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'departamentos')}}</th>
+                            <th>{{macros.th_sortable('empresa',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'departamentos')}}</th>
     
                        
                         <th width = "130px">List</th>
@@ -127,6 +129,8 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{departamento.id}}"/></td>
                         <td><a href="{{ path('departamentos_edit', { 'id': departamento.id }) }}">{{ departamento.id }}</a></td>
                         <td>{{ departamento.nombreDepartamento }}</td>
+                        <td>{{ departamento.descripcion }}</td>
+                        <td>{{ departamento.empresa.nombrefantasia }}</td>
     
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('departamentos_by_id_delete', { 'id': departamento.id}) }}">

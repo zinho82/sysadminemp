@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace EmpresaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class DepartamentosController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('departamentos/index.html.twig', array(
+        return $this->render('EmpresaBundle:departamentos:index.html.twig', array(
             'departamentos' => $departamentos,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class DepartamentosController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\DepartamentosFilterType');
+        $filterForm = $this->createForm('EmpresaBundle\Form\DepartamentosFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class DepartamentosController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\DepartamentosFilterType', $filterData);
+                $filterForm = $this->createForm('EmpresaBundle\Form\DepartamentosFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class DepartamentosController extends Controller
     {
     
         $departamento = new Departamentos();
-        $form   = $this->createForm('BackendBundle\Form\DepartamentosType', $departamento);
+        $form   = $this->createForm('EmpresaBundle\Form\DepartamentosType', $departamento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class DepartamentosController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'departamentos' : 'departamentos_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('departamentos/new.html.twig', array(
+        return $this->render('EmpresaBundle:departamentos:new.html.twig', array(
             'departamento' => $departamento,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class DepartamentosController extends Controller
     public function showAction(Departamentos $departamento)
     {
         $deleteForm = $this->createDeleteForm($departamento);
-        return $this->render('departamentos/show.html.twig', array(
+        return $this->render('EmpresaBundle:departamentos:show.html.twig', array(
             'departamento' => $departamento,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class DepartamentosController extends Controller
     public function editAction(Request $request, Departamentos $departamento)
     {
         $deleteForm = $this->createDeleteForm($departamento);
-        $editForm = $this->createForm('BackendBundle\Form\DepartamentosType', $departamento);
+        $editForm = $this->createForm('EmpresaBundle\Form\DepartamentosType', $departamento);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class DepartamentosController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('departamentos_edit', array('id' => $departamento->getId()));
         }
-        return $this->render('departamentos/edit.html.twig', array(
+        return $this->render('EmpresaBundle:departamentos:edit.html.twig', array(
             'departamento' => $departamento,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,42 @@
+departamentos:
+    path:  /departamentos
+    defaults: { _controller: "EmpresaBundle:Departamentos:index" }
+
+departamentos_show:
+    path:  /departamentos/{id}/show
+    defaults: { _controller: "EmpresaBundle:Departamentos:show" }
+
+departamentos_new:
+    path:  /departamentos/new
+    defaults: { _controller: "EmpresaBundle:Departamentos:new" }
+
+departamentos_create:
+    path:  /departamentos/create
+    defaults: { _controller: "EmpresaBundle:Departamentos:create" }
+    requirements: { _method: post }
+
+departamentos_edit:
+    path:  /departamentos/{id}/edit
+    defaults: { _controller: "EmpresaBundle:Departamentos:edit" }
+
+departamentos_update:
+    path:  /departamentos/{id}/update
+    defaults: { _controller: "EmpresaBundle:Departamentos:update" }
+    requirements: { _method: post|put }
+
+departamentos_delete:
+    path:  /departamentos/{id}/delete
+    defaults: { _controller: "EmpresaBundle:Departamentos:delete" }
+    requirements: { _method: post|delete }
+    
+departamentos_by_id_delete:
+    path:  /departamentos/delete/{id}
+    defaults: { _controller: "EmpresaBundle:Departamentos:deleteById" }
+    requirements: { _method: get }
+    
+
+departamentos_bulk_action:
+    path:  /departamentos/bulk-action
+    defaults: { _controller: "EmpresaBundle:Departamentos:bulk" }
+    requirements: { _method: post }
+    

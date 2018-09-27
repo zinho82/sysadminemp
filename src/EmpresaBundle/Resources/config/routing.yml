@@ -1,3 +1,6 @@
 backend_empresa:
     resource: "@EmpresaBundle/Resources/config/routing/empresa.yml"
-    prefix:   /usuario
+    prefix:   /
+backend_departamentos:
+    resource: "@EmpresaBundle/Resources/config/routing/departamentos.yml"
+    prefix:   /

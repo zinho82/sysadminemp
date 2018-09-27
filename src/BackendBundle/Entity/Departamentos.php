@@ -80,4 +80,33 @@ class Departamentos
     {
         return $this->empresa;
     }
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return Departamentos
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
 }
