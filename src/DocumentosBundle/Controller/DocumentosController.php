@@ -47,17 +47,29 @@ class DocumentosController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-           
-$dempresa=$em->getRepository("BackendBundle:empresa")->find($empresa);
-$drh=$em->getRepository("BackendBundle:rrhh")->find($id);
-            $file = $form['archivo']->getData();
+             $file = $form['archivo']->getData();
 
 // Sacamos la extensión del fichero
             $ext = $file->guessExtension();
  
+             $fileName = time() . "." . $ext;
+           
+           switch($seccion){
+               case 'rrhh': 
+                   $drh=$em->getRepository("BackendBundle:rrhh")->find($id);
+                    $file->move("uploads/rrhh", $fileName);
+                    break;
+               case 'empresa': 
+                   $drh=null;
+                    $file->move("uploads/empresa", $fileName);
+                    break;
+                   
+           }
+$dempresa=$em->getRepository("BackendBundle:empresa")->find($empresa);
+
+           
 // Le ponemos un nombre al fichero
-            $fileName = time() . "." . $ext;
-            $file->move("uploads/rrhh", $fileName);
+           
             $documento->setFechaCarga(new \DateTime);
             $documento->setCargadoPor($this->getUser());
             $documento->setArchivo($fileName);

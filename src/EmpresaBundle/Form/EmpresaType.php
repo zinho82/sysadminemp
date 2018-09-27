@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class EmpresaType extends AbstractType
 {
@@ -16,20 +17,64 @@ class EmpresaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('rut')
-            ->add('nombreFantasia')
-            ->add('empresaOrigen')
-            ->add('direccion')
-            ->add('comuna')
-            ->add('ciudad')
-            ->add('region')
+            ->add('nombre',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                )
+            ))
+            ->add('rut',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                )
+            ))
+            ->add('nombreFantasia',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                )
+            ))
+            ->add('empresaOrigen', EntityType::class, array(
+                'class' => 'BackendBundle\Entity\Empresa',
+                'choice_label' => 'nombrefantasia',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
+ 
+            ))
+            ->add('direccion',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
+                'required'  =>  false
+            ))
+            ->add('comuna',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
+                'required'  =>  false
+            ))
+            ->add('ciudad',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
+                'required'  =>  false
+            ))
+            ->add('region',  TextType::class,array(
+                'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
+                'required'  =>  false
+            ))
             ->add('estadoEmpresa', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Config',
                 'choice_label' => 'titulo',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
-                'required' => false
+                'required' => false,'attr'  =>  array(
+                    'class' =>  'form-control'
+                ),
  
             )) 
         ;

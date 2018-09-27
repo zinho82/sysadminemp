@@ -286,4 +286,4 @@ class Empresa
     public function __toString() {
         return $this->nombreFantasia;
     }
-}
+} 
