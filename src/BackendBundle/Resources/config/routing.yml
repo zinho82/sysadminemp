@@ -1,3 +1,7 @@
+backend_departamentos:
+    resource: "@BackendBundle/Resources/config/routing/departamentos.yml"
+    prefix:   /departamentos
+
 
 
 
