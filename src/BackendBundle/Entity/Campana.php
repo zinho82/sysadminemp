@@ -197,4 +197,3 @@ class Campana
         return $this->proveedoresClientes;
     }
 }
-

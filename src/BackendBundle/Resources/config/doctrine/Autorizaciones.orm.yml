@@ -8,6 +8,9 @@ BackendBundle\Entity\Autorizaciones:
         fk_autorizaciones_usuario1_idx:
             columns:
                 - autorizado_por
+        fk_autorizaciones_ordenescompra1_idx:
+            columns:
+                - ordenescompra_id
     id:
         id:
             type: integer
@@ -15,6 +18,8 @@ BackendBundle\Entity\Autorizaciones:
             options:
                 unsigned: false
             id: true
+            generator:
+                strategy: IDENTITY
     fields:
         fechaAutorizacion:
             type: datetime
@@ -37,7 +42,16 @@ BackendBundle\Entity\Autorizaciones:
                 solicitud:
                     referencedColumnName: id
             orphanRemoval: false
-    oneToOne:
+        ordenescompra:
+            targetEntity: Ordenescompra
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordenescompra_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         autorizadoPor:
             targetEntity: Usuario
             cascade: {  }

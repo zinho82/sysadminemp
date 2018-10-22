@@ -138,4 +138,33 @@ class ProveedoresClientes
     {
         return $this->proveedorCliente;
     }
+    /**
+     * @var \BackendBundle\Entity\Empresa
+     */
+    private $empresa;
+
+
+    /**
+     * Set empresa
+     *
+     * @param \BackendBundle\Entity\Empresa $empresa
+     *
+     * @return ProveedoresClientes
+     */
+    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \BackendBundle\Entity\Empresa
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
 }

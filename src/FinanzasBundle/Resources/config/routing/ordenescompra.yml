@@ -1,0 +1,42 @@
+ordenescompra:
+    path:  /
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:index" }
+
+ordenescompra_show:
+    path:  /{id}/show
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:show" }
+
+ordenescompra_new:
+    path:  /new
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:new" }
+
+ordenescompra_create:
+    path:  /create
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:create" }
+    requirements: { _method: post }
+
+ordenescompra_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:edit" }
+
+ordenescompra_update:
+    path:  /{id}/update
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:update" }
+    requirements: { _method: post|put }
+
+ordenescompra_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:delete" }
+    requirements: { _method: post|delete }
+    
+ordenescompra_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:deleteById" }
+    requirements: { _method: get }
+    
+
+ordenescompra_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:bulk" }
+    requirements: { _method: post }
+    

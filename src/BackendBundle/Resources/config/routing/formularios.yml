@@ -1,0 +1,42 @@
+formularios:
+    path:  /
+    defaults: { _controller: "BackendBundle:Formularios:index" }
+
+formularios_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:Formularios:show" }
+
+formularios_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:Formularios:new" }
+
+formularios_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:Formularios:create" }
+    requirements: { _method: post }
+
+formularios_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Formularios:edit" }
+
+formularios_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:Formularios:update" }
+    requirements: { _method: post|put }
+
+formularios_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Formularios:delete" }
+    requirements: { _method: post|delete }
+    
+formularios_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BackendBundle:Formularios:deleteById" }
+    requirements: { _method: get }
+    
+
+formularios_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BackendBundle:Formularios:bulk" }
+    requirements: { _method: post }
+    

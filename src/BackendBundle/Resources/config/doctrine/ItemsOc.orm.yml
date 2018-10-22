@@ -1,13 +1,13 @@
-BackendBundle\Entity\Inventario:
+BackendBundle\Entity\ItemsOc:
     type: entity
-    table: inventario
+    table: items_oc
     indexes:
-        fk_inventario_empresa1_idx:
+        fk_items_oc_ordenescompra1_idx:
             columns:
-                - empresa
-        fk_inventario_config1_idx:
+                - ordenescompra
+        fk_items_oc_inventario1_idx:
             columns:
-                - estado
+                - inventario_id
     id:
         id:
             type: integer
@@ -18,43 +18,41 @@ BackendBundle\Entity\Inventario:
             generator:
                 strategy: IDENTITY
     fields:
-        nombreProducto:
-            type: string
+        cantidad:
+            type: float
             nullable: true
-            length: 45
-            options:
-                fixed: false
-            column: nombre_producto
+            precision: 10
+            scale: 0
         descripcion:
             type: string
             nullable: true
             length: 450
             options:
                 fixed: false
-        cantidad:
+        valor:
             type: float
             nullable: true
             precision: 10
             scale: 0
     manyToOne:
-        estado:
-            targetEntity: Config
+        ordenescompra:
+            targetEntity: Ordenescompra
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                estado:
+                ordenescompra:
                     referencedColumnName: id
             orphanRemoval: false
-        empresa:
-            targetEntity: Empresa
+        inventario:
+            targetEntity: Inventario
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                empresa:
+                inventario_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

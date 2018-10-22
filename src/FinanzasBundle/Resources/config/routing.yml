@@ -4,3 +4,6 @@ backend_proveedoresclientes:
 backend_contactos:
     resource: "@FinanzasBundle/Resources/config/routing/contactos.yml"
     prefix:   /
+backend_oc:
+    resource: "@FinanzasBundle/Resources/config/routing/ordenescompra.yml"
+    prefix:   /oc-op
