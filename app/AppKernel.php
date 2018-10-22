@@ -4,7 +4,7 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel {
- 
+
     public function registerBundles() {
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -21,11 +21,12 @@ class AppKernel extends Kernel {
             new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new LoginBundle\LoginBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+//            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new HomeBundle\HomeBundle(),
             new RrhhBundle\RrhhBundle(),
             new DocumentosBundle\DocumentosBundle(),
             new EmpresaBundle\EmpresaBundle(),
+            new FinanzasBundle\FinanzasBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

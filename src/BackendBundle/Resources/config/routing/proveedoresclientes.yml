@@ -1,0 +1,42 @@
+proveedoresclientes:
+    path:  /
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:index" }
+
+proveedoresclientes_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:show" }
+
+proveedoresclientes_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:new" }
+
+proveedoresclientes_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:create" }
+    requirements: { _method: post }
+
+proveedoresclientes_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:edit" }
+
+proveedoresclientes_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:update" }
+    requirements: { _method: post|put }
+
+proveedoresclientes_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:delete" }
+    requirements: { _method: post|delete }
+    
+proveedoresclientes_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:deleteById" }
+    requirements: { _method: get }
+    
+
+proveedoresclientes_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BackendBundle:ProveedoresClientes:bulk" }
+    requirements: { _method: post }
+    

@@ -1,0 +1,318 @@
+<?php
+
+namespace BackendBundle\Entity;
+
+/**
+ * Empresa
+ */
+class Empresa
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     */
+    private $rut;
+
+    /**
+     * @var string
+     */
+    private $nombreFantasia;
+
+    /**
+     * @var integer
+     */
+    private $empresaOrigen;
+
+    /**
+     * @var string
+     */
+    private $direccion;
+
+    /**
+     * @var string
+     */
+    private $comuna;
+
+    /**
+     * @var string
+     */
+    private $ciudad;
+
+    /**
+     * @var string
+     */
+    private $region;
+
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $estadoEmpresa;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Empresa
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set rut
+     *
+     * @param string $rut
+     *
+     * @return Empresa
+     */
+    public function setRut($rut)
+    {
+        $this->rut = $rut;
+
+        return $this;
+    }
+
+    /**
+     * Get rut
+     *
+     * @return string
+     */
+    public function getRut()
+    {
+        return $this->rut;
+    }
+
+    /**
+     * Set nombreFantasia
+     *
+     * @param string $nombreFantasia
+     *
+     * @return Empresa
+     */
+    public function setNombreFantasia($nombreFantasia)
+    {
+        $this->nombreFantasia = $nombreFantasia;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreFantasia
+     *
+     * @return string
+     */
+    public function getNombreFantasia()
+    {
+        return $this->nombreFantasia;
+    }
+
+    /**
+     * Set empresaOrigen
+     *
+     * @param integer $empresaOrigen
+     *
+     * @return Empresa
+     */
+    public function setEmpresaOrigen($empresaOrigen)
+    {
+        $this->empresaOrigen = $empresaOrigen;
+
+        return $this;
+    }
+
+    /**
+     * Get empresaOrigen
+     *
+     * @return integer
+     */
+    public function getEmpresaOrigen()
+    {
+        return $this->empresaOrigen;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Empresa
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set comuna
+     *
+     * @param string $comuna
+     *
+     * @return Empresa
+     */
+    public function setComuna($comuna)
+    {
+        $this->comuna = $comuna;
+
+        return $this;
+    }
+
+    /**
+     * Get comuna
+     *
+     * @return string
+     */
+    public function getComuna()
+    {
+        return $this->comuna;
+    }
+
+    /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     *
+     * @return Empresa
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     *
+     * @return Empresa
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set estadoEmpresa
+     *
+     * @param \BackendBundle\Entity\Config $estadoEmpresa
+     *
+     * @return Empresa
+     */
+    public function setEstadoEmpresa(\BackendBundle\Entity\Config $estadoEmpresa = null)
+    {
+        $this->estadoEmpresa = $estadoEmpresa;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoEmpresa
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstadoEmpresa()
+    {
+        return $this->estadoEmpresa;
+    }
+    public function __toString() {
+        return $this->nombreFantasia;
+    }
+    /**
+     * @var string
+     */
+    private $logo;
+
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     *
+     * @return Empresa
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+}
