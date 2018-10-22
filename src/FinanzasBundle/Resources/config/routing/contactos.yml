@@ -1,0 +1,46 @@
+contactos:
+    path:  /contactos
+    defaults: { _controller: "FinanzasBundle:Contactos:index" }
+contactos_empresa:
+    path:  /contactos/{id}
+    defaults: { _controller: "FinanzasBundle:Contactos:indexEmpresa",id:null }
+    methods:    [get|post]
+
+contactos_show:
+    path:  /contactos/{id}/show
+    defaults: { _controller: "FinanzasBundle:Contactos:show" }
+
+contactos_new:
+    path:  /contactos/new/{idproveedor}
+    defaults: { _controller: "FinanzasBundle:Contactos:new",idproveedor:null }
+    methods:    [get|post]
+contactos_create:
+    path:  /contactos/create
+    defaults: { _controller: "FinanzasBundle:Contactos:create" }
+    requirements: { _method: post }
+
+contactos_edit:
+    path:  /contactos/{id}/edit
+    defaults: { _controller: "FinanzasBundle:Contactos:edit" }
+
+contactos_update:
+    path:  /contactos/{id}/update
+    defaults: { _controller: "FinanzasBundle:Contactos:update" }
+    requirements: { _method: post|put }
+
+contactos_delete:
+    path:  /contactos/{id}/delete
+    defaults: { _controller: "FinanzasBundle:Contactos:delete" }
+    requirements: { _method: post|delete }
+    
+contactos_by_id_delete:
+    path:  /contactos/delete/{id}
+    defaults: { _controller: "FinanzasBundle:Contactos:deleteById" }
+    requirements: { _method: get }
+    
+
+contactos_bulk_action:
+    path:  /contactos/bulk-action
+    defaults: { _controller: "FinanzasBundle:Contactos:bulk" }
+    requirements: { _method: post }
+    

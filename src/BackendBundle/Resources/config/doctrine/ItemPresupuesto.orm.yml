@@ -1,22 +1,19 @@
-BackendBundle\Entity\Documentos:
+BackendBundle\Entity\ItemPresupuesto:
     type: entity
-    table: documentos
+    table: item_presupuesto
     indexes:
-        fk_documentos_config_idx:
+        fk_item_preupuesto_presupuesto1_idx:
             columns:
-                - tipo_documento
-        fk_documentos_empresa1_idx:
+                - presupuesto
+        fk_item_preupuesto_config1_idx:
             columns:
-                - empresa
-        fk_documentos_rrhh1_idx:
+                - tipo_ingreso_gasto
+        fk_item_preupuesto_campana1_idx:
             columns:
-                - rrhh
-        fk_documentos_usuario1_idx:
+                - campana
+        fk_item_preupuesto_config2_idx:
             columns:
-                - cargado_por
-        fk_documentos_facturas1_idx:
-            columns:
-                - facturas
+                - item_gasto
     id:
         id:
             type: integer
@@ -27,71 +24,89 @@ BackendBundle\Entity\Documentos:
             generator:
                 strategy: IDENTITY
     fields:
-        archivo:
-            type: string
-            nullable: true
-            length: 450
-            options:
-                fixed: false
         nombre:
             type: string
             nullable: true
             length: 45
             options:
                 fixed: false
-        fechaCarga:
-            type: datetime
+        valor:
+            type: float
             nullable: true
-            column: fecha_carga
+            precision: 10
+            scale: 0
+        descripcion:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+        duracionMeses:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: duracion_meses
+        mesInicio:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: mes_inicio
+        anoInicio:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: ano_inicio
+        prorateable:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
     manyToOne:
-        facturas:
-            targetEntity: Facturas
+        presupuesto:
+            targetEntity: Presupuesto
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                facturas:
+                presupuesto:
                     referencedColumnName: id
             orphanRemoval: false
-        tipoDocumento:
+        tipoIngresoGasto:
             targetEntity: Config
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                tipo_documento:
+                tipo_ingreso_gasto:
                     referencedColumnName: id
             orphanRemoval: false
-        empresa:
-            targetEntity: Empresa
+        campana:
+            targetEntity: Campana
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                empresa:
+                campana:
                     referencedColumnName: id
             orphanRemoval: false
-        rrhh:
-            targetEntity: Rrhh
+        itemGasto:
+            targetEntity: Config
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                rrhh:
-                    referencedColumnName: id
-            orphanRemoval: false
-        cargadoPor:
-            targetEntity: Usuario
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                cargado_por:
+                item_gasto:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

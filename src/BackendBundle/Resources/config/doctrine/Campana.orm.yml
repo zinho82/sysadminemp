@@ -1,13 +1,10 @@
-BackendBundle\Entity\Contactos:
+BackendBundle\Entity\Campana:
     type: entity
-    table: contactos
+    table: campana
     indexes:
-        fk_contactos_proveedores_clientes1_idx:
+        fk_campana_proveedores_clientes1_idx:
             columns:
                 - proveedores_clientes
-        fk_contactos_config1_idx:
-            columns:
-                - cargo
     id:
         id:
             type: integer
@@ -18,35 +15,31 @@ BackendBundle\Entity\Contactos:
             generator:
                 strategy: IDENTITY
     fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
         nombre:
             type: string
             nullable: true
-            length: 450
+            length: 45
             options:
                 fixed: false
-        telefono:
-            type: string
+        fechaFacturacion:
+            type: datetime
             nullable: true
-            length: 45
-            options:
-                fixed: false
-        correo:
-            type: string
-            nullable: false
-            length: 45
-            options:
-                fixed: false
+            column: fecha_facturacion
+        fechaInicio:
+            type: datetime
+            nullable: true
+            column: fecha_inicio
+        fechaTermino:
+            type: datetime
+            nullable: true
+            column: fecha_termino
     manyToOne:
-        cargo:
-            targetEntity: Config
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                cargo:
-                    referencedColumnName: id
-            orphanRemoval: false
         proveedoresClientes:
             targetEntity: ProveedoresClientes
             cascade: {  }

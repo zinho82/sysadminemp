@@ -28,6 +28,12 @@ BackendBundle\Entity\Formularios:
             type: datetime
             nullable: true
             column: fecha_creacion
+        comentario:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
     manyToOne:
         empresa:
             targetEntity: Empresa

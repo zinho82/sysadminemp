@@ -64,6 +64,12 @@ BackendBundle\Entity\Empresa:
             length: 45
             options:
                 fixed: false
+        logo:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
     manyToOne:
         estadoEmpresa:
             targetEntity: Config

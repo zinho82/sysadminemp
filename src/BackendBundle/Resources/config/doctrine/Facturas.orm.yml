@@ -17,6 +17,9 @@ BackendBundle\Entity\Facturas:
         fk_facturas_proveedores_clientes1_idx:
             columns:
                 - proveedores_clientes
+        fk_facturas_campana1_idx:
+            columns:
+                - campana
     id:
         id:
             type: integer
@@ -45,14 +48,14 @@ BackendBundle\Entity\Facturas:
             scale: 0
             column: numero_factura
     manyToOne:
-        departamento:
-            targetEntity: Departamentos
+        campana:
+            targetEntity: Campana
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                departamento:
+                campana:
                     referencedColumnName: id
             orphanRemoval: false
         estadoPago:
@@ -65,14 +68,14 @@ BackendBundle\Entity\Facturas:
                 estado_pago:
                     referencedColumnName: id
             orphanRemoval: false
-        proveedoresClientes:
-            targetEntity: ProveedoresClientes
+        departamento:
+            targetEntity: Departamentos
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                proveedores_clientes:
+                departamento:
                     referencedColumnName: id
             orphanRemoval: false
         empresa:
@@ -93,6 +96,16 @@ BackendBundle\Entity\Facturas:
             inversedBy: null
             joinColumns:
                 ordenescompra:
+                    referencedColumnName: id
+            orphanRemoval: false
+        proveedoresClientes:
+            targetEntity: ProveedoresClientes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedores_clientes:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

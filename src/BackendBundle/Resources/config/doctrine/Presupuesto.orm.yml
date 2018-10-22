@@ -5,15 +5,6 @@ BackendBundle\Entity\Presupuesto:
         fk_presupuesto_empresa1_idx:
             columns:
                 - empresa
-        fk_presupuesto_config1_idx:
-            columns:
-                - tipo_item
-        fk_presupuesto_facturas1_idx:
-            columns:
-                - facturas
-        fk_presupuesto_ordenescompra1_idx:
-            columns:
-                - ordenescompra_id
     id:
         id:
             type: integer
@@ -50,26 +41,6 @@ BackendBundle\Entity\Presupuesto:
             options:
                 fixed: false
     manyToOne:
-        ordenescompra:
-            targetEntity: Ordenescompra
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                ordenescompra_id:
-                    referencedColumnName: id
-            orphanRemoval: false
-        tipoItem:
-            targetEntity: Config
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                tipo_item:
-                    referencedColumnName: id
-            orphanRemoval: false
         empresa:
             targetEntity: Empresa
             cascade: {  }
@@ -78,16 +49,6 @@ BackendBundle\Entity\Presupuesto:
             inversedBy: null
             joinColumns:
                 empresa:
-                    referencedColumnName: id
-            orphanRemoval: false
-        facturas:
-            targetEntity: Facturas
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                facturas:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

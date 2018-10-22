@@ -5,6 +5,9 @@ BackendBundle\Entity\ProveedoresClientes:
         fk_proveedores_clientes_config1_idx:
             columns:
                 - proveedor_cliente
+        fk_proveedores_clientes_empresa1_idx:
+            columns:
+                - empresa
     id:
         id:
             type: integer
@@ -34,6 +37,16 @@ BackendBundle\Entity\ProveedoresClientes:
             options:
                 fixed: false
     manyToOne:
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
         proveedorCliente:
             targetEntity: Config
             cascade: {  }

@@ -4,7 +4,7 @@ BackendBundle\Entity\CamposFormularios:
     indexes:
         fk_solicitudes_formularios1_idx:
             columns:
-                - formularios_id
+                - formularios
     id:
         id:
             type: integer
@@ -41,7 +41,7 @@ BackendBundle\Entity\CamposFormularios:
             mappedBy: null
             inversedBy: null
             joinColumns:
-                formularios_id:
+                formularios:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

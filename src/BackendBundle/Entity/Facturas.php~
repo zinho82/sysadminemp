@@ -283,33 +283,4 @@ class Facturas
     {
         return $this->ordenescompra;
     }
-    /**
-     * @var \BackendBundle\Entity\Campana
-     */
-    private $campana;
-
-
-    /**
-     * Set campana
-     *
-     * @param \BackendBundle\Entity\Campana $campana
-     *
-     * @return Facturas
-     */
-    public function setCampana(\BackendBundle\Entity\Campana $campana = null)
-    {
-        $this->campana = $campana;
-
-        return $this;
-    }
-
-    /**
-     * Get campana
-     *
-     * @return \BackendBundle\Entity\Campana
-     */
-    public function getCampana()
-    {
-        return $this->campana;
-    }
 }
