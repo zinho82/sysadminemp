@@ -1,3 +1,7 @@
+backend_itemsoc:
+    resource: "@BackendBundle/Resources/config/routing/itemsoc.yml"
+    prefix:   /itemsoc
+
 
 backend_homepage:
     path:     /

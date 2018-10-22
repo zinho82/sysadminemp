@@ -1,0 +1,42 @@
+itemsoc:
+    path:  /
+    defaults: { _controller: "BackendBundle:ItemsOc:index" }
+
+itemsoc_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:ItemsOc:show" }
+
+itemsoc_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:ItemsOc:new" }
+
+itemsoc_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:ItemsOc:create" }
+    requirements: { _method: post }
+
+itemsoc_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:ItemsOc:edit" }
+
+itemsoc_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:ItemsOc:update" }
+    requirements: { _method: post|put }
+
+itemsoc_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:ItemsOc:delete" }
+    requirements: { _method: post|delete }
+    
+itemsoc_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BackendBundle:ItemsOc:deleteById" }
+    requirements: { _method: get }
+    
+
+itemsoc_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BackendBundle:ItemsOc:bulk" }
+    requirements: { _method: post }
+    
