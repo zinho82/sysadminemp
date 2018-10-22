@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace FinanzasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class ProveedoresClientesController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('proveedoresclientes/index.html.twig', array(
+        return $this->render('FinanzasBundle:proveedoresclientes:index.html.twig', array(
             'proveedoresClientes' => $proveedoresClientes,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class ProveedoresClientesController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\ProveedoresClientesFilterType');
+        $filterForm = $this->createForm('FinanzasBundle\Form\ProveedoresClientesFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class ProveedoresClientesController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\ProveedoresClientesFilterType', $filterData);
+                $filterForm = $this->createForm('FinanzasBundle\Form\ProveedoresClientesFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class ProveedoresClientesController extends Controller
     {
     
         $proveedoresCliente = new ProveedoresClientes();
-        $form   = $this->createForm('BackendBundle\Form\ProveedoresClientesType', $proveedoresCliente);
+        $form   = $this->createForm('FinanzasBundle\Form\ProveedoresClientesType', $proveedoresCliente);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class ProveedoresClientesController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'proveedoresclientes' : 'proveedoresclientes_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('proveedoresclientes/new.html.twig', array(
+        return $this->render('FinanzasBundle:proveedoresclientes:new.html.twig', array(
             'proveedoresCliente' => $proveedoresCliente,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class ProveedoresClientesController extends Controller
     public function showAction(ProveedoresClientes $proveedoresCliente)
     {
         $deleteForm = $this->createDeleteForm($proveedoresCliente);
-        return $this->render('proveedoresclientes/show.html.twig', array(
+        return $this->render('FinanzasBundle:proveedoresclientes:show.html.twig', array(
             'proveedoresCliente' => $proveedoresCliente,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class ProveedoresClientesController extends Controller
     public function editAction(Request $request, ProveedoresClientes $proveedoresCliente)
     {
         $deleteForm = $this->createDeleteForm($proveedoresCliente);
-        $editForm = $this->createForm('BackendBundle\Form\ProveedoresClientesType', $proveedoresCliente);
+        $editForm = $this->createForm('FinanzasBundle\Form\ProveedoresClientesType', $proveedoresCliente);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class ProveedoresClientesController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('proveedoresclientes_edit', array('id' => $proveedoresCliente->getId()));
         }
-        return $this->render('proveedoresclientes/edit.html.twig', array(
+        return $this->render('FinanzasBundle:proveedoresclientes:edit.html.twig', array(
             'proveedoresCliente' => $proveedoresCliente,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,42 @@
+proveedoresclientes:
+    path:  /proveedores-clientes
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:index" }
+
+proveedoresclientes_show:
+    path:  /proveedores-clientes/{id}/show
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:show" }
+
+proveedoresclientes_new:
+    path:  /proveedores-clientes/new
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:new" }
+
+proveedoresclientes_create:
+    path:  /proveedores-clientes/create
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:create" }
+    requirements: { _method: post }
+
+proveedoresclientes_edit:
+    path:  /proveedores-clientes/{id}/edit
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:edit" }
+
+proveedoresclientes_update:
+    path:  /proveedores-clientes/{id}/update
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:update" }
+    requirements: { _method: post|put }
+
+proveedoresclientes_delete:
+    path:  /proveedores-clientes/{id}/delete
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:delete" }
+    requirements: { _method: post|delete }
+    
+proveedoresclientes_by_id_delete:
+    path:  /proveedores-clientes/delete/{id}
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:deleteById" }
+    requirements: { _method: get }
+    
+
+proveedoresclientes_bulk_action:
+    path:  /proveedores-clientes/bulk-action
+    defaults: { _controller: "FinanzasBundle:ProveedoresClientes:bulk" }
+    requirements: { _method: post }
+    

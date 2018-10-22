@@ -1,3 +1,6 @@
 finanzas_homepage:
     path:     /
     defaults: { _controller: FinanzasBundle:Default:index }
+backend_proveedoresclientes:
+    resource: "@FinanzasBundle/Resources/config/routing/proveedoresclientes.yml"
+    prefix:   /
