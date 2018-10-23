@@ -153,7 +153,7 @@ class AutorizacionesController extends Controller
      * Displays a form to create a new Autorizaciones entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,$id=null)
     {
     
         $autorizacione = new Autorizaciones();
@@ -162,6 +162,10 @@ class AutorizacionesController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $oc=$em->getRepository("BackendBundle:Ordenescompra")->find($id);
+            $autorizacione->setAutorizadoPor($this->getUser());
+            $autorizacione->setFechaAutorizacion(new \DateTime);
+            $autorizacione->setOrdenescompra($oc);
             $em->persist($autorizacione);
             $em->flush();
             

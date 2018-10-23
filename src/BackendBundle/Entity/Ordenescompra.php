@@ -312,4 +312,36 @@ class Ordenescompra
     {
         return $this->solicitadoPor;
     }
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $estado;
+
+
+    /**
+     * Set estado
+     *
+     * @param \BackendBundle\Entity\Config $estado
+     *
+     * @return Ordenescompra
+     */
+    public function setEstado(\BackendBundle\Entity\Config $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    public function __toString() {
+        return (string) $this->numeroOc;
+    }
 }

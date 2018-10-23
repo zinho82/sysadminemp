@@ -181,4 +181,33 @@ class Autorizaciones
     {
         return $this->ordenescompra;
     }
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $estadoAutorizacion;
+
+
+    /**
+     * Set estadoAutorizacion
+     *
+     * @param \BackendBundle\Entity\Config $estadoAutorizacion
+     *
+     * @return Autorizaciones
+     */
+    public function setEstadoAutorizacion(\BackendBundle\Entity\Config $estadoAutorizacion = null)
+    {
+        $this->estadoAutorizacion = $estadoAutorizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoAutorizacion
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstadoAutorizacion()
+    {
+        return $this->estadoAutorizacion;
+    }
 }

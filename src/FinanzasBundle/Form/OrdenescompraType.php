@@ -43,6 +43,19 @@ class OrdenescompraType extends AbstractType
                 'required' => false
  
             )) 
+                 ->add('estado', EntityType::class, array(
+                'class' => 'BackendBundle\Entity\Config',
+                'choice_label' => 'nombre',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => true,
+                     'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+                        return $co->createQueryBuilder('u')
+                                ->where('u.pertenece=37')
+                                ->orderBy('u.titulo', 'asc');
+                    },
+ 
+            )) 
         ;
     }
     

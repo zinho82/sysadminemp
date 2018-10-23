@@ -11,6 +11,9 @@ BackendBundle\Entity\Autorizaciones:
         fk_autorizaciones_ordenescompra1_idx:
             columns:
                 - ordenescompra_id
+        fk_autorizaciones_config1_idx:
+            columns:
+                - estado_autorizacion
     id:
         id:
             type: integer
@@ -32,14 +35,14 @@ BackendBundle\Entity\Autorizaciones:
             options:
                 fixed: false
     manyToOne:
-        solicitud:
-            targetEntity: Solicitudes
+        estadoAutorizacion:
+            targetEntity: Config
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                solicitud:
+                estado_autorizacion:
                     referencedColumnName: id
             orphanRemoval: false
         ordenescompra:
@@ -50,6 +53,16 @@ BackendBundle\Entity\Autorizaciones:
             inversedBy: null
             joinColumns:
                 ordenescompra_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        solicitud:
+            targetEntity: Solicitudes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                solicitud:
                     referencedColumnName: id
             orphanRemoval: false
         autorizadoPor:

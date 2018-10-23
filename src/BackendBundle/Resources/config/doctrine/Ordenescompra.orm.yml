@@ -14,6 +14,9 @@ BackendBundle\Entity\Ordenescompra:
         fk_ordenescompra_usuario1_idx:
             columns:
                 - solicitado_por
+        fk_ordenescompra_config2_idx:
+            columns:
+                - estado
     id:
         id:
             type: integer
@@ -54,14 +57,14 @@ BackendBundle\Entity\Ordenescompra:
             precision: 10
             scale: 0
     manyToOne:
-        solicitadoPor:
-            targetEntity: Usuario
+        estado:
+            targetEntity: Config
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                solicitado_por:
+                estado:
                     referencedColumnName: id
             orphanRemoval: false
         tipoOc:
@@ -92,6 +95,16 @@ BackendBundle\Entity\Ordenescompra:
             inversedBy: null
             joinColumns:
                 proveedores_clientes:
+                    referencedColumnName: id
+            orphanRemoval: false
+        solicitadoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                solicitado_por:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -49,6 +49,33 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
 
         ));
     }
+      public function indexAutorizacionAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('BackendBundle:Ordenescompra')->createQueryBuilder('e');
+$query = 'update ordenescompra oc
+set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where oc.id=i.ordenescompra)';
+        $stmt = $em->getConnection()->prepare($query);
+            $stmt->execute();
+             $query = 'update ordenescompra oc set oc.iva=(oc.subtotal*(19/100))';
+        $stmt= $em->getConnection()->prepare($query);
+        $stmt->execute();
+        $query = 'update ordenescompra oc set oc.total=(oc.subtotal+oc.iva)';
+        $stmt= $em->getConnection()->prepare($query);
+        $stmt->execute();
+        list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
+        list($ordenescompras, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        
+        $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
+
+        return $this->render('FinanzasBundle:autorizaciones:index_autorizacion.html.twig', array(
+            'ordenescompras' => $ordenescompras,
+            'pagerHtml' => $pagerHtml,
+            'filterForm' => $filterForm->createView(),
+            'totalOfRecordsString' => $totalOfRecordsString,
+
+        ));
+    }
 
     /**
     * Create filter form and process filter request.

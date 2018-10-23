@@ -2,6 +2,10 @@ ordenescompra:
     path:  /
     defaults: { _controller: "FinanzasBundle:Ordenescompra:index" }
 
+ordenescompraautorizacion:
+    path:  /autorizar
+    defaults: { _controller: "FinanzasBundle:Ordenescompra:indexAutorizacion" }
+
 ordenescompra_show:
     path:  /{id}/show
     defaults: { _controller: "FinanzasBundle:Ordenescompra:show" }

@@ -7,9 +7,9 @@ autorizaciones_show:
     defaults: { _controller: "FinanzasBundle:Autorizaciones:show" }
 
 autorizaciones_new:
-    path:  /new
-    defaults: { _controller: "FinanzasBundle:Autorizaciones:new" }
-
+    path:  /new/{id}
+    defaults: { _controller: "FinanzasBundle:Autorizaciones:new",id:null }
+    methods: [get|post]
 autorizaciones_create:
     path:  /create
     defaults: { _controller: "FinanzasBundle:Autorizaciones:create" }
