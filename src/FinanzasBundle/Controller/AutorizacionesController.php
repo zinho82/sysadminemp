@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace FinanzasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class AutorizacionesController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('autorizaciones/index.html.twig', array(
+        return $this->render('FinanzasBundle:autorizaciones:index.html.twig', array(
             'autorizaciones' => $autorizaciones,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class AutorizacionesController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\AutorizacionesFilterType');
+        $filterForm = $this->createForm('FinanzasBundle\Form\AutorizacionesFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class AutorizacionesController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\AutorizacionesFilterType', $filterData);
+                $filterForm = $this->createForm('FinanzasBundle\Form\AutorizacionesFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class AutorizacionesController extends Controller
     {
     
         $autorizacione = new Autorizaciones();
-        $form   = $this->createForm('BackendBundle\Form\AutorizacionesType', $autorizacione);
+        $form   = $this->createForm('FinanzasBundle\Form\AutorizacionesType', $autorizacione);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class AutorizacionesController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'autorizaciones' : 'autorizaciones_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('autorizaciones/new.html.twig', array(
+        return $this->render('FinanzasBundle:autorizaciones:new.html.twig', array(
             'autorizacione' => $autorizacione,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class AutorizacionesController extends Controller
     public function showAction(Autorizaciones $autorizacione)
     {
         $deleteForm = $this->createDeleteForm($autorizacione);
-        return $this->render('autorizaciones/show.html.twig', array(
+        return $this->render('FinanzasBundle:autorizaciones:show.html.twig', array(
             'autorizacione' => $autorizacione,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class AutorizacionesController extends Controller
     public function editAction(Request $request, Autorizaciones $autorizacione)
     {
         $deleteForm = $this->createDeleteForm($autorizacione);
-        $editForm = $this->createForm('BackendBundle\Form\AutorizacionesType', $autorizacione);
+        $editForm = $this->createForm('FinanzasBundle\Form\AutorizacionesType', $autorizacione);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class AutorizacionesController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('autorizaciones_edit', array('id' => $autorizacione->getId()));
         }
-        return $this->render('autorizaciones/edit.html.twig', array(
+        return $this->render('FinanzasBundle:autorizaciones:edit.html.twig', array(
             'autorizacione' => $autorizacione,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

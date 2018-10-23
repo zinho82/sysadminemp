@@ -10,3 +10,6 @@ backend_oc:
 backend_itemsoc:
     resource: "@FinanzasBundle/Resources/config/routing/itemsoc.yml"
     prefix:   /oc-op/items
+backend_autorizaciones:
+    resource: "@FinanzasBundle/Resources/config/routing/autorizaciones.yml"
+    prefix:   /autorizaciones
