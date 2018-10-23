@@ -5,7 +5,10 @@ autorizaciones:
 autorizaciones_show:
     path:  /{id}/show
     defaults: { _controller: "FinanzasBundle:Autorizaciones:show" }
-
+autorizaciones_show_usr:
+    path:  /{id}/show-autorizaciones
+    defaults: { _controller: "FinanzasBundle:Autorizaciones:show",id:null }
+    methods: [get|post]
 autorizaciones_new:
     path:  /new/{id}
     defaults: { _controller: "FinanzasBundle:Autorizaciones:new",id:null }
