@@ -1,11 +1,13 @@
 <?php
 
-namespace BackendBundle\Form;
+namespace FinanzasBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class ItemsOcType extends AbstractType
 {
@@ -16,25 +18,42 @@ class ItemsOcType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cantidad')
-            ->add('descripcion')
-            ->add('valor')
-            ->add('ordenescompra', EntityType::class, array(
-                'class' => 'BackendBundle\Entity\Ordenescompra',
-                'choice_label' => 'id',
-                'placeholder' => 'Please choose',
-                'empty_data' => null,
-                'required' => false
- 
-            )) 
-            ->add('inventario', EntityType::class, array(
+            ->add('cantidad', TextType::class,array(
+                'attr'  =>  array(
+                        'class' =>  'form-control',
+                    )
+            ))
+                ->add('inventario', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Inventario',
                 'choice_label' => 'nombreProducto',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
-                'required' => false
+                'required' => true,
+                'label' =>  'Producto / Herramienta',
+                    'attr'  =>  array(
+                        'class' =>  'form-control',
+                    )
  
             )) 
+            ->add('descripcion', CKEditorType::class,array(
+                'attr'  =>  array(
+                        'class' =>  'form-control',
+                    )
+            ))
+            ->add('valor', TextType::class,array(
+                'attr'  =>  array(
+                        'class' =>  'form-control',
+                    )
+            ))
+//            ->add('ordenescompra', EntityType::class, array(
+//                'class' => 'BackendBundle\Entity\Ordenescompra',
+//                'choice_label' => 'id',
+//                'placeholder' => 'Please choose',
+//                'empty_data' => null,
+//                'required' => false
+// 
+//            )) 
+            
         ;
     }
     

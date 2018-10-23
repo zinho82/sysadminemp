@@ -7,3 +7,6 @@ backend_contactos:
 backend_oc:
     resource: "@FinanzasBundle/Resources/config/routing/ordenescompra.yml"
     prefix:   /oc-op
+backend_itemsoc:
+    resource: "@FinanzasBundle/Resources/config/routing/itemsoc.yml"
+    prefix:   /oc-op/items

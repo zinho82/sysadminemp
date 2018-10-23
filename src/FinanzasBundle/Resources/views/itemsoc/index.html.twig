@@ -6,7 +6,7 @@
 
 {% block body %}
 
-
+<div class="col-lg-12 col-sm-12 col-md-12">
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
@@ -71,7 +71,7 @@
 
 <div class="col-md-3">
 
-            <a class="btn btn-primary h3 pull-right" href="{{ path('itemsoc_new') }}" style="margin-bottom:10px">
+            <a class="btn btn-primary h3 pull-right" href="{{ path('itemsoc_new',{'id':idoc}) }}" style="margin-bottom:10px">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
         </a>
         <a class="btn dropdown-toggle pull-right h3" data-toggle="collapse" data-target="#filters">
@@ -183,7 +183,7 @@
     </div>
 </div> <!-- /#bottom -->
 
-
+        </div>
 
 {% endblock %}
 

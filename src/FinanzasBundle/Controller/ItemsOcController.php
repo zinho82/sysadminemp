@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace FinanzasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,21 +21,23 @@ class ItemsOcController extends Controller
      * Lists all ItemsOc entities.
      *
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request,$id=null)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('BackendBundle:ItemsOc')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('BackendBundle:ItemsOc')->createQueryBuilder('e')
+                ->where("e.ordenescompra=$id");
 
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
         list($itemsOcs, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('itemsoc/index.html.twig', array(
+        return $this->render('FinanzasBundle:itemsoc:index.html.twig', array(
             'itemsOcs' => $itemsOcs,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
             'totalOfRecordsString' => $totalOfRecordsString,
+            'idoc'  =>  $id,
 
         ));
     }
@@ -47,7 +49,7 @@ class ItemsOcController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\ItemsOcFilterType');
+        $filterForm = $this->createForm('FinanzasBundle\Form\ItemsOcFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +79,7 @@ class ItemsOcController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\ItemsOcFilterType', $filterData);
+                $filterForm = $this->createForm('FinanzasBundle\Form\ItemsOcFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +159,7 @@ class ItemsOcController extends Controller
     {
     
         $itemsOc = new ItemsOc();
-        $form   = $this->createForm('BackendBundle\Form\ItemsOcType', $itemsOc);
+        $form   = $this->createForm('FinanzasBundle\Form\ItemsOcType', $itemsOc);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +173,7 @@ class ItemsOcController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'itemsoc' : 'itemsoc_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('itemsoc/new.html.twig', array(
+        return $this->render('FinanzasBundle:itemsoc:new.html.twig', array(
             'itemsOc' => $itemsOc,
             'form'   => $form->createView(),
         ));
@@ -185,7 +187,7 @@ class ItemsOcController extends Controller
     public function showAction(ItemsOc $itemsOc)
     {
         $deleteForm = $this->createDeleteForm($itemsOc);
-        return $this->render('itemsoc/show.html.twig', array(
+        return $this->render('FinanzasBundle:itemsoc:show.html.twig', array(
             'itemsOc' => $itemsOc,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +202,7 @@ class ItemsOcController extends Controller
     public function editAction(Request $request, ItemsOc $itemsOc)
     {
         $deleteForm = $this->createDeleteForm($itemsOc);
-        $editForm = $this->createForm('BackendBundle\Form\ItemsOcType', $itemsOc);
+        $editForm = $this->createForm('FinanzasBundle\Form\ItemsOcType', $itemsOc);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +213,7 @@ class ItemsOcController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('itemsoc_edit', array('id' => $itemsOc->getId()));
         }
-        return $this->render('itemsoc/edit.html.twig', array(
+        return $this->render('FinanzasBundle:itemsoc:edit.html.twig', array(
             'itemsOc' => $itemsOc,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

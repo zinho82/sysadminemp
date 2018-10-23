@@ -1,42 +1,44 @@
 itemsoc:
-    path:  /
-    defaults: { _controller: "BackendBundle:ItemsOc:index" }
+    path:  /{id}
+    defaults: { _controller: "FinanzasBundle:ItemsOc:index",id:null }
+    methods: [get|post]
 
 itemsoc_show:
     path:  /{id}/show
-    defaults: { _controller: "BackendBundle:ItemsOc:show" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:show" }
 
 itemsoc_new:
-    path:  /new
-    defaults: { _controller: "BackendBundle:ItemsOc:new" }
+    path:  /new/{id}
+    defaults: { _controller: "FinanzasBundle:ItemsOc:new",id:null }
+    methods: [get|post]
 
 itemsoc_create:
     path:  /create
-    defaults: { _controller: "BackendBundle:ItemsOc:create" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:create" }
     requirements: { _method: post }
 
 itemsoc_edit:
     path:  /{id}/edit
-    defaults: { _controller: "BackendBundle:ItemsOc:edit" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:edit" }
 
 itemsoc_update:
     path:  /{id}/update
-    defaults: { _controller: "BackendBundle:ItemsOc:update" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:update" }
     requirements: { _method: post|put }
 
 itemsoc_delete:
     path:  /{id}/delete
-    defaults: { _controller: "BackendBundle:ItemsOc:delete" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:delete" }
     requirements: { _method: post|delete }
     
 itemsoc_by_id_delete:
     path:  /delete/{id}
-    defaults: { _controller: "BackendBundle:ItemsOc:deleteById" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:deleteById" }
     requirements: { _method: get }
     
 
 itemsoc_bulk_action:
     path:  /bulk-action
-    defaults: { _controller: "BackendBundle:ItemsOc:bulk" }
+    defaults: { _controller: "FinanzasBundle:ItemsOc:bulk" }
     requirements: { _method: post }
     
