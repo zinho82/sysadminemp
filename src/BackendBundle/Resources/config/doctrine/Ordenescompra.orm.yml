@@ -11,6 +11,9 @@ BackendBundle\Entity\Ordenescompra:
         fk_ordenescompra_proveedores_clientes1_idx:
             columns:
                 - proveedores_clientes
+        fk_ordenescompra_usuario1_idx:
+            columns:
+                - solicitado_por
     id:
         id:
             type: integer
@@ -35,15 +38,30 @@ BackendBundle\Entity\Ordenescompra:
             type: datetime
             nullable: true
             column: fecha_ingreso
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        iva:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        subtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
     manyToOne:
-        proveedoresClientes:
-            targetEntity: ProveedoresClientes
+        solicitadoPor:
+            targetEntity: Usuario
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                proveedores_clientes:
+                solicitado_por:
                     referencedColumnName: id
             orphanRemoval: false
         tipoOc:
@@ -64,6 +82,16 @@ BackendBundle\Entity\Ordenescompra:
             inversedBy: null
             joinColumns:
                 empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        proveedoresClientes:
+            targetEntity: ProveedoresClientes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                proveedores_clientes:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

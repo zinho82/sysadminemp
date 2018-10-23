@@ -1,0 +1,42 @@
+autorizaciones:
+    path:  /
+    defaults: { _controller: "BackendBundle:Autorizaciones:index" }
+
+autorizaciones_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:Autorizaciones:show" }
+
+autorizaciones_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:Autorizaciones:new" }
+
+autorizaciones_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:Autorizaciones:create" }
+    requirements: { _method: post }
+
+autorizaciones_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Autorizaciones:edit" }
+
+autorizaciones_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:Autorizaciones:update" }
+    requirements: { _method: post|put }
+
+autorizaciones_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Autorizaciones:delete" }
+    requirements: { _method: post|delete }
+    
+autorizaciones_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BackendBundle:Autorizaciones:deleteById" }
+    requirements: { _method: get }
+    
+
+autorizaciones_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BackendBundle:Autorizaciones:bulk" }
+    requirements: { _method: post }
+    

@@ -1,6 +1,6 @@
 <?php
 
-namespace FinanzasBundle\Controller;
+namespace BackendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,40 +9,30 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
-use BackendBundle\Entity\Ordenescompra;
-use BackendBundle\Entity\ItemsOc;
+use BackendBundle\Entity\Autorizaciones;
 
 /**
- * Ordenescompra controller.
+ * Autorizaciones controller.
  *
  */
-class OrdenescompraController extends Controller
+class AutorizacionesController extends Controller
 {
     /**
-     * Lists all Ordenescompra entities.
+     * Lists all Autorizaciones entities.
      *
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('BackendBundle:Ordenescompra')->createQueryBuilder('e');
-$query = 'update ordenescompra oc
-set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where oc.id=i.ordenescompra)';
-        $stmt = $em->getConnection()->prepare($query);
-            $stmt->execute();
-             $query = 'update ordenescompra oc set oc.iva=(oc.subtotal*(19/100))';
-        $stmt= $em->getConnection()->prepare($query);
-        $stmt->execute();
-        $query = 'update ordenescompra oc set oc.total=(oc.subtotal+oc.iva)';
-        $stmt= $em->getConnection()->prepare($query);
-        $stmt->execute();
+        $queryBuilder = $em->getRepository('BackendBundle:Autorizaciones')->createQueryBuilder('e');
+
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
-        list($ordenescompras, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        list($autorizaciones, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('FinanzasBundle:ordenescompra:index.html.twig', array(
-            'ordenescompras' => $ordenescompras,
+        return $this->render('autorizaciones/index.html.twig', array(
+            'autorizaciones' => $autorizaciones,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
             'totalOfRecordsString' => $totalOfRecordsString,
@@ -57,11 +47,11 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('FinanzasBundle\Form\OrdenescompraFilterType');
+        $filterForm = $this->createForm('BackendBundle\Form\AutorizacionesFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
-            $session->remove('OrdenescompraControllerFilter');
+            $session->remove('AutorizacionesControllerFilter');
         }
 
         // Filter action
@@ -74,12 +64,12 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
                 // Save filter to session
                 $filterData = $filterForm->getData();
-                $session->set('OrdenescompraControllerFilter', $filterData);
+                $session->set('AutorizacionesControllerFilter', $filterData);
             }
         } else {
             // Get filter from session
-            if ($session->has('OrdenescompraControllerFilter')) {
-                $filterData = $session->get('OrdenescompraControllerFilter');
+            if ($session->has('AutorizacionesControllerFilter')) {
+                $filterData = $session->get('AutorizacionesControllerFilter');
                 
                 foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
                     if (is_object($filter)) {
@@ -87,7 +77,7 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
                     }
                 }
                 
-                $filterForm = $this->createForm('FinanzasBundle\Form\OrdenescompraFilterType', $filterData);
+                $filterForm = $this->createForm('BackendBundle\Form\AutorizacionesFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -124,7 +114,7 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
         {
             $requestParams = $request->query->all();
             $requestParams['pcg_page'] = $page;
-            return $me->generateUrl('ordenescompra', $requestParams);
+            return $me->generateUrl('autorizaciones', $requestParams);
         };
 
         // Paginator - view
@@ -160,45 +150,43 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
     
 
     /**
-     * Displays a form to create a new Ordenescompra entity.
+     * Displays a form to create a new Autorizaciones entity.
      *
      */
     public function newAction(Request $request)
     {
     
-        $ordenescompra = new Ordenescompra();
-        $form   = $this->createForm('FinanzasBundle\Form\OrdenescompraType', $ordenescompra);
+        $autorizacione = new Autorizaciones();
+        $form   = $this->createForm('BackendBundle\Form\AutorizacionesType', $autorizacione);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $ordenescompra->setSolicitadoPor($this->getUser());
-            $em->persist($ordenescompra);
-            
+            $em->persist($autorizacione);
             $em->flush();
             
-            $editLink = $this->generateUrl('ordenescompra_edit', array('id' => $ordenescompra->getId()));
-            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New ordenescompra was created successfully.</a>" );
+            $editLink = $this->generateUrl('autorizaciones_edit', array('id' => $autorizacione->getId()));
+            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New autorizacione was created successfully.</a>" );
             
-            $nextAction=  $request->get('submit') == 'save' ? 'ordenescompra' : 'ordenescompra_new';
+            $nextAction=  $request->get('submit') == 'save' ? 'autorizaciones' : 'autorizaciones_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('FinanzasBundle:ordenescompra:new.html.twig', array(
-            'ordenescompra' => $ordenescompra,
+        return $this->render('autorizaciones/new.html.twig', array(
+            'autorizacione' => $autorizacione,
             'form'   => $form->createView(),
         ));
     }
     
 
     /**
-     * Finds and displays a Ordenescompra entity.
+     * Finds and displays a Autorizaciones entity.
      *
      */
-    public function showAction(Ordenescompra $ordenescompra)
+    public function showAction(Autorizaciones $autorizacione)
     {
-        $deleteForm = $this->createDeleteForm($ordenescompra);
-        return $this->render('FinanzasBundle:ordenescompra:show.html.twig', array(
-            'ordenescompra' => $ordenescompra,
+        $deleteForm = $this->createDeleteForm($autorizacione);
+        return $this->render('autorizaciones/show.html.twig', array(
+            'autorizacione' => $autorizacione,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -206,25 +194,25 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
     
 
     /**
-     * Displays a form to edit an existing Ordenescompra entity.
+     * Displays a form to edit an existing Autorizaciones entity.
      *
      */
-    public function editAction(Request $request, Ordenescompra $ordenescompra)
+    public function editAction(Request $request, Autorizaciones $autorizacione)
     {
-        $deleteForm = $this->createDeleteForm($ordenescompra);
-        $editForm = $this->createForm('FinanzasBundle\Form\OrdenescompraType', $ordenescompra);
+        $deleteForm = $this->createDeleteForm($autorizacione);
+        $editForm = $this->createForm('BackendBundle\Form\AutorizacionesType', $autorizacione);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($ordenescompra);
+            $em->persist($autorizacione);
             $em->flush();
             
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
-            return $this->redirectToRoute('ordenescompra_edit', array('id' => $ordenescompra->getId()));
+            return $this->redirectToRoute('autorizaciones_edit', array('id' => $autorizacione->getId()));
         }
-        return $this->render('FinanzasBundle:ordenescompra:edit.html.twig', array(
-            'ordenescompra' => $ordenescompra,
+        return $this->render('autorizaciones/edit.html.twig', array(
+            'autorizacione' => $autorizacione,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -233,59 +221,59 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
     
 
     /**
-     * Deletes a Ordenescompra entity.
+     * Deletes a Autorizaciones entity.
      *
      */
-    public function deleteAction(Request $request, Ordenescompra $ordenescompra)
+    public function deleteAction(Request $request, Autorizaciones $autorizacione)
     {
     
-        $form = $this->createDeleteForm($ordenescompra);
+        $form = $this->createDeleteForm($autorizacione);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($ordenescompra);
+            $em->remove($autorizacione);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Ordenescompra was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Autorizaciones was deleted successfully');
         } else {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Ordenescompra');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Autorizaciones');
         }
         
-        return $this->redirectToRoute('ordenescompra');
+        return $this->redirectToRoute('autorizaciones');
     }
     
     /**
-     * Creates a form to delete a Ordenescompra entity.
+     * Creates a form to delete a Autorizaciones entity.
      *
-     * @param Ordenescompra $ordenescompra The Ordenescompra entity
+     * @param Autorizaciones $autorizacione The Autorizaciones entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Ordenescompra $ordenescompra)
+    private function createDeleteForm(Autorizaciones $autorizacione)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ordenescompra_delete', array('id' => $ordenescompra->getId())))
+            ->setAction($this->generateUrl('autorizaciones_delete', array('id' => $autorizacione->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
     
     /**
-     * Delete Ordenescompra by id
+     * Delete Autorizaciones by id
      *
      */
-    public function deleteByIdAction(Ordenescompra $ordenescompra){
+    public function deleteByIdAction(Autorizaciones $autorizacione){
         $em = $this->getDoctrine()->getManager();
         
         try {
-            $em->remove($ordenescompra);
+            $em->remove($autorizacione);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Ordenescompra was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Autorizaciones was deleted successfully');
         } catch (Exception $ex) {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Ordenescompra');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Autorizaciones');
         }
 
-        return $this->redirect($this->generateUrl('ordenescompra'));
+        return $this->redirect($this->generateUrl('autorizaciones'));
 
     }
     
@@ -301,22 +289,22 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
         if ($action == "delete") {
             try {
                 $em = $this->getDoctrine()->getManager();
-                $repository = $em->getRepository('BackendBundle:Ordenescompra');
+                $repository = $em->getRepository('BackendBundle:Autorizaciones');
 
                 foreach ($ids as $id) {
-                    $ordenescompra = $repository->find($id);
-                    $em->remove($ordenescompra);
+                    $autorizacione = $repository->find($id);
+                    $em->remove($autorizacione);
                     $em->flush();
                 }
 
-                $this->get('session')->getFlashBag()->add('success', 'ordenescompras was deleted successfully!');
+                $this->get('session')->getFlashBag()->add('success', 'autorizaciones was deleted successfully!');
 
             } catch (Exception $ex) {
-                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the ordenescompras ');
+                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the autorizaciones ');
             }
         }
 
-        return $this->redirect($this->generateUrl('ordenescompra'));
+        return $this->redirect($this->generateUrl('autorizaciones'));
     }
     
 

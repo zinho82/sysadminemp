@@ -8,6 +8,10 @@ BackendBundle\Entity\Inventario:
         fk_inventario_config1_idx:
             columns:
                 - estado
+    uniqueConstraints:
+        codigo_UNIQUE:
+            columns:
+                - codigo
     id:
         id:
             type: integer
@@ -36,6 +40,12 @@ BackendBundle\Entity\Inventario:
             nullable: true
             precision: 10
             scale: 0
+        codigo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
     manyToOne:
         estado:
             targetEntity: Config

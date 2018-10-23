@@ -48,7 +48,9 @@ class ItemsOcType extends AbstractType
             ->add('valor', TextType::class,array(
                 'attr'  =>  array(
                         'class' =>  'form-control',
-                    )
+                    'placeholder'   =>  'Ingresar Valores Sin Iva',
+                    ),
+                
             ))
 //            ->add('ordenescompra', EntityType::class, array(
 //                'class' => 'BackendBundle\Entity\Ordenescompra',

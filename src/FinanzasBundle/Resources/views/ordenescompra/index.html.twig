@@ -124,8 +124,9 @@
                             <th>{{macros.th_sortable('numeroOc',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
                             <th>{{macros.th_sortable('fechaEstimadaCompra',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
                             <th>{{macros.th_sortable('fechaIngreso',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
-                            <th>{{macros.th_sortable('total',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
-    
+<th>{{macros.th_sortable('subtotal',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
+<th>{{macros.th_sortable('iva',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
+    <th>{{macros.th_sortable('total',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ordenescompra')}}</th>
                        
                         <th width = "130px">List</th>
                     </tr>
@@ -138,6 +139,8 @@
                         <td>{{ ordenescompra.numeroOc }}</td>
                         <td>{%- if ordenescompra.fechaEstimadaCompra %}{{ ordenescompra.fechaEstimadaCompra|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{%- if ordenescompra.fechaIngreso %}{{ ordenescompra.fechaIngreso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                         <td>${{ ordenescompra.subtotal|number_format(0,',','.') }}</td>
+                        <td>${{ ordenescompra.iva|number_format(0,',','.') }}</td>
                         <td>${{ ordenescompra.total|number_format(0,',','.') }}</td>
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('ordenescompra_by_id_delete', { 'id': ordenescompra.id}) }}">

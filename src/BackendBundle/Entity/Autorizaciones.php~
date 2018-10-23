@@ -152,4 +152,33 @@ class Autorizaciones
     {
         return $this->solicitud;
     }
+    /**
+     * @var \BackendBundle\Entity\Ordenescompra
+     */
+    private $ordenescompra;
+
+
+    /**
+     * Set ordenescompra
+     *
+     * @param \BackendBundle\Entity\Ordenescompra $ordenescompra
+     *
+     * @return Autorizaciones
+     */
+    public function setOrdenescompra(\BackendBundle\Entity\Ordenescompra $ordenescompra = null)
+    {
+        $this->ordenescompra = $ordenescompra;
+
+        return $this;
+    }
+
+    /**
+     * Get ordenescompra
+     *
+     * @return \BackendBundle\Entity\Ordenescompra
+     */
+    public function getOrdenescompra()
+    {
+        return $this->ordenescompra;
+    }
 }

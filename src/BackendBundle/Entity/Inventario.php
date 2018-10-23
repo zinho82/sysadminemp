@@ -167,4 +167,33 @@ class Inventario
     {
         return $this->estado;
     }
+    /**
+     * @var string
+     */
+    private $codigo;
+
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return Inventario
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
 }

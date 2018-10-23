@@ -196,4 +196,120 @@ class Ordenescompra
     {
         return $this->empresa;
     }
+    /**
+     * @var float
+     */
+    private $total;
+
+
+    /**
+     * Set total
+     *
+     * @param float $total
+     *
+     * @return Ordenescompra
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+    /**
+     * @var float
+     */
+    private $iva;
+
+    /**
+     * @var float
+     */
+    private $subtotal;
+
+
+    /**
+     * Set iva
+     *
+     * @param float $iva
+     *
+     * @return Ordenescompra
+     */
+    public function setIva($iva)
+    {
+        $this->iva = $iva;
+
+        return $this;
+    }
+
+    /**
+     * Get iva
+     *
+     * @return float
+     */
+    public function getIva()
+    {
+        return $this->iva;
+    }
+
+    /**
+     * Set subtotal
+     *
+     * @param float $subtotal
+     *
+     * @return Ordenescompra
+     */
+    public function setSubtotal($subtotal)
+    {
+        $this->subtotal = $subtotal;
+
+        return $this;
+    }
+
+    /**
+     * Get subtotal
+     *
+     * @return float
+     */
+    public function getSubtotal()
+    {
+        return $this->subtotal;
+    }
+    /**
+     * @var \BackendBundle\Entity\Usuario
+     */
+    private $solicitadoPor;
+
+
+    /**
+     * Set solicitadoPor
+     *
+     * @param \BackendBundle\Entity\Usuario $solicitadoPor
+     *
+     * @return Ordenescompra
+     */
+    public function setSolicitadoPor(\BackendBundle\Entity\Usuario $solicitadoPor = null)
+    {
+        $this->solicitadoPor = $solicitadoPor;
+
+        return $this;
+    }
+
+    /**
+     * Get solicitadoPor
+     *
+     * @return \BackendBundle\Entity\Usuario
+     */
+    public function getSolicitadoPor()
+    {
+        return $this->solicitadoPor;
+    }
 }

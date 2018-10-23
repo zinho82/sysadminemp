@@ -1,3 +1,7 @@
+backend_autorizaciones:
+    resource: "@BackendBundle/Resources/config/routing/autorizaciones.yml"
+    prefix:   /autorizaciones
+
 
 
 
