@@ -81,3 +81,4 @@ class Menu
         return $this->link;
     }
 }
+

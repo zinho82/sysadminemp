@@ -179,11 +179,10 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
      *
      */
     public function newAction(Request $request) {
-
         $ordenescompra = new Ordenescompra();
         $form = $this->createForm('FinanzasBundle\Form\OrdenescompraType', $ordenescompra);
         $form->handleRequest($request);
-        $numoc = date('YmdGis');
+        $numoc = date("YmdGis");
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $estado = $em->getRepository("BackendBundle:Config")->find(57);
@@ -193,7 +192,10 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
             $ordenescompra->setNumeroOc($numoc);
             $em->persist($ordenescompra);
 
-            $em->flush();
+            if($em->flush()==null){
+                $notificacion = $this->get('app.notification_service');
+        $notificacion->set("Se ha ingresado una nueva OC: N° ".$ordenescompra->getNumeroOc().", Para ser ejecutada el día ". date_format($ordenescompra->getFechaEstimadaCompra(),"d-m-Y").', y se encuentra '.$ordenescompra->getEstado(),  $this->getUser(), $this->getUser()->getRrhh()->getDepartamento());
+            }
 
             $editLink = $this->generateUrl('ordenescompra_edit', array('id' => $ordenescompra->getId()));
             $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New ordenescompra was created successfully.</a>");

@@ -84,3 +84,4 @@ class Config
         return $this->titulo;
     }
 }
+

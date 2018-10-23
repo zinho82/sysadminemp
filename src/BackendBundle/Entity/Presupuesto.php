@@ -38,24 +38,9 @@ class Presupuesto
     private $comentario;
 
     /**
-     * @var \BackendBundle\Entity\Ordenescompra
-     */
-    private $ordenescompra;
-
-    /**
-     * @var \BackendBundle\Entity\Config
-     */
-    private $tipoItem;
-
-    /**
      * @var \BackendBundle\Entity\Empresa
      */
     private $empresa;
-
-    /**
-     * @var \BackendBundle\Entity\Facturas
-     */
-    private $facturas;
 
 
     /**
@@ -189,54 +174,6 @@ class Presupuesto
     }
 
     /**
-     * Set ordenescompra
-     *
-     * @param \BackendBundle\Entity\Ordenescompra $ordenescompra
-     *
-     * @return Presupuesto
-     */
-    public function setOrdenescompra(\BackendBundle\Entity\Ordenescompra $ordenescompra = null)
-    {
-        $this->ordenescompra = $ordenescompra;
-
-        return $this;
-    }
-
-    /**
-     * Get ordenescompra
-     *
-     * @return \BackendBundle\Entity\Ordenescompra
-     */
-    public function getOrdenescompra()
-    {
-        return $this->ordenescompra;
-    }
-
-    /**
-     * Set tipoItem
-     *
-     * @param \BackendBundle\Entity\Config $tipoItem
-     *
-     * @return Presupuesto
-     */
-    public function setTipoItem(\BackendBundle\Entity\Config $tipoItem = null)
-    {
-        $this->tipoItem = $tipoItem;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoItem
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getTipoItem()
-    {
-        return $this->tipoItem;
-    }
-
-    /**
      * Set empresa
      *
      * @param \BackendBundle\Entity\Empresa $empresa
@@ -259,28 +196,5 @@ class Presupuesto
     {
         return $this->empresa;
     }
-
-    /**
-     * Set facturas
-     *
-     * @param \BackendBundle\Entity\Facturas $facturas
-     *
-     * @return Presupuesto
-     */
-    public function setFacturas(\BackendBundle\Entity\Facturas $facturas = null)
-    {
-        $this->facturas = $facturas;
-
-        return $this;
-    }
-
-    /**
-     * Get facturas
-     *
-     * @return \BackendBundle\Entity\Facturas
-     */
-    public function getFacturas()
-    {
-        return $this->facturas;
-    }
 }
+

@@ -13,45 +13,6 @@ class Inventario
     private $id;
 
     /**
-     * @var \BackendBundle\Entity\Empresa
-     */
-    private $empresa;
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set empresa
-     *
-     * @param \BackendBundle\Entity\Empresa $empresa
-     *
-     * @return Inventario
-     */
-    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
-    {
-        $this->empresa = $empresa;
-
-        return $this;
-    }
-
-    /**
-     * Get empresa
-     *
-     * @return \BackendBundle\Entity\Empresa
-     */
-    public function getEmpresa()
-    {
-        return $this->empresa;
-    }
-    /**
      * @var string
      */
     private $nombreProducto;
@@ -67,10 +28,30 @@ class Inventario
     private $cantidad;
 
     /**
+     * @var string
+     */
+    private $codigo;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $estado;
 
+    /**
+     * @var \BackendBundle\Entity\Empresa
+     */
+    private $empresa;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set nombreProducto
@@ -145,35 +126,6 @@ class Inventario
     }
 
     /**
-     * Set estado
-     *
-     * @param \BackendBundle\Entity\Config $estado
-     *
-     * @return Inventario
-     */
-    public function setEstado(\BackendBundle\Entity\Config $estado = null)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-    /**
-     * @var string
-     */
-    private $codigo;
-
-
-    /**
      * Set codigo
      *
      * @param string $codigo
@@ -196,4 +148,53 @@ class Inventario
     {
         return $this->codigo;
     }
+
+    /**
+     * Set estado
+     *
+     * @param \BackendBundle\Entity\Config $estado
+     *
+     * @return Inventario
+     */
+    public function setEstado(\BackendBundle\Entity\Config $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \BackendBundle\Entity\Empresa $empresa
+     *
+     * @return Inventario
+     */
+    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \BackendBundle\Entity\Empresa
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
 }
+

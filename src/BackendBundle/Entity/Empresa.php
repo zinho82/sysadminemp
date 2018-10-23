@@ -53,6 +53,11 @@ class Empresa
     private $region;
 
     /**
+     * @var string
+     */
+    private $logo;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $estadoEmpresa;
@@ -261,38 +266,6 @@ class Empresa
     }
 
     /**
-     * Set estadoEmpresa
-     *
-     * @param \BackendBundle\Entity\Config $estadoEmpresa
-     *
-     * @return Empresa
-     */
-    public function setEstadoEmpresa(\BackendBundle\Entity\Config $estadoEmpresa = null)
-    {
-        $this->estadoEmpresa = $estadoEmpresa;
-
-        return $this;
-    }
-
-    /**
-     * Get estadoEmpresa
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getEstadoEmpresa()
-    {
-        return $this->estadoEmpresa;
-    }
-    public function __toString() {
-        return $this->nombreFantasia;
-    }
-    /**
-     * @var string
-     */
-    private $logo;
-
-
-    /**
      * Set logo
      *
      * @param string $logo
@@ -315,4 +288,29 @@ class Empresa
     {
         return $this->logo;
     }
+
+    /**
+     * Set estadoEmpresa
+     *
+     * @param \BackendBundle\Entity\Config $estadoEmpresa
+     *
+     * @return Empresa
+     */
+    public function setEstadoEmpresa(\BackendBundle\Entity\Config $estadoEmpresa = null)
+    {
+        $this->estadoEmpresa = $estadoEmpresa;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoEmpresa
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstadoEmpresa()
+    {
+        return $this->estadoEmpresa;
+    }
 }
+

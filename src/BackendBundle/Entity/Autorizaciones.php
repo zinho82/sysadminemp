@@ -23,29 +23,25 @@ class Autorizaciones
     private $comentario;
 
     /**
-     * @var \BackendBundle\Entity\Usuario
+     * @var \BackendBundle\Entity\Config
      */
-    private $autorizadoPor;
+    private $estadoAutorizacion;
+
+    /**
+     * @var \BackendBundle\Entity\Ordenescompra
+     */
+    private $ordenescompra;
 
     /**
      * @var \BackendBundle\Entity\Solicitudes
      */
     private $solicitud;
 
-
     /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Autorizaciones
+     * @var \BackendBundle\Entity\Usuario
      */
-    public function setId($id)
-    {
-        $this->id = $id;
+    private $autorizadoPor;
 
-        return $this;
-    }
 
     /**
      * Get id
@@ -106,27 +102,51 @@ class Autorizaciones
     }
 
     /**
-     * Set autorizadoPor
+     * Set estadoAutorizacion
      *
-     * @param \BackendBundle\Entity\Usuario $autorizadoPor
+     * @param \BackendBundle\Entity\Config $estadoAutorizacion
      *
      * @return Autorizaciones
      */
-    public function setAutorizadoPor(\BackendBundle\Entity\Usuario $autorizadoPor = null)
+    public function setEstadoAutorizacion(\BackendBundle\Entity\Config $estadoAutorizacion = null)
     {
-        $this->autorizadoPor = $autorizadoPor;
+        $this->estadoAutorizacion = $estadoAutorizacion;
 
         return $this;
     }
 
     /**
-     * Get autorizadoPor
+     * Get estadoAutorizacion
      *
-     * @return \BackendBundle\Entity\Usuario
+     * @return \BackendBundle\Entity\Config
      */
-    public function getAutorizadoPor()
+    public function getEstadoAutorizacion()
     {
-        return $this->autorizadoPor;
+        return $this->estadoAutorizacion;
+    }
+
+    /**
+     * Set ordenescompra
+     *
+     * @param \BackendBundle\Entity\Ordenescompra $ordenescompra
+     *
+     * @return Autorizaciones
+     */
+    public function setOrdenescompra(\BackendBundle\Entity\Ordenescompra $ordenescompra = null)
+    {
+        $this->ordenescompra = $ordenescompra;
+
+        return $this;
+    }
+
+    /**
+     * Get ordenescompra
+     *
+     * @return \BackendBundle\Entity\Ordenescompra
+     */
+    public function getOrdenescompra()
+    {
+        return $this->ordenescompra;
     }
 
     /**
@@ -152,62 +172,29 @@ class Autorizaciones
     {
         return $this->solicitud;
     }
-    /**
-     * @var \BackendBundle\Entity\Ordenescompra
-     */
-    private $ordenescompra;
-
 
     /**
-     * Set ordenescompra
+     * Set autorizadoPor
      *
-     * @param \BackendBundle\Entity\Ordenescompra $ordenescompra
+     * @param \BackendBundle\Entity\Usuario $autorizadoPor
      *
      * @return Autorizaciones
      */
-    public function setOrdenescompra(\BackendBundle\Entity\Ordenescompra $ordenescompra = null)
+    public function setAutorizadoPor(\BackendBundle\Entity\Usuario $autorizadoPor = null)
     {
-        $this->ordenescompra = $ordenescompra;
+        $this->autorizadoPor = $autorizadoPor;
 
         return $this;
     }
 
     /**
-     * Get ordenescompra
+     * Get autorizadoPor
      *
-     * @return \BackendBundle\Entity\Ordenescompra
+     * @return \BackendBundle\Entity\Usuario
      */
-    public function getOrdenescompra()
+    public function getAutorizadoPor()
     {
-        return $this->ordenescompra;
-    }
-    /**
-     * @var \BackendBundle\Entity\Config
-     */
-    private $estadoAutorizacion;
-
-
-    /**
-     * Set estadoAutorizacion
-     *
-     * @param \BackendBundle\Entity\Config $estadoAutorizacion
-     *
-     * @return Autorizaciones
-     */
-    public function setEstadoAutorizacion(\BackendBundle\Entity\Config $estadoAutorizacion = null)
-    {
-        $this->estadoAutorizacion = $estadoAutorizacion;
-
-        return $this;
-    }
-
-    /**
-     * Get estadoAutorizacion
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getEstadoAutorizacion()
-    {
-        return $this->estadoAutorizacion;
+        return $this->autorizadoPor;
     }
 }
+

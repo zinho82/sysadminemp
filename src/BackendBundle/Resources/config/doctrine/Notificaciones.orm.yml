@@ -1,6 +1,13 @@
 BackendBundle\Entity\Notificaciones:
     type: entity
     table: notificaciones
+    indexes:
+        fk_notificaciones_usuario1_idx:
+            columns:
+                - usuario
+        fk_notificaciones_departamentos1_idx:
+            columns:
+                - area
     id:
         id:
             type: integer
@@ -10,4 +17,35 @@ BackendBundle\Entity\Notificaciones:
             id: true
             generator:
                 strategy: IDENTITY
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+        fecha:
+            type: datetime
+            nullable: true
+    manyToOne:
+        area:
+            targetEntity: Departamentos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                area:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

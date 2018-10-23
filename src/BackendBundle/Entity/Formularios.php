@@ -23,6 +23,11 @@ class Formularios
     private $fechaCreacion;
 
     /**
+     * @var string
+     */
+    private $comentario;
+
+    /**
      * @var \BackendBundle\Entity\Empresa
      */
     private $empresa;
@@ -92,6 +97,30 @@ class Formularios
     }
 
     /**
+     * Set comentario
+     *
+     * @param string $comentario
+     *
+     * @return Formularios
+     */
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    /**
+     * Get comentario
+     *
+     * @return string
+     */
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    /**
      * Set empresa
      *
      * @param \BackendBundle\Entity\Empresa $empresa
@@ -138,33 +167,5 @@ class Formularios
     {
         return $this->creadoPor;
     }
-    /**
-     * @var string
-     */
-    private $comentario;
-
-
-    /**
-     * Set comentario
-     *
-     * @param string $comentario
-     *
-     * @return Formularios
-     */
-    public function setComentario($comentario)
-    {
-        $this->comentario = $comentario;
-
-        return $this;
-    }
-
-    /**
-     * Get comentario
-     *
-     * @return string
-     */
-    public function getComentario()
-    {
-        return $this->comentario;
-    }
 }
+

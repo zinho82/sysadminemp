@@ -81,3 +81,4 @@ class Perfil
         return $this->tipoPerfil;
     }
 }
+

@@ -429,3 +429,4 @@ class Rrhh
         return $this->empresa;
     }
 }
+

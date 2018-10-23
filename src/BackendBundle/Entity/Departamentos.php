@@ -18,6 +18,11 @@ class Departamentos
     private $nombreDepartamento;
 
     /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
      * @var \BackendBundle\Entity\Empresa
      */
     private $empresa;
@@ -58,35 +63,6 @@ class Departamentos
     }
 
     /**
-     * Set empresa
-     *
-     * @param \BackendBundle\Entity\Empresa $empresa
-     *
-     * @return Departamentos
-     */
-    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
-    {
-        $this->empresa = $empresa;
-
-        return $this;
-    }
-
-    /**
-     * Get empresa
-     *
-     * @return \BackendBundle\Entity\Empresa
-     */
-    public function getEmpresa()
-    {
-        return $this->empresa;
-    }
-    /**
-     * @var string
-     */
-    private $descripcion;
-
-
-    /**
      * Set descripcion
      *
      * @param string $descripcion
@@ -109,4 +85,32 @@ class Departamentos
     {
         return $this->descripcion;
     }
+
+    /**
+     * Set empresa
+     *
+     * @param \BackendBundle\Entity\Empresa $empresa
+     *
+     * @return Departamentos
+     */
+    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \BackendBundle\Entity\Empresa
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+    public function __toString() {
+      return  $this->nombreDepartamento;
+    }
 }
+

@@ -28,7 +28,7 @@ class Contactos
     private $correo;
 
     /**
-     * @var string
+     * @var \BackendBundle\Entity\Config
      */
     private $cargo;
 
@@ -123,11 +123,11 @@ class Contactos
     /**
      * Set cargo
      *
-     * @param string $cargo
+     * @param \BackendBundle\Entity\Config $cargo
      *
      * @return Contactos
      */
-    public function setCargo($cargo)
+    public function setCargo(\BackendBundle\Entity\Config $cargo = null)
     {
         $this->cargo = $cargo;
 
@@ -137,7 +137,7 @@ class Contactos
     /**
      * Get cargo
      *
-     * @return string
+     * @return \BackendBundle\Entity\Config
      */
     public function getCargo()
     {
@@ -168,3 +168,4 @@ class Contactos
         return $this->proveedoresClientes;
     }
 }
+

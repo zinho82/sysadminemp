@@ -23,11 +23,11 @@ class NotificationService {
     
     public function set($texto,$user,$area) {
         $em= $this->manager;
-        $areas=$em->getRepository("BackendBundle:Configs")->find($area);
+        $areas=$em->getRepository("BackendBundle:Departamentos")->find($area);
         $notification=new Notificaciones();
-        $notification->setCreadopor($user);
-        $notification->setFecha(new \DateTime("now"));
-        $notification->setTexto($texto);
+        $notification->setUsuario($user);
+        $notification->setFecha(new \DateTime);
+        $notification->setDescripcion($texto);
         $notification->setArea($areas);
         $em->persist($notification);
         $flush=$em->flush();

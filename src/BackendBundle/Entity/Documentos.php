@@ -23,6 +23,16 @@ class Documentos
     private $nombre;
 
     /**
+     * @var \DateTime
+     */
+    private $fechaCarga;
+
+    /**
+     * @var \BackendBundle\Entity\Facturas
+     */
+    private $facturas;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $tipoDocumento;
@@ -31,6 +41,16 @@ class Documentos
      * @var \BackendBundle\Entity\Empresa
      */
     private $empresa;
+
+    /**
+     * @var \BackendBundle\Entity\Rrhh
+     */
+    private $rrhh;
+
+    /**
+     * @var \BackendBundle\Entity\Usuario
+     */
+    private $cargadoPor;
 
 
     /**
@@ -92,6 +112,54 @@ class Documentos
     }
 
     /**
+     * Set fechaCarga
+     *
+     * @param \DateTime $fechaCarga
+     *
+     * @return Documentos
+     */
+    public function setFechaCarga($fechaCarga)
+    {
+        $this->fechaCarga = $fechaCarga;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCarga
+     *
+     * @return \DateTime
+     */
+    public function getFechaCarga()
+    {
+        return $this->fechaCarga;
+    }
+
+    /**
+     * Set facturas
+     *
+     * @param \BackendBundle\Entity\Facturas $facturas
+     *
+     * @return Documentos
+     */
+    public function setFacturas(\BackendBundle\Entity\Facturas $facturas = null)
+    {
+        $this->facturas = $facturas;
+
+        return $this;
+    }
+
+    /**
+     * Get facturas
+     *
+     * @return \BackendBundle\Entity\Facturas
+     */
+    public function getFacturas()
+    {
+        return $this->facturas;
+    }
+
+    /**
      * Set tipoDocumento
      *
      * @param \BackendBundle\Entity\Config $tipoDocumento
@@ -138,73 +206,29 @@ class Documentos
     {
         return $this->empresa;
     }
-    /**
-     * @var \DateTime
-     */
-    private $fechaCarga;
 
     /**
-     * @var string
-     */
-    private $documentoscol;
-
-    /**
-     * @var \BackendBundle\Entity\Usuario
-     */
-    private $cargadoPor;
-
-    /**
-     * @var \BackendBundle\Entity\Rrhh
-     */
-    private $rrhh;
-
-
-    /**
-     * Set fechaCarga
+     * Set rrhh
      *
-     * @param \DateTime $fechaCarga
+     * @param \BackendBundle\Entity\Rrhh $rrhh
      *
      * @return Documentos
      */
-    public function setFechaCarga($fechaCarga)
+    public function setRrhh(\BackendBundle\Entity\Rrhh $rrhh = null)
     {
-        $this->fechaCarga = $fechaCarga;
+        $this->rrhh = $rrhh;
 
         return $this;
     }
 
     /**
-     * Get fechaCarga
+     * Get rrhh
      *
-     * @return \DateTime
+     * @return \BackendBundle\Entity\Rrhh
      */
-    public function getFechaCarga()
+    public function getRrhh()
     {
-        return $this->fechaCarga;
-    }
-
-    /**
-     * Set documentoscol
-     *
-     * @param string $documentoscol
-     *
-     * @return Documentos
-     */
-    public function setDocumentoscol($documentoscol)
-    {
-        $this->documentoscol = $documentoscol;
-
-        return $this;
-    }
-
-    /**
-     * Get documentoscol
-     *
-     * @return string
-     */
-    public function getDocumentoscol()
-    {
-        return $this->documentoscol;
+        return $this->rrhh;
     }
 
     /**
@@ -230,57 +254,5 @@ class Documentos
     {
         return $this->cargadoPor;
     }
-
-    /**
-     * Set rrhh
-     *
-     * @param \BackendBundle\Entity\Rrhh $rrhh
-     *
-     * @return Documentos
-     */
-    public function setRrhh(\BackendBundle\Entity\Rrhh $rrhh = null)
-    {
-        $this->rrhh = $rrhh;
-
-        return $this;
-    }
-
-    /**
-     * Get rrhh
-     *
-     * @return \BackendBundle\Entity\Rrhh
-     */
-    public function getRrhh()
-    {
-        return $this->rrhh;
-    }
-    /**
-     * @var \BackendBundle\Entity\Facturas
-     */
-    private $facturas;
-
-
-    /**
-     * Set facturas
-     *
-     * @param \BackendBundle\Entity\Facturas $facturas
-     *
-     * @return Documentos
-     */
-    public function setFacturas(\BackendBundle\Entity\Facturas $facturas = null)
-    {
-        $this->facturas = $facturas;
-
-        return $this;
-    }
-
-    /**
-     * Get facturas
-     *
-     * @return \BackendBundle\Entity\Facturas
-     */
-    public function getFacturas()
-    {
-        return $this->facturas;
-    }
 }
+

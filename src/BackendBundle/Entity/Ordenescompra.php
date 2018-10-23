@@ -28,9 +28,24 @@ class Ordenescompra
     private $fechaIngreso;
 
     /**
-     * @var \BackendBundle\Entity\ProveedoresClientes
+     * @var float
      */
-    private $proveedoresClientes;
+    private $total;
+
+    /**
+     * @var float
+     */
+    private $iva;
+
+    /**
+     * @var float
+     */
+    private $subtotal;
+
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $estado;
 
     /**
      * @var \BackendBundle\Entity\Config
@@ -41,6 +56,16 @@ class Ordenescompra
      * @var \BackendBundle\Entity\Empresa
      */
     private $empresa;
+
+    /**
+     * @var \BackendBundle\Entity\ProveedoresClientes
+     */
+    private $proveedoresClientes;
+
+    /**
+     * @var \BackendBundle\Entity\Usuario
+     */
+    private $solicitadoPor;
 
 
     /**
@@ -126,27 +151,99 @@ class Ordenescompra
     }
 
     /**
-     * Set proveedoresClientes
+     * Set total
      *
-     * @param \BackendBundle\Entity\ProveedoresClientes $proveedoresClientes
+     * @param float $total
      *
      * @return Ordenescompra
      */
-    public function setProveedoresClientes(\BackendBundle\Entity\ProveedoresClientes $proveedoresClientes = null)
+    public function setTotal($total)
     {
-        $this->proveedoresClientes = $proveedoresClientes;
+        $this->total = $total;
 
         return $this;
     }
 
     /**
-     * Get proveedoresClientes
+     * Get total
      *
-     * @return \BackendBundle\Entity\ProveedoresClientes
+     * @return float
      */
-    public function getProveedoresClientes()
+    public function getTotal()
     {
-        return $this->proveedoresClientes;
+        return $this->total;
+    }
+
+    /**
+     * Set iva
+     *
+     * @param float $iva
+     *
+     * @return Ordenescompra
+     */
+    public function setIva($iva)
+    {
+        $this->iva = $iva;
+
+        return $this;
+    }
+
+    /**
+     * Get iva
+     *
+     * @return float
+     */
+    public function getIva()
+    {
+        return $this->iva;
+    }
+
+    /**
+     * Set subtotal
+     *
+     * @param float $subtotal
+     *
+     * @return Ordenescompra
+     */
+    public function setSubtotal($subtotal)
+    {
+        $this->subtotal = $subtotal;
+
+        return $this;
+    }
+
+    /**
+     * Get subtotal
+     *
+     * @return float
+     */
+    public function getSubtotal()
+    {
+        return $this->subtotal;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \BackendBundle\Entity\Config $estado
+     *
+     * @return Ordenescompra
+     */
+    public function setEstado(\BackendBundle\Entity\Config $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 
     /**
@@ -196,98 +293,30 @@ class Ordenescompra
     {
         return $this->empresa;
     }
-    /**
-     * @var float
-     */
-    private $total;
-
 
     /**
-     * Set total
+     * Set proveedoresClientes
      *
-     * @param float $total
+     * @param \BackendBundle\Entity\ProveedoresClientes $proveedoresClientes
      *
      * @return Ordenescompra
      */
-    public function setTotal($total)
+    public function setProveedoresClientes(\BackendBundle\Entity\ProveedoresClientes $proveedoresClientes = null)
     {
-        $this->total = $total;
+        $this->proveedoresClientes = $proveedoresClientes;
 
         return $this;
     }
 
     /**
-     * Get total
+     * Get proveedoresClientes
      *
-     * @return float
+     * @return \BackendBundle\Entity\ProveedoresClientes
      */
-    public function getTotal()
+    public function getProveedoresClientes()
     {
-        return $this->total;
+        return $this->proveedoresClientes;
     }
-    /**
-     * @var float
-     */
-    private $iva;
-
-    /**
-     * @var float
-     */
-    private $subtotal;
-
-
-    /**
-     * Set iva
-     *
-     * @param float $iva
-     *
-     * @return Ordenescompra
-     */
-    public function setIva($iva)
-    {
-        $this->iva = $iva;
-
-        return $this;
-    }
-
-    /**
-     * Get iva
-     *
-     * @return float
-     */
-    public function getIva()
-    {
-        return $this->iva;
-    }
-
-    /**
-     * Set subtotal
-     *
-     * @param float $subtotal
-     *
-     * @return Ordenescompra
-     */
-    public function setSubtotal($subtotal)
-    {
-        $this->subtotal = $subtotal;
-
-        return $this;
-    }
-
-    /**
-     * Get subtotal
-     *
-     * @return float
-     */
-    public function getSubtotal()
-    {
-        return $this->subtotal;
-    }
-    /**
-     * @var \BackendBundle\Entity\Usuario
-     */
-    private $solicitadoPor;
-
 
     /**
      * Set solicitadoPor
@@ -312,36 +341,5 @@ class Ordenescompra
     {
         return $this->solicitadoPor;
     }
-    /**
-     * @var \BackendBundle\Entity\Config
-     */
-    private $estado;
-
-
-    /**
-     * Set estado
-     *
-     * @param \BackendBundle\Entity\Config $estado
-     *
-     * @return Ordenescompra
-     */
-    public function setEstado(\BackendBundle\Entity\Config $estado = null)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-    public function __toString() {
-        return (string) $this->numeroOc;
-    }
 }
+

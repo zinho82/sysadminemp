@@ -33,9 +33,9 @@ class Facturas
     private $numeroFactura;
 
     /**
-     * @var \BackendBundle\Entity\Departamentos
+     * @var \BackendBundle\Entity\Campana
      */
-    private $departamento;
+    private $campana;
 
     /**
      * @var \BackendBundle\Entity\Config
@@ -43,9 +43,9 @@ class Facturas
     private $estadoPago;
 
     /**
-     * @var \BackendBundle\Entity\ProveedoresClientes
+     * @var \BackendBundle\Entity\Departamentos
      */
-    private $proveedoresClientes;
+    private $departamento;
 
     /**
      * @var \BackendBundle\Entity\Empresa
@@ -56,6 +56,11 @@ class Facturas
      * @var \BackendBundle\Entity\Ordenescompra
      */
     private $ordenescompra;
+
+    /**
+     * @var \BackendBundle\Entity\ProveedoresClientes
+     */
+    private $proveedoresClientes;
 
 
     /**
@@ -165,27 +170,27 @@ class Facturas
     }
 
     /**
-     * Set departamento
+     * Set campana
      *
-     * @param \BackendBundle\Entity\Departamentos $departamento
+     * @param \BackendBundle\Entity\Campana $campana
      *
      * @return Facturas
      */
-    public function setDepartamento(\BackendBundle\Entity\Departamentos $departamento = null)
+    public function setCampana(\BackendBundle\Entity\Campana $campana = null)
     {
-        $this->departamento = $departamento;
+        $this->campana = $campana;
 
         return $this;
     }
 
     /**
-     * Get departamento
+     * Get campana
      *
-     * @return \BackendBundle\Entity\Departamentos
+     * @return \BackendBundle\Entity\Campana
      */
-    public function getDepartamento()
+    public function getCampana()
     {
-        return $this->departamento;
+        return $this->campana;
     }
 
     /**
@@ -213,27 +218,27 @@ class Facturas
     }
 
     /**
-     * Set proveedoresClientes
+     * Set departamento
      *
-     * @param \BackendBundle\Entity\ProveedoresClientes $proveedoresClientes
+     * @param \BackendBundle\Entity\Departamentos $departamento
      *
      * @return Facturas
      */
-    public function setProveedoresClientes(\BackendBundle\Entity\ProveedoresClientes $proveedoresClientes = null)
+    public function setDepartamento(\BackendBundle\Entity\Departamentos $departamento = null)
     {
-        $this->proveedoresClientes = $proveedoresClientes;
+        $this->departamento = $departamento;
 
         return $this;
     }
 
     /**
-     * Get proveedoresClientes
+     * Get departamento
      *
-     * @return \BackendBundle\Entity\ProveedoresClientes
+     * @return \BackendBundle\Entity\Departamentos
      */
-    public function getProveedoresClientes()
+    public function getDepartamento()
     {
-        return $this->proveedoresClientes;
+        return $this->departamento;
     }
 
     /**
@@ -283,33 +288,29 @@ class Facturas
     {
         return $this->ordenescompra;
     }
-    /**
-     * @var \BackendBundle\Entity\Campana
-     */
-    private $campana;
-
 
     /**
-     * Set campana
+     * Set proveedoresClientes
      *
-     * @param \BackendBundle\Entity\Campana $campana
+     * @param \BackendBundle\Entity\ProveedoresClientes $proveedoresClientes
      *
      * @return Facturas
      */
-    public function setCampana(\BackendBundle\Entity\Campana $campana = null)
+    public function setProveedoresClientes(\BackendBundle\Entity\ProveedoresClientes $proveedoresClientes = null)
     {
-        $this->campana = $campana;
+        $this->proveedoresClientes = $proveedoresClientes;
 
         return $this;
     }
 
     /**
-     * Get campana
+     * Get proveedoresClientes
      *
-     * @return \BackendBundle\Entity\Campana
+     * @return \BackendBundle\Entity\ProveedoresClientes
      */
-    public function getCampana()
+    public function getProveedoresClientes()
     {
-        return $this->campana;
+        return $this->proveedoresClientes;
     }
 }
+

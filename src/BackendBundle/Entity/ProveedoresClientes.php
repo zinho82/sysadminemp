@@ -28,6 +28,11 @@ class ProveedoresClientes
     private $telefono;
 
     /**
+     * @var \BackendBundle\Entity\Empresa
+     */
+    private $empresa;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $proveedorCliente;
@@ -116,35 +121,6 @@ class ProveedoresClientes
     }
 
     /**
-     * Set proveedorCliente
-     *
-     * @param \BackendBundle\Entity\Config $proveedorCliente
-     *
-     * @return ProveedoresClientes
-     */
-    public function setProveedorCliente(\BackendBundle\Entity\Config $proveedorCliente = null)
-    {
-        $this->proveedorCliente = $proveedorCliente;
-
-        return $this;
-    }
-
-    /**
-     * Get proveedorCliente
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getProveedorCliente()
-    {
-        return $this->proveedorCliente;
-    }
-    /**
-     * @var \BackendBundle\Entity\Empresa
-     */
-    private $empresa;
-
-
-    /**
      * Set empresa
      *
      * @param \BackendBundle\Entity\Empresa $empresa
@@ -167,4 +143,29 @@ class ProveedoresClientes
     {
         return $this->empresa;
     }
+
+    /**
+     * Set proveedorCliente
+     *
+     * @param \BackendBundle\Entity\Config $proveedorCliente
+     *
+     * @return ProveedoresClientes
+     */
+    public function setProveedorCliente(\BackendBundle\Entity\Config $proveedorCliente = null)
+    {
+        $this->proveedorCliente = $proveedorCliente;
+
+        return $this;
+    }
+
+    /**
+     * Get proveedorCliente
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getProveedorCliente()
+    {
+        return $this->proveedorCliente;
+    }
 }
+
