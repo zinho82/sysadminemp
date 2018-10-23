@@ -33,6 +33,11 @@ class ItemsOcType extends AbstractType
                     'attr'  =>  array(
                         'class' =>  'form-control',
                     )
+//                    'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+//                        return $co->createQueryBuilder('u')
+//                                ->where('u.empresa=37')
+//                                ->orderBy('u.titulo', 'asc');
+//                    },
  
             )) 
             ->add('descripcion', CKEditorType::class,array(

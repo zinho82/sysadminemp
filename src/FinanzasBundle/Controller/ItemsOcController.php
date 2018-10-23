@@ -155,7 +155,7 @@ class ItemsOcController extends Controller
      * Displays a form to create a new ItemsOc entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,$id=null)
     {
     
         $itemsOc = new ItemsOc();
@@ -164,18 +164,22 @@ class ItemsOcController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $oc= $em->getRepository("BackendBundle:Ordenescompra")->find($id);
+            $itemsOc->setOrdenescompra($oc);
             $em->persist($itemsOc);
             $em->flush();
             
             $editLink = $this->generateUrl('itemsoc_edit', array('id' => $itemsOc->getId()));
             $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New itemsOc was created successfully.</a>" );
             
-            $nextAction=  $request->get('submit') == 'save' ? 'itemsoc' : 'itemsoc_new';
+            $nextAction=  $request->get('submit') == 'save' ? "ordenescompra" : "itemsoc";
+            echo $nextAction;
             return $this->redirectToRoute($nextAction);
         }
         return $this->render('FinanzasBundle:itemsoc:new.html.twig', array(
             'itemsOc' => $itemsOc,
             'form'   => $form->createView(),
+            'idoc'  =>$id,
         ));
     }
     

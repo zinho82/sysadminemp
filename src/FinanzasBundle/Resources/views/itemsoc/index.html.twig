@@ -135,8 +135,8 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{itemsOc.id}}"/></td>
                         <td><a href="{{ path('itemsoc_edit', { 'id': itemsOc.id }) }}">{{ itemsOc.id }}</a></td>
                         <td>{{ itemsOc.cantidad }}</td>
-                        <td>{{ itemsOc.descripcion }}</td>
-                        <td>{{ itemsOc.valor }}</td>
+                        <td>{{ itemsOc.descripcion|raw }}</td>
+                        <td>${{ itemsOc.valor |number_format(0,',','.')}}</td>
     
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('itemsoc_by_id_delete', { 'id': itemsOc.id}) }}">

@@ -10,6 +10,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
 use BackendBundle\Entity\Ordenescompra;
+use BackendBundle\Entity\ItemsOc;
 
 /**
  * Ordenescompra controller.
@@ -25,7 +26,10 @@ class OrdenescompraController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('BackendBundle:Ordenescompra')->createQueryBuilder('e');
-
+$query = 'update ordenescompra oc
+set oc.total=(select sum(i.valor * i.cantidad) as total from items_oc i where oc.id=i.ordenescompra)';
+        $stmt = $em->getConnection()->prepare($query);
+        $stmt->execute();
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
         list($ordenescompras, $pagerHtml) = $this->paginator($queryBuilder, $request);
         

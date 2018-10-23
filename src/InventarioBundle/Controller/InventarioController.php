@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace InventarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,7 +31,7 @@ class InventarioController extends Controller
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('inventario/index.html.twig', array(
+        return $this->render('InventarioBundle:inventario:index.html.twig', array(
             'inventarios' => $inventarios,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -47,7 +47,7 @@ class InventarioController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\InventarioFilterType');
+        $filterForm = $this->createForm('InventarioBundle\Form\InventarioFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -77,7 +77,7 @@ class InventarioController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\InventarioFilterType', $filterData);
+                $filterForm = $this->createForm('InventarioBundle\Form\InventarioFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -157,7 +157,7 @@ class InventarioController extends Controller
     {
     
         $inventario = new Inventario();
-        $form   = $this->createForm('BackendBundle\Form\InventarioType', $inventario);
+        $form   = $this->createForm('InventarioBundle\Form\InventarioType', $inventario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -171,7 +171,7 @@ class InventarioController extends Controller
             $nextAction=  $request->get('submit') == 'save' ? 'inventario' : 'inventario_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('inventario/new.html.twig', array(
+        return $this->render('InventarioBundle:inventario:new.html.twig', array(
             'inventario' => $inventario,
             'form'   => $form->createView(),
         ));
@@ -185,7 +185,7 @@ class InventarioController extends Controller
     public function showAction(Inventario $inventario)
     {
         $deleteForm = $this->createDeleteForm($inventario);
-        return $this->render('inventario/show.html.twig', array(
+        return $this->render('InventarioBundle:inventario:show.html.twig', array(
             'inventario' => $inventario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -200,7 +200,7 @@ class InventarioController extends Controller
     public function editAction(Request $request, Inventario $inventario)
     {
         $deleteForm = $this->createDeleteForm($inventario);
-        $editForm = $this->createForm('BackendBundle\Form\InventarioType', $inventario);
+        $editForm = $this->createForm('InventarioBundle\Form\InventarioType', $inventario);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -211,7 +211,7 @@ class InventarioController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('inventario_edit', array('id' => $inventario->getId()));
         }
-        return $this->render('inventario/edit.html.twig', array(
+        return $this->render('InventarioBundle:inventario:edit.html.twig', array(
             'inventario' => $inventario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

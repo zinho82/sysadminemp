@@ -174,7 +174,8 @@ class Usuario implements UserInterface, \Serializable
         return serialize(array(
         $this->id,
         $this->username,
-        $this->password
+        $this->password,
+        $this->empresa,
         ));
     }
     public function unserialize($serialized) {

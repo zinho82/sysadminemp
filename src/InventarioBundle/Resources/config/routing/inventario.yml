@@ -1,42 +1,42 @@
 inventario:
     path:  /
-    defaults: { _controller: "BackendBundle:Inventario:index" }
+    defaults: { _controller: "InventarioBundle:Inventario:index" }
 
 inventario_show:
     path:  /{id}/show
-    defaults: { _controller: "BackendBundle:Inventario:show" }
+    defaults: { _controller: "InventarioBundle:Inventario:show" }
 
 inventario_new:
     path:  /new
-    defaults: { _controller: "BackendBundle:Inventario:new" }
+    defaults: { _controller: "InventarioBundle:Inventario:new" }
 
 inventario_create:
     path:  /create
-    defaults: { _controller: "BackendBundle:Inventario:create" }
+    defaults: { _controller: "InventarioBundle:Inventario:create" }
     requirements: { _method: post }
 
 inventario_edit:
     path:  /{id}/edit
-    defaults: { _controller: "BackendBundle:Inventario:edit" }
+    defaults: { _controller: "InventarioBundle:Inventario:edit" }
 
 inventario_update:
     path:  /{id}/update
-    defaults: { _controller: "BackendBundle:Inventario:update" }
+    defaults: { _controller: "InventarioBundle:Inventario:update" }
     requirements: { _method: post|put }
 
 inventario_delete:
     path:  /{id}/delete
-    defaults: { _controller: "BackendBundle:Inventario:delete" }
+    defaults: { _controller: "InventarioBundle:Inventario:delete" }
     requirements: { _method: post|delete }
     
 inventario_by_id_delete:
     path:  /delete/{id}
-    defaults: { _controller: "BackendBundle:Inventario:deleteById" }
+    defaults: { _controller: "InventarioBundle:Inventario:deleteById" }
     requirements: { _method: get }
     
 
 inventario_bulk_action:
     path:  /bulk-action
-    defaults: { _controller: "BackendBundle:Inventario:bulk" }
+    defaults: { _controller: "InventarioBundle:Inventario:bulk" }
     requirements: { _method: post }
     
