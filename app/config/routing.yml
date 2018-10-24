@@ -1,3 +1,7 @@
+incidencias:
+    resource: "@IncidenciasBundle/Resources/config/routing.yml"
+    prefix:   /
+
 inventario:
     resource: "@InventarioBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,42 @@
+incidencia:
+    path:  /
+    defaults: { _controller: "IncidenciasBundle:Incidencia:index" }
+
+incidencia_show:
+    path:  /{id}/show
+    defaults: { _controller: "IncidenciasBundle:Incidencia:show" }
+
+incidencia_new:
+    path:  /new
+    defaults: { _controller: "IncidenciasBundle:Incidencia:new" }
+
+incidencia_create:
+    path:  /create
+    defaults: { _controller: "IncidenciasBundle:Incidencia:create" }
+    requirements: { _method: post }
+
+incidencia_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "IncidenciasBundle:Incidencia:edit" }
+
+incidencia_update:
+    path:  /{id}/update
+    defaults: { _controller: "IncidenciasBundle:Incidencia:update" }
+    requirements: { _method: post|put }
+
+incidencia_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "IncidenciasBundle:Incidencia:delete" }
+    requirements: { _method: post|delete }
+    
+incidencia_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "IncidenciasBundle:Incidencia:deleteById" }
+    requirements: { _method: get }
+    
+
+incidencia_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "IncidenciasBundle:Incidencia:bulk" }
+    requirements: { _method: post }
+    

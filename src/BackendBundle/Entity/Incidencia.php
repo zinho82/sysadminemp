@@ -1,0 +1,287 @@
+<?php
+
+namespace BackendBundle\Entity;
+
+/**
+ * Incidencia
+ */
+class Incidencia
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaIncidencia;
+
+    /**
+     * @var string
+     */
+    private $numeroIncidencia;
+
+    /**
+     * @var string
+     */
+    private $descripcionError;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaSolucion;
+
+    /**
+     * @var string
+     */
+    private $solucion;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaIngreso;
+
+    /**
+     * @var string
+     */
+    private $archivo;
+
+    /**
+     * @var \BackendBundle\Entity\Usuario
+     */
+    private $ingresasoPor;
+
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $estado;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaIncidencia
+     *
+     * @param \DateTime $fechaIncidencia
+     *
+     * @return Incidencia
+     */
+    public function setFechaIncidencia($fechaIncidencia)
+    {
+        $this->fechaIncidencia = $fechaIncidencia;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIncidencia
+     *
+     * @return \DateTime
+     */
+    public function getFechaIncidencia()
+    {
+        return $this->fechaIncidencia;
+    }
+
+    /**
+     * Set numeroIncidencia
+     *
+     * @param string $numeroIncidencia
+     *
+     * @return Incidencia
+     */
+    public function setNumeroIncidencia($numeroIncidencia)
+    {
+        $this->numeroIncidencia = $numeroIncidencia;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroIncidencia
+     *
+     * @return string
+     */
+    public function getNumeroIncidencia()
+    {
+        return $this->numeroIncidencia;
+    }
+
+    /**
+     * Set descripcionError
+     *
+     * @param string $descripcionError
+     *
+     * @return Incidencia
+     */
+    public function setDescripcionError($descripcionError)
+    {
+        $this->descripcionError = $descripcionError;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionError
+     *
+     * @return string
+     */
+    public function getDescripcionError()
+    {
+        return $this->descripcionError;
+    }
+
+    /**
+     * Set fechaSolucion
+     *
+     * @param \DateTime $fechaSolucion
+     *
+     * @return Incidencia
+     */
+    public function setFechaSolucion($fechaSolucion)
+    {
+        $this->fechaSolucion = $fechaSolucion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaSolucion
+     *
+     * @return \DateTime
+     */
+    public function getFechaSolucion()
+    {
+        return $this->fechaSolucion;
+    }
+
+    /**
+     * Set solucion
+     *
+     * @param string $solucion
+     *
+     * @return Incidencia
+     */
+    public function setSolucion($solucion)
+    {
+        $this->solucion = $solucion;
+
+        return $this;
+    }
+
+    /**
+     * Get solucion
+     *
+     * @return string
+     */
+    public function getSolucion()
+    {
+        return $this->solucion;
+    }
+
+    /**
+     * Set fechaIngreso
+     *
+     * @param \DateTime $fechaIngreso
+     *
+     * @return Incidencia
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fechaIngreso = $fechaIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngreso
+     *
+     * @return \DateTime
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
+    }
+
+    /**
+     * Set archivo
+     *
+     * @param string $archivo
+     *
+     * @return Incidencia
+     */
+    public function setArchivo($archivo)
+    {
+        $this->archivo = $archivo;
+
+        return $this;
+    }
+
+    /**
+     * Get archivo
+     *
+     * @return string
+     */
+    public function getArchivo()
+    {
+        return $this->archivo;
+    }
+
+    /**
+     * Set ingresasoPor
+     *
+     * @param \BackendBundle\Entity\Usuario $ingresasoPor
+     *
+     * @return Incidencia
+     */
+    public function setIngresasoPor(\BackendBundle\Entity\Usuario $ingresasoPor = null)
+    {
+        $this->ingresasoPor = $ingresasoPor;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresasoPor
+     *
+     * @return \BackendBundle\Entity\Usuario
+     */
+    public function getIngresasoPor()
+    {
+        return $this->ingresasoPor;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \BackendBundle\Entity\Config $estado
+     *
+     * @return Incidencia
+     */
+    public function setEstado(\BackendBundle\Entity\Config $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+}
+

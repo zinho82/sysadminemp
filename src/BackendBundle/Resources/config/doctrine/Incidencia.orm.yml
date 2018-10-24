@@ -1,0 +1,80 @@
+BackendBundle\Entity\Incidencia:
+    type: entity
+    table: incidencia
+    indexes:
+        fk_incidencia_usuario1_idx:
+            columns:
+                - ingresaso_por
+        fk_incidencia_config1_idx:
+            columns:
+                - estado
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechaIncidencia:
+            type: datetime
+            nullable: true
+            column: fecha_incidencia
+        numeroIncidencia:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: numero_incidencia
+        descripcionError:
+            type: string
+            nullable: true
+            length: 1000
+            options:
+                fixed: false
+            column: descripcion_error
+        fechaSolucion:
+            type: datetime
+            nullable: true
+            column: fecha_solucion
+        solucion:
+            type: string
+            nullable: true
+            length: 1000
+            options:
+                fixed: false
+        fechaIngreso:
+            type: datetime
+            nullable: true
+            column: fecha_ingreso
+        archivo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        ingresasoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ingresaso_por:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estado:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

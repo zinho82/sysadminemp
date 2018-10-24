@@ -1,0 +1,3 @@
+backend_incidencia:
+    resource: "@IncidenciasBundle/Resources/config/routing/incidencia.yml"
+    prefix:   /incidencias
