@@ -161,7 +161,11 @@ class IncidenciaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $codinci=date("YmdGis");
             $em = $this->getDoctrine()->getManager();
+            $incidencium->setFechaIngreso(new \DateTime);
+            $incidencium->setIngresasoPor($this->getUser());
+            $incidencium->setNumeroIncidencia($codinci);
             $em->persist($incidencium);
             $em->flush();
             

@@ -56,17 +56,13 @@ BackendBundle\Entity\Incidencia:
             length: 45
             options:
                 fixed: false
+        titulo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
     manyToOne:
-        ingresasoPor:
-            targetEntity: Usuario
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                ingresaso_por:
-                    referencedColumnName: id
-            orphanRemoval: false
         estado:
             targetEntity: Config
             cascade: {  }
@@ -75,6 +71,16 @@ BackendBundle\Entity\Incidencia:
             inversedBy: null
             joinColumns:
                 estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        ingresasoPor:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ingresaso_por:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

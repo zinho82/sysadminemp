@@ -135,6 +135,7 @@
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
                             <th>{{macros.th_sortable('fechaIncidencia',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
                             <th>{{macros.th_sortable('numeroIncidencia',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
+                             <th>{{macros.th_sortable('titulo',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
                             <th>{{macros.th_sortable('descripcionError',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
                             <th>{{macros.th_sortable('fechaSolucion',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
                             <th>{{macros.th_sortable('solucion',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'incidencia')}}</th>
@@ -152,16 +153,17 @@
                         <td><a href="{{ path('incidencia_edit', { 'id': incidencium.id }) }}">{{ incidencium.id }}</a></td>
                         <td>{%- if incidencium.fechaIncidencia %}{{ incidencium.fechaIncidencia|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ incidencium.numeroIncidencia }}</td>
-                        <td>{{ incidencium.descripcionError }}</td>
+                          <td>{{ incidencium.titulo|raw }}</td>
+                        <td>{{ incidencium.descripcionError|raw }}</td>
                         <td>{%- if incidencium.fechaSolucion %}{{ incidencium.fechaSolucion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ incidencium.solucion }}</td>
+                        <td>{{ incidencium.solucion |raw}}</td>
                         <td>{%- if incidencium.fechaIngreso %}{{ incidencium.fechaIngreso|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ incidencium.archivo }}</td>
     
                         <td class="actions">
-                            <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('incidencia_by_id_delete', { 'id': incidencium.id}) }}">
+                          <!--  <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('incidencia_by_id_delete', { 'id': incidencium.id}) }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a>
+                            </a>-->
                             <a title='Show' class="btn btn-info btn-sm" href="{{ path('incidencia_show', { 'id': incidencium.id }) }}">
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             </a>
