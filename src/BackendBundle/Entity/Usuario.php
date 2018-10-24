@@ -9,7 +9,7 @@ class Usuario implements UserInterface, \Serializable
 {
     /**
      * @var integer
-     */
+     */ 
     private $id;
 
     /**

@@ -63,11 +63,6 @@ class Rrhh
     private $correoElectronico;
 
     /**
-     * @var \BackendBundle\Entity\Departamentos
-     */
-    private $departamento;
-
-    /**
      * @var \BackendBundle\Entity\Config
      */
     private $cargo;
@@ -336,30 +331,6 @@ class Rrhh
     public function getCorreoElectronico()
     {
         return $this->correoElectronico;
-    }
-
-    /**
-     * Set departamento
-     *
-     * @param \BackendBundle\Entity\Departamentos $departamento
-     *
-     * @return Rrhh
-     */
-    public function setDepartamento(\BackendBundle\Entity\Departamentos $departamento = null)
-    {
-        $this->departamento = $departamento;
-
-        return $this;
-    }
-
-    /**
-     * Get departamento
-     *
-     * @return \BackendBundle\Entity\Departamentos
-     */
-    public function getDepartamento()
-    {
-        return $this->departamento;
     }
 
     /**

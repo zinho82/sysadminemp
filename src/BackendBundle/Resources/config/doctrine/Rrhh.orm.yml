@@ -14,6 +14,9 @@ BackendBundle\Entity\Rrhh:
         fk_rrhh_config3_idx:
             columns:
                 - institucion_salud
+        fk_rrhh_departamentos1_idx:
+            columns:
+                - departamento
     id:
         id:
             type: integer
@@ -89,6 +92,16 @@ BackendBundle\Entity\Rrhh:
                 fixed: false
             column: correo_electronico
     manyToOne:
+        departamento:
+            targetEntity: Departamentos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                departamento:
+                    referencedColumnName: id
+            orphanRemoval: false
         cargo:
             targetEntity: Config
             cascade: {  }

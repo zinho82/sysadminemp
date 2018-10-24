@@ -13,7 +13,7 @@ class Ordenescompra
     private $id;
 
     /**
-     * @var float
+     * @var integer
      */
     private $numeroOc;
 
@@ -45,12 +45,12 @@ class Ordenescompra
     /**
      * @var \BackendBundle\Entity\Config
      */
-    private $tipoOc;
+    private $estado;
 
     /**
      * @var \BackendBundle\Entity\Config
      */
-    private $estado;
+    private $tipoOc;
 
     /**
      * @var \BackendBundle\Entity\Empresa
@@ -81,7 +81,7 @@ class Ordenescompra
     /**
      * Set numeroOc
      *
-     * @param float $numeroOc
+     * @param integer $numeroOc
      *
      * @return Ordenescompra
      */
@@ -95,7 +95,7 @@ class Ordenescompra
     /**
      * Get numeroOc
      *
-     * @return float
+     * @return integer
      */
     public function getNumeroOc()
     {
@@ -223,30 +223,6 @@ class Ordenescompra
     }
 
     /**
-     * Set tipoOc
-     *
-     * @param \BackendBundle\Entity\Config $tipoOc
-     *
-     * @return Ordenescompra
-     */
-    public function setTipoOc(\BackendBundle\Entity\Config $tipoOc = null)
-    {
-        $this->tipoOc = $tipoOc;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoOc
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getTipoOc()
-    {
-        return $this->tipoOc;
-    }
-
-    /**
      * Set estado
      *
      * @param \BackendBundle\Entity\Config $estado
@@ -268,6 +244,30 @@ class Ordenescompra
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Set tipoOc
+     *
+     * @param \BackendBundle\Entity\Config $tipoOc
+     *
+     * @return Ordenescompra
+     */
+    public function setTipoOc(\BackendBundle\Entity\Config $tipoOc = null)
+    {
+        $this->tipoOc = $tipoOc;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoOc
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getTipoOc()
+    {
+        return $this->tipoOc;
     }
 
     /**

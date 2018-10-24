@@ -28,10 +28,10 @@ BackendBundle\Entity\Ordenescompra:
                 strategy: IDENTITY
     fields:
         numeroOc:
-            type: integer
+            type: float
             nullable: true
-            options:
-                unsigned: false
+            precision: 10
+            scale: 0
             column: numero_oc
         fechaEstimadaCompra:
             type: datetime
@@ -57,16 +57,6 @@ BackendBundle\Entity\Ordenescompra:
             precision: 10
             scale: 0
     manyToOne:
-        estado:
-            targetEntity: Config
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                estado:
-                    referencedColumnName: id
-            orphanRemoval: false
         tipoOc:
             targetEntity: Config
             cascade: {  }
@@ -75,6 +65,16 @@ BackendBundle\Entity\Ordenescompra:
             inversedBy: null
             joinColumns:
                 tipo_oc:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estado:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado:
                     referencedColumnName: id
             orphanRemoval: false
         empresa:
