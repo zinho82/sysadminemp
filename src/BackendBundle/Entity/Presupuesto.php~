@@ -197,4 +197,3 @@ class Presupuesto
         return $this->empresa;
     }
 }
-

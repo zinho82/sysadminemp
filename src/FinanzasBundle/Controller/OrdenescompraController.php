@@ -9,6 +9,8 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 use BackendBundle\Entity\Ordenescompra;
 use BackendBundle\Entity\ItemsOc;
+use BackendBundle\Entity\Autorizadores;
+use BackendBundle\Entity\Usuario;
 
 /**
  * Ordenescompra controller.
@@ -192,9 +194,22 @@ set oc.subtotal=(select sum(i.valor * i.cantidad) as total from items_oc i where
             $ordenescompra->setNumeroOc($numoc);
             $em->persist($ordenescompra);
 
-            if($em->flush()==null){
+            if ($em->flush() == null) {
                 $notificacion = $this->get('app.notification_service');
-        $notificacion->set("Se ha ingresado una nueva OC: N° ".$ordenescompra->getNumeroOc().", Para ser ejecutada el día ". date_format($ordenescompra->getFechaEstimadaCompra(),"d-m-Y").', y se encuentra '.$ordenescompra->getEstado(),  $this->getUser(), $this->getUser()->getRrhh()->getDepartamento());
+                $notificacion->set("Se ha ingresado una nueva OC: N° " . $ordenescompra->getNumeroOc() . ", Para ser ejecutada el día " . date_format($ordenescompra->getFechaEstimadaCompra(), "d-m-Y") . ', y se encuentra ' . $ordenescompra->getEstado(), $this->getUser(), $this->getUser()->getRrhh()->getDepartamento());
+                $user = $em->getRepository("BackendBundle:Usuario")->find(5);
+                $oc = $em->getRepository("BackendBundle:Ordenescompra")->find($ordenescompra->getId());
+                $auto = new Autorizadores();
+                $auto->setUsuario($user);
+                $auto->setOrdenescompra($oc);
+                $em->persist($auto);
+                $em->flush();
+                $user = $em->getRepository("BackendBundle:Usuario")->find(4);
+                $auto = new Autorizadores();
+                $auto->setUsuario($user);
+                $auto->setOrdenescompra($oc);
+                $em->persist($auto);
+                $em->flush();
             }
 
             $editLink = $this->generateUrl('ordenescompra_edit', array('id' => $ordenescompra->getId()));

@@ -313,4 +313,3 @@ class Empresa
         return $this->estadoEmpresa;
     }
 }
-

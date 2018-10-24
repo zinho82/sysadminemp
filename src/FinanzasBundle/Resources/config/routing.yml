@@ -13,3 +13,6 @@ backend_itemsoc:
 backend_autorizaciones:
     resource: "@FinanzasBundle/Resources/config/routing/autorizaciones.yml"
     prefix:   /autorizaciones
+backend_autorizadores:
+    resource: "@FinanzasBundle/Resources/config/routing/autorizadores.yml"
+    prefix:   /autorizadores

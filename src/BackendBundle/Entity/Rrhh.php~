@@ -63,6 +63,11 @@ class Rrhh
     private $correoElectronico;
 
     /**
+     * @var \BackendBundle\Entity\Departamentos
+     */
+    private $departamento;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $cargo;
@@ -334,6 +339,30 @@ class Rrhh
     }
 
     /**
+     * Set departamento
+     *
+     * @param \BackendBundle\Entity\Departamentos $departamento
+     *
+     * @return Rrhh
+     */
+    public function setDepartamento(\BackendBundle\Entity\Departamentos $departamento = null)
+    {
+        $this->departamento = $departamento;
+
+        return $this;
+    }
+
+    /**
+     * Get departamento
+     *
+     * @return \BackendBundle\Entity\Departamentos
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+    }
+
+    /**
      * Set cargo
      *
      * @param \BackendBundle\Entity\Config $cargo
@@ -429,4 +458,3 @@ class Rrhh
         return $this->empresa;
     }
 }
-

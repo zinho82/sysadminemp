@@ -342,4 +342,3 @@ class ItemPresupuesto
         return $this->itemGasto;
     }
 }
-

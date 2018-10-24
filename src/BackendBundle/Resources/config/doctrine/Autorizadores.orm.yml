@@ -1,0 +1,41 @@
+BackendBundle\Entity\Autorizadores:
+    type: entity
+    table: autorizadores
+    indexes:
+        fk_autorizadores_ordenescompra1_idx:
+            columns:
+                - ordenescompra
+        fk_autorizadores_usuario1_idx:
+            columns:
+                - usuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        ordenescompra:
+            targetEntity: Ordenescompra
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordenescompra:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

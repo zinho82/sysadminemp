@@ -110,4 +110,3 @@ class Departamentos
         return $this->empresa;
     }
 }
-

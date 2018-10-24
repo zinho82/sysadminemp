@@ -80,5 +80,7 @@ class Config
     {
         return $this->pertenece;
     }
+    public function __toString() {
+        return $this->titulo;
+    }
 }
-

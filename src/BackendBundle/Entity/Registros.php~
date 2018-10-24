@@ -139,4 +139,3 @@ class Registros
         return $this->realizadoPor;
     }
 }
-

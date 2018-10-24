@@ -34,7 +34,7 @@ class RrhhType extends AbstractType
                 'attr'  =>  array(
                     'class' =>  'form-control',
                 ),
-                'required'  =>  true,
+                'required'  =>  false,
             ))
             ->add('rut',  TextType::class,array(
                 'attr'  =>  array(
@@ -93,7 +93,18 @@ class RrhhType extends AbstractType
                     'class' =>  'form-control',
                 ),
  
-            )) 
+            ))
+                            ->add('departamento', EntityType::class, array(
+                'class' => 'BackendBundle\Entity\Departamentos',
+                'choice_label' => 'nombreDepartamento',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => true,
+                             'attr'  =>  array(
+                    'class' =>  'form-control',
+                ),
+ 
+            ))
             ->add('afp', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Config',
                 'choice_label' => 'titulo',

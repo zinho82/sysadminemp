@@ -313,4 +313,3 @@ class Facturas
         return $this->proveedoresClientes;
     }
 }
-

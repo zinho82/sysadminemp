@@ -342,4 +342,3 @@ class Ordenescompra
         return $this->solicitadoPor;
     }
 }
-

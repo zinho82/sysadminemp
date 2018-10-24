@@ -13,7 +13,7 @@ class Ordenescompra
     private $id;
 
     /**
-     * @var integer
+     * @var float
      */
     private $numeroOc;
 
@@ -45,12 +45,12 @@ class Ordenescompra
     /**
      * @var \BackendBundle\Entity\Config
      */
-    private $estado;
+    private $tipoOc;
 
     /**
      * @var \BackendBundle\Entity\Config
      */
-    private $tipoOc;
+    private $estado;
 
     /**
      * @var \BackendBundle\Entity\Empresa
@@ -81,7 +81,7 @@ class Ordenescompra
     /**
      * Set numeroOc
      *
-     * @param integer $numeroOc
+     * @param float $numeroOc
      *
      * @return Ordenescompra
      */
@@ -95,7 +95,7 @@ class Ordenescompra
     /**
      * Get numeroOc
      *
-     * @return integer
+     * @return float
      */
     public function getNumeroOc()
     {
@@ -223,30 +223,6 @@ class Ordenescompra
     }
 
     /**
-     * Set estado
-     *
-     * @param \BackendBundle\Entity\Config $estado
-     *
-     * @return Ordenescompra
-     */
-    public function setEstado(\BackendBundle\Entity\Config $estado = null)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \BackendBundle\Entity\Config
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
      * Set tipoOc
      *
      * @param \BackendBundle\Entity\Config $tipoOc
@@ -268,6 +244,30 @@ class Ordenescompra
     public function getTipoOc()
     {
         return $this->tipoOc;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \BackendBundle\Entity\Config $estado
+     *
+     * @return Ordenescompra
+     */
+    public function setEstado(\BackendBundle\Entity\Config $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 
     /**
@@ -342,4 +342,3 @@ class Ordenescompra
         return $this->solicitadoPor;
     }
 }
-
