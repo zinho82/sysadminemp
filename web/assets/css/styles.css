@@ -8,6 +8,10 @@ body{
     width: 100px;
     border-radius: 10px;
 }
+.panel-info{
+    background-color: #fffa4d !important;
+    border-color: #7643a !important;
+}
 .btn-success{
     color: #000 !important;
 }

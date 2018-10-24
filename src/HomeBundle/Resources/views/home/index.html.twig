@@ -6,6 +6,17 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Panel Notificaciones</div>
                     <div class="panel-body">
+                        {% for notifica in notifica %}
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3>{{notifica.area.nombreDepartamento}}</h3>
+                                    {{notifica.fecha|date('d-m-Y G:i:s')}}<br>
+                                    El usuario {{notifica.usuario}}<br>
+                                    {{notifica.descripcion|raw}}<br>
+                                </div>
+                            </div>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
@@ -28,7 +39,7 @@
                     </div>
                 </div>
             {% endif %}
-            </div>
         </div>
     </div>
+</div>
 {% endblock%}
