@@ -23,7 +23,9 @@ class LoginController extends Controller {
 
         return $this->render('AppBundle:Portada:portada.html.twig');
     }
-
+ /**
+     * @Route("/", name="homepage")
+     */
     public function loginAction(Request $request) {
         if (is_object($this->getUser())) {
             return $this->redirect('home');

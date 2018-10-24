@@ -1,10 +1,13 @@
-app_user:
-    resource: "@AppBundle/Resources/config/routing/user.yml"
-    prefix: /
+#app_user:
+#    resource: "@AppBundle/Resources/config/routing/user.yml"
+#    prefix: /
 app_homepage: 
         path: /
-        defaults: { _controller: HomeBundle:Home:index } 
-app_usuario:
-    resource: "@AppBundle/Resources/config/routing/usuario.yml"
-    prefix: /
-
+        defaults: { _controller: @HomeBundle:Home:index } 
+#app_usuario:
+#    resource: "@AppBundle/Resources/config/routing/usuario.yml"
+#    prefix: /
+app_homepage:
+    path:     /
+    defaults: { _controller: @LoginBundle:Login:index }
+    

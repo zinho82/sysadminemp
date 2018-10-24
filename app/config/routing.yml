@@ -35,5 +35,5 @@ login:
 #    prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@LoginBundle/Controller/"
     type:     annotation
