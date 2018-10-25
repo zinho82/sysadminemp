@@ -283,5 +283,33 @@ class Incidencia
     {
         return $this->estado;
     }
-}
+    /**
+     * @var string
+     */
+    private $titulo;
 
+
+    /**
+     * Set titulo
+     *
+     * @param string $titulo
+     *
+     * @return Incidencia
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * Get titulo
+     *
+     * @return string
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+}

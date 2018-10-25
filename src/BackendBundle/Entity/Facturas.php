@@ -312,4 +312,33 @@ class Facturas
     {
         return $this->proveedoresClientes;
     }
+    /**
+     * @var float
+     */
+    private $neto;
+
+
+    /**
+     * Set neto
+     *
+     * @param float $neto
+     *
+     * @return Facturas
+     */
+    public function setNeto($neto)
+    {
+        $this->neto = $neto;
+
+        return $this;
+    }
+
+    /**
+     * Get neto
+     *
+     * @return float
+     */
+    public function getNeto()
+    {
+        return $this->neto;
+    }
 }

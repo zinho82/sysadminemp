@@ -341,4 +341,7 @@ class Ordenescompra
     {
         return $this->solicitadoPor;
     }
+    public function __toString() {
+        return (string) $this->numeroOc;
+    }
 }

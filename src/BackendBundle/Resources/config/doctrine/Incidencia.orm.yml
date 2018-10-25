@@ -22,6 +22,12 @@ BackendBundle\Entity\Incidencia:
             type: datetime
             nullable: true
             column: fecha_incidencia
+        titulo:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
         numeroIncidencia:
             type: string
             nullable: true
@@ -51,12 +57,6 @@ BackendBundle\Entity\Incidencia:
             nullable: true
             column: fecha_ingreso
         archivo:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
-        titulo:
             type: string
             nullable: true
             length: 45

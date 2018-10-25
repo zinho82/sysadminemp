@@ -47,6 +47,11 @@ BackendBundle\Entity\Facturas:
             precision: 10
             scale: 0
             column: numero_factura
+        neto:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
     manyToOne:
         campana:
             targetEntity: Campana
