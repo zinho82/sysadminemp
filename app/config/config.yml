@@ -11,6 +11,7 @@ imports:
     - { resource: "@FinanzasBundle/Resources/config/services.yml" }
     - { resource: "@InventarioBundle/Resources/config/services.yml" }
     - { resource: "@IncidenciasBundle/Resources/config/services.yml" }
+    - { resource: "@NotificacionesBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed

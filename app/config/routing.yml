@@ -1,3 +1,6 @@
+notificaciones:
+    resource: "@NotificacionesBundle/Resources/config/routing.yml"
+    prefix:   /
 incidencias:
     resource: "@IncidenciasBundle/Resources/config/routing.yml"
     prefix:   /

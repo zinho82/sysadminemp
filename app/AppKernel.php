@@ -29,6 +29,8 @@ class AppKernel extends Kernel {
             new FinanzasBundle\FinanzasBundle(),
             new InventarioBundle\InventarioBundle(),
             new IncidenciasBundle\IncidenciasBundle(),
+            new NotificacionesBundle\NotificacionesBundle(),
+            
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

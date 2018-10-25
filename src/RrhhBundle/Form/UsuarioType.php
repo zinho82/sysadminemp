@@ -36,20 +36,17 @@ class UsuarioType extends AbstractType
                 ),
                 'required'  =>  true,
             ))
-            ->add('empresa', EntityType::class, array(
-                'class' => 'BackendBundle\Entity\Empresa',
-                'choice_label' => 'nombre',
-                'placeholder' => 'Please choose',
-                'empty_data' => null,
-                'required' => true
- 
-            )) 
             ->add('rrhh', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Rrhh',
                 'choice_label' => 'nombre',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
-                'required' => true
+                'required' => true,
+                 'attr'  =>  array(
+                    'class' => 'form-control',
+                ),
+                'label'  =>  'Nombre Trabajador',
+                
  
             )) 
         ;

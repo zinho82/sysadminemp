@@ -1,0 +1,7 @@
+backend_notificaciones:
+    resource: "@NotificacionesBundle/Resources/config/routing/notificaciones.yml"
+    prefix:   /notificaciones
+
+
+
+
