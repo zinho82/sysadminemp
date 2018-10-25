@@ -1,0 +1,43 @@
+facturas:
+    path:  /
+    defaults: { _controller: "FinanzasBundle:Facturas:index" }
+
+facturas_show:
+    path:  /{id}/show
+    defaults: { _controller: "FinanzasBundle:Facturas:show" }
+
+facturas_new:
+    path:  /new/{id}
+    defaults: { _controller: "FinanzasBundle:Facturas:new",id:null }
+    methods: [get|post]
+    
+facturas_create:
+    path:  /create
+    defaults: { _controller: "FinanzasBundle:Facturas:create" }
+    requirements: { _method: post }
+
+facturas_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "FinanzasBundle:Facturas:edit" }
+
+facturas_update:
+    path:  /{id}/update
+    defaults: { _controller: "FinanzasBundle:Facturas:update" }
+    requirements: { _method: post|put }
+
+facturas_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "FinanzasBundle:Facturas:delete" }
+    requirements: { _method: post|delete }
+    
+facturas_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "FinanzasBundle:Facturas:deleteById" }
+    requirements: { _method: get }
+    
+
+facturas_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "FinanzasBundle:Facturas:bulk" }
+    requirements: { _method: post }
+    

@@ -63,6 +63,10 @@ class DocumentosController extends Controller {
                    $drh=null;
                     $file->move("uploads/empresa", $fileName);
                     break;
+                case 'factura': 
+                   $drh=null;
+                    $file->move("uploads/facturas", $fileName);
+                    break;
                    
            }
 $dempresa=$em->getRepository("BackendBundle:empresa")->find($empresa);

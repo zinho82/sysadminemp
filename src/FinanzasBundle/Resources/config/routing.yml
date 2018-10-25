@@ -16,3 +16,6 @@ backend_autorizaciones:
 backend_autorizadores:
     resource: "@FinanzasBundle/Resources/config/routing/autorizadores.yml"
     prefix:   /autorizadores
+backend_facturas:
+    resource: "@FinanzasBundle/Resources/config/routing/facturas.yml"
+    prefix:   /facturas
