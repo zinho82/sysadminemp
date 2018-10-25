@@ -19,7 +19,7 @@ class HomeController extends Controller {
     $Notificaciones = $paginator->paginate(
         $Notificaciones, /* query NOT result */
         $request->query->getInt('page', 1)/*page number*/,
-        3/*limit per page*/
+        10/*limit per page*/
             );
         return $this->render('HomeBundle:home:index.html.twig', array(
                     'notiFinanzas' => null,
