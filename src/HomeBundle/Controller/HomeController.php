@@ -32,7 +32,6 @@ class HomeController extends Controller {
         10/*limit per page*/
             );
         return $this->render('HomeBundle:home:index.html.twig', array(
-                    'notiFinanzas' => null,
                     'notifica' => $Notificaciones,
                     'facturas' => $Facturas,
                     'pantallas' => null,
