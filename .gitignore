@@ -15,3 +15,5 @@
 /web/bundles/
 /Documents/
 *.mpp
+/Documents_1/
+*.mw*
