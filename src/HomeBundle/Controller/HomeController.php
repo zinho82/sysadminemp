@@ -11,6 +11,11 @@ class HomeController extends Controller {
 
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
+        $repo_factura = $em->getRepository("BackendBundle:Facturas");
+        $Facturas = $repo_factura->createQueryBuilder('c')
+                        ->where("c.estadoPago != 27")
+                        ->orderBy('c.fechaIngreso', 'desc')
+                        ->getQuery()->getResult();
         $Notificaciones=$em->getRepository("BackendBundle:Notificaciones");
         $Notificaciones=$Notificaciones->createQueryBuilder('c')
     ->orderBy("c.fecha","desc")
@@ -21,11 +26,16 @@ class HomeController extends Controller {
         $request->query->getInt('page', 1)/*page number*/,
         10/*limit per page*/
             );
+    $Facturas= $paginator->paginate(
+        $Facturas, /* query NOT result */
+        $request->query->getInt('page', 1)/*page number*/,
+        10/*limit per page*/
+            );
         return $this->render('HomeBundle:home:index.html.twig', array(
                     'notiFinanzas' => null,
-                    'facturas' => null,
-            'notifica'  => $Notificaciones,
-            'pantallas' =>  null,
+                    'notifica' => $Notificaciones,
+                    'facturas' => $Facturas,
+                    'pantallas' => null,
         ));
     }
 

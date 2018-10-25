@@ -170,8 +170,10 @@ class FacturasController extends Controller
             $factura->setProveedoresClientes($pro);
             $factura->setFechaIngreso(new \DateTime);
             $em->persist($factura);
-            $em->flush();
-            
+            if ($em->flush() == null) {
+                $notificacion = $this->get('app.notification_service');
+                $notificacion->set("Se ha ingresado una nueva Factura: N° " . $factura->getNumerofactura() . ", y se encuentra  " . $factura->getEstadoPago() . '. Correspondiente a la OC: '.$factura->getOrdenescompra(), $this->getUser(), $this->getUser()->getRrhh()->getDepartamento());
+            }
             $editLink = $this->generateUrl('facturas_edit', array('id' => $factura->getId()));
             $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New factura was created successfully.</a>" );
             

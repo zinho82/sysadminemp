@@ -1,6 +1,7 @@
 {% extends "AppBundle:Layouts:layout.html.twig" %}
 {% block body %}
     <div class="col-lg-12 col-sm-12 col-md-12">
+        {{dump(facturas)}}
         <div class="row">
             <div class="col-lg-4 col-sm-4 col-md-4 " id="sidebar">
                 <div class="panel panel-default">
@@ -31,6 +32,46 @@
                             <div class="col-lg-6 col-sm-6 col-md-6">
                                 <div class="panel-default">
                                     <div class="panel-heading">Servidor Datos</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-md-6">
+                                <div class="panel-default">
+                                    <div class="panel-heading">Servidor Asterisk</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if app.user.role=='ROLE_ADMIN' or app.user.role=='ROLE_FINANZAS'  %}
+                <div class="col-lg8 col-sm-8 col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Panel Finanzas</div>
+                        <div class="panel-body">
+                            <div class="col-lg-6 col-sm-6 col-md-6">
+                                <div class="panel-default">
+                                    <div class="panel-heading">Facturas Pendientes</div>
+                                    <div class="panel-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <th>Fecha Ingreso</th>
+                                            <th>Numero Factura</th>
+                                            <th>Total Neto</th>
+                                            <th>Estado</th>
+                                        </thead>
+                                        <tbody>
+                                            {% for facturas in facturas %}
+                                                <tr>
+                                                    <td>{{facturas.fecha |date("d-m-Y")}}</td>
+                                                    <td>{{facturas.numerofactura|number_format(0,',','.')}}</td>
+                                                    <td>{{facturas.neto|number_format(0,',','.')}}</td>
+                                                    <td>{{facturas.estadopago}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                     </tbody>
+                                        </table>
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-6 col-md-6">
