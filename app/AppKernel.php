@@ -21,7 +21,7 @@ class AppKernel extends Kernel {
             new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new LoginBundle\LoginBundle(),
-//            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new HomeBundle\HomeBundle(),
             new RrhhBundle\RrhhBundle(),
             new DocumentosBundle\DocumentosBundle(),
