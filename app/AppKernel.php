@@ -31,6 +31,7 @@ class AppKernel extends Kernel {
             new IncidenciasBundle\IncidenciasBundle(),
             new NotificacionesBundle\NotificacionesBundle(),
             new BancoBundle\BancoBundle(),
+            new ConfigBundle\ConfigBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

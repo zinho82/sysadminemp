@@ -1,0 +1,42 @@
+config:
+    path:  /
+    defaults: { _controller: "ConfigBundle:Config:index" }
+
+config_show:
+    path:  /{id}/show
+    defaults: { _controller: "ConfigBundle:Config:show" }
+
+config_new:
+    path:  /new
+    defaults: { _controller: "ConfigBundle:Config:new" }
+
+config_create:
+    path:  /create
+    defaults: { _controller: "ConfigBundle:Config:create" }
+    requirements: { _method: post }
+
+config_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "ConfigBundle:Config:edit" }
+
+config_update:
+    path:  /{id}/update
+    defaults: { _controller: "ConfigBundle:Config:update" }
+    requirements: { _method: post|put }
+
+config_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "ConfigBundle:Config:delete" }
+    requirements: { _method: post|delete }
+    
+config_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "ConfigBundle:Config:deleteById" }
+    requirements: { _method: get }
+    
+
+config_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "ConfigBundle:Config:bulk" }
+    requirements: { _method: post }
+    

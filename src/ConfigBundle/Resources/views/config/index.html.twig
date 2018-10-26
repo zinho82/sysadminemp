@@ -1,18 +1,16 @@
 {% extends 'AppBundle:Layouts:layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - movimientosBanco index
+{{ parent() }} - config index
 {% endblock %}
 
 {% block body %}
-
 <div class="col-lg-12 col-sm-12 col-md-12">
-    
 
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
-            <h2><a href="{{ path('movimientosbanco') }}">MovimientosBanco</a></h2>
+            <h2><a href="{{ path('config') }}">Config</a></h2>
         </div>
     </div>       
 
@@ -20,25 +18,16 @@
 <div class="col-md-12">
     <div  id="filters" class="collapse">
 
-        <form class="well" action="{{ path('movimientosbanco') }}" method="get" >
+        <form class="well" action="{{ path('config') }}" method="get" >
             <div class="row">
                  
                     <div class="col-md-6">{{ form_row(filterForm.id) }}</div>
 
                  
-                    <div class="col-md-6">{{ form_row(filterForm.detalle) }}</div>
+                    <div class="col-md-6">{{ form_row(filterForm.titulo) }}</div>
 
                  
-                    <div class="col-md-6">{{ form_row(filterForm.fecha) }}</div>
-
-                 
-                    <div class="col-md-6">{{ form_row(filterForm.fechaIngreso) }}</div>
-
-                 
-                    <div class="col-md-6">{{ form_row(filterForm.monto) }}</div>
-
-                 
-                    <div class="col-md-6">{{ form_row(filterForm.numeroOperacion) }}</div>
+                    <div class="col-md-6">{{ form_row(filterForm.pertenece) }}</div>
 
                                 <div class="col-md-6">
                     {{ form_rest(filterForm) }}
@@ -61,11 +50,11 @@
     <!-- PAGE SIZE -->
     <div class="pagination form-inline ">
         <select class = "form-control"  onchange="window.location = this.value" >
-            <option value='{{ path('movimientosbanco', app.request.query.all|merge({'pcg_show': '10'})) }}' {% if app.request.get('pcg_show') == 10 %} selected {% endif %}>10</option>
-            <option value='{{ path('movimientosbanco', app.request.query.all|merge({'pcg_show': '20'})) }}' {% if app.request.get('pcg_show') == 20 %} selected {% endif %}>20</option>
-            <option value='{{ path('movimientosbanco', app.request.query.all|merge({'pcg_show': '50'})) }}' {% if app.request.get('pcg_show') == 50 %} selected {% endif %}>50</option>
-            <option value='{{ path('movimientosbanco', app.request.query.all|merge({'pcg_show': '100'})) }}' {% if app.request.get('pcg_show') == 100 %} selected {% endif %}>100</option>
-            <option value='{{ path('movimientosbanco', app.request.query.all|merge({'pcg_show': '500'})) }}' {% if app.request.get('pcg_show') == 500 %} selected {% endif %}>500</option>
+            <option value='{{ path('config', app.request.query.all|merge({'pcg_show': '10'})) }}' {% if app.request.get('pcg_show') == 10 %} selected {% endif %}>10</option>
+            <option value='{{ path('config', app.request.query.all|merge({'pcg_show': '20'})) }}' {% if app.request.get('pcg_show') == 20 %} selected {% endif %}>20</option>
+            <option value='{{ path('config', app.request.query.all|merge({'pcg_show': '50'})) }}' {% if app.request.get('pcg_show') == 50 %} selected {% endif %}>50</option>
+            <option value='{{ path('config', app.request.query.all|merge({'pcg_show': '100'})) }}' {% if app.request.get('pcg_show') == 100 %} selected {% endif %}>100</option>
+            <option value='{{ path('config', app.request.query.all|merge({'pcg_show': '500'})) }}' {% if app.request.get('pcg_show') == 500 %} selected {% endif %}>500</option>
         </select>
     </div>
     <!-- END PAGE SIZE -->
@@ -79,7 +68,7 @@
 
 <div class="col-md-3">
 
-            <a class="btn btn-primary h3 pull-right" href="{{ path('movimientosbanco_new') }}" style="margin-bottom:10px">
+            <a class="btn btn-primary h3 pull-right" href="{{ path('config_new') }}" style="margin-bottom:10px">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
         </a>
         <a class="btn dropdown-toggle pull-right h3" data-toggle="collapse" data-target="#filters">
@@ -121,43 +110,37 @@
 <div class="row">
 
         <div class="table-responsive col-md-12">
-        <form method="POST" id="bulk_form" action="{{ path('movimientosbanco_bulk_action') }} ">
+        <form method="POST" id="bulk_form" action="{{ path('config_bulk_action') }} ">
             <table class="table table-striped table-hover table-bordered" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
                         <th width="20px"><input type="checkbox" class="check-all" onclick="toggleAll(this)"></th>
 
                 {% import "PetkoparaCrudGeneratorBundle::macros/th_sortable.html.twig" as macros %}
-                            <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
-                            <th>{{macros.th_sortable('detalle',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
-                            <th>{{macros.th_sortable('fecha',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
-                            <th>{{macros.th_sortable('fechaIngreso',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
-                            <th>{{macros.th_sortable('monto',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
-                            <th>{{macros.th_sortable('numeroOperacion',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'movimientosbanco')}}</th>
+                            <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'config')}}</th>
+                            <th>{{macros.th_sortable('titulo',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'config')}}</th>
+                            <th>{{macros.th_sortable('pertenece',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'config')}}</th>
     
                        
                         <th width = "130px">List</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for movimientosBanco in movimientosBancos %}
+                    {% for config in configs %}
                     <tr>
-                        <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{movimientosBanco.id}}"/></td>
-                        <td><a href="{{ path('movimientosbanco_edit', { 'id': movimientosBanco.id }) }}">{{ movimientosBanco.id }}</a></td>
-                        <td>{{ movimientosBanco.detalle }}</td>
-                        <td>{%- if movimientosBanco.fecha %}{{ movimientosBanco.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{%- if movimientosBanco.fechaIngreso %}{{ movimientosBanco.fechaIngreso|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ movimientosBanco.monto }}</td>
-                        <td>{{ movimientosBanco.numeroOperacion }}</td>
+                        <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{config.id}}"/></td>
+                        <td><a href="{{ path('config_edit', { 'id': config.id }) }}">{{ config.id }}</a></td>
+                        <td>{{ config.titulo }}</td>
+                        <td>{{ config.pertenece }}</td>
     
                         <td class="actions">
-                            <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('movimientosbanco_by_id_delete', { 'id': movimientosBanco.id}) }}">
+                            <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('config_by_id_delete', { 'id': config.id}) }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </a>
-                            <a title='Show' class="btn btn-info btn-sm" href="{{ path('movimientosbanco_show', { 'id': movimientosBanco.id }) }}">
+                            <a title='Show' class="btn btn-info btn-sm" href="{{ path('config_show', { 'id': config.id }) }}">
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             </a>
-                            <a  title='Edit' class="btn btn-primary btn-sm" href="{{ path('movimientosbanco_edit', { 'id': movimientosBanco.id }) }}">
+                            <a  title='Edit' class="btn btn-primary btn-sm" href="{{ path('config_edit', { 'id': config.id }) }}">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </a>
                         </td>
@@ -196,7 +179,6 @@
 </div> <!-- /#bottom -->
 
 
-</div>
-
+        </div>
 {% endblock %}
 

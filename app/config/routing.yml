@@ -1,3 +1,7 @@
+config:
+    resource: "@ConfigBundle/Resources/config/routing.yml"
+    prefix:   /
+
 banco:
     resource: "@BancoBundle/Resources/config/routing.yml"
     prefix:   /

@@ -27,6 +27,25 @@ BackendBundle\Entity\MovimientosBanco:
             length: 450
             options:
                 fixed: false
+        fecha:
+            type: datetime
+            nullable: true
+        fechaIngreso:
+            type: datetime
+            nullable: true
+            column: fecha_ingreso
+        monto:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        numeroOperacion:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+            column: numero_operacion
     manyToOne:
         banco:
             targetEntity: Banco

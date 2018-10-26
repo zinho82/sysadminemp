@@ -17,9 +17,13 @@ class MovimientosBancoType extends AbstractType
     {
         $builder
             ->add('detalle')
+            ->add('fecha')
+            ->add('fechaIngreso')
+            ->add('monto')
+            ->add('numeroOperacion')
             ->add('banco', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Banco',
-                'choice_label' => 'numeroCuentya',
+                'choice_label' => 'numeroCuenta',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
                 'required' => false

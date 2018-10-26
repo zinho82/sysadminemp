@@ -16,10 +16,14 @@ class MovimientosBancoFilterType extends AbstractType
         $builder
             ->add('id', Filters\NumberFilterType::class)
             ->add('detalle', Filters\TextFilterType::class)
+            ->add('fecha', Filters\DateTimeFilterType::class)
+            ->add('fechaIngreso', Filters\DateTimeFilterType::class)
+            ->add('monto', Filters\NumberFilterType::class)
+            ->add('numeroOperacion', Filters\TextFilterType::class)
         
             ->add('banco', Filters\EntityFilterType::class, array(
                     'class' => 'BackendBundle\Entity\Banco',
-                    'choice_label' => 'numeroCuentya',
+                    'choice_label' => 'numeroCuenta',
             )) 
             ->add('tipoMoviemiento', Filters\EntityFilterType::class, array(
                     'class' => 'BackendBundle\Entity\Config',

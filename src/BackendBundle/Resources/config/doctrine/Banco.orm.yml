@@ -28,6 +28,11 @@ BackendBundle\Entity\Banco:
             options:
                 fixed: false
             column: numero_cuenta
+        saldo:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
     manyToOne:
         nombreBanco:
             targetEntity: Config
