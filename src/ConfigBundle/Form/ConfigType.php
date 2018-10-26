@@ -5,6 +5,9 @@ namespace ConfigBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class ConfigType extends AbstractType
 {
@@ -15,8 +18,27 @@ class ConfigType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo')
-            ->add('pertenece')
+            ->add('titulo', TextType::class,array(
+                 'attr' => array(
+                        'class' => 'form-control',
+                    ),
+            ))
+            ->add('pertenece', EntityType::class, array(
+                'class' => 'BackendBundle\Entity\Config',
+                'choice_label' => 'titulo',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => false,
+                'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+                        return $co->createQueryBuilder('u')
+                                ->where('u.pertenece is null')
+                                ->orderBy('u.titulo', 'asc');
+                    },
+                             'attr' => array(
+                        'class' => 'form-control',
+                    ),
+ 
+            )) 
         ;
     }
     
