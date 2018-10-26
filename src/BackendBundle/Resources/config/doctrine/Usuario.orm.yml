@@ -5,9 +5,6 @@ BackendBundle\Entity\Usuario:
         fk_usuario_rrhh1_idx:
             columns:
                 - rrhh
-        fk_usuario_empresa1_idx:
-            columns:
-                - empresa
     id:
         id:
             type: integer
@@ -37,16 +34,6 @@ BackendBundle\Entity\Usuario:
             options:
                 fixed: false
     manyToOne:
-        empresa:
-            targetEntity: Empresa
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                empresa:
-                    referencedColumnName: id
-            orphanRemoval: false
         rrhh:
             targetEntity: Rrhh
             cascade: {  }

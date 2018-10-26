@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
+
 class FacturasType extends AbstractType {
 
     /**
@@ -30,14 +31,12 @@ class FacturasType extends AbstractType {
                     'label' => 'Numero de Factura',
                     'required' => true,
                 ))
-                ->add('campana', EntityType::class, array(
-                    'class' => 'BackendBundle\Entity\Campana',
-                    'choice_label' => 'descripcion',
-                    'placeholder' => 'Please choose',
-                    'empty_data' => null,
-                    'required' => false
+                ->add('fechaPago', DateType::class, array(
+                    'attr' => array(
+                        'class' => 'form-control',
+                    ),
+                    'label' => 'Fecha Pago Factura',
                 ))
-                ->add('fechaPago')
                 ->add('estadoPago', EntityType::class, array(
                     'class' => 'BackendBundle\Entity\Config',
                     'choice_label' => 'titulo',
@@ -53,16 +52,31 @@ class FacturasType extends AbstractType {
                         'class' => 'form-control',
                     ),
                 ))
-                ->add('departamento', EntityType::class, array(
-                    'class' => 'BackendBundle\Entity\Departamentos',
-                    'choice_label' => 'nombreDepartamento',
+                 ->add('itemGasto', EntityType::class, array(
+                    'class' => 'BackendBundle\Entity\Config',
+                    'choice_label' => 'titulo',
                     'placeholder' => 'Please choose',
                     'empty_data' => null,
-                    'required' => false,
+                    'required' => true,
+                    'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+                        return $co->createQueryBuilder('u')
+                                ->where('u.pertenece=47')
+                                ->orderBy('u.titulo', 'asc');
+                    },
                     'attr' => array(
                         'class' => 'form-control',
                     ),
                 ))
+//                ->add('departamento', EntityType::class, array(
+//                    'class' => 'BackendBundle\Entity\Departamentos',
+//                    'choice_label' => 'nombreDepartamento',
+//                    'placeholder' => 'Please choose',
+//                    'empty_data' => null,
+//                    'required' => false,
+//                    'attr' => array(
+//                        'class' => 'form-control',
+//                    ),
+//                ))
                 ->add('neto', TextType::class, array(
                     'attr' => array(
                         'class' => 'form-control',

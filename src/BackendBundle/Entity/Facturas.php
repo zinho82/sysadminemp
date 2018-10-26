@@ -33,6 +33,16 @@ class Facturas
     private $numeroFactura;
 
     /**
+     * @var float
+     */
+    private $neto;
+
+    /**
+     * @var \BackendBundle\Entity\Config
+     */
+    private $itemGasto;
+
+    /**
      * @var \BackendBundle\Entity\Campana
      */
     private $campana;
@@ -167,6 +177,54 @@ class Facturas
     public function getNumeroFactura()
     {
         return $this->numeroFactura;
+    }
+
+    /**
+     * Set neto
+     *
+     * @param float $neto
+     *
+     * @return Facturas
+     */
+    public function setNeto($neto)
+    {
+        $this->neto = $neto;
+
+        return $this;
+    }
+
+    /**
+     * Get neto
+     *
+     * @return float
+     */
+    public function getNeto()
+    {
+        return $this->neto;
+    }
+
+    /**
+     * Set itemGasto
+     *
+     * @param \BackendBundle\Entity\Config $itemGasto
+     *
+     * @return Facturas
+     */
+    public function setItemGasto(\BackendBundle\Entity\Config $itemGasto = null)
+    {
+        $this->itemGasto = $itemGasto;
+
+        return $this;
+    }
+
+    /**
+     * Get itemGasto
+     *
+     * @return \BackendBundle\Entity\Config
+     */
+    public function getItemGasto()
+    {
+        return $this->itemGasto;
     }
 
     /**
@@ -312,33 +370,5 @@ class Facturas
     {
         return $this->proveedoresClientes;
     }
-    /**
-     * @var float
-     */
-    private $neto;
-
-
-    /**
-     * Set neto
-     *
-     * @param float $neto
-     *
-     * @return Facturas
-     */
-    public function setNeto($neto)
-    {
-        $this->neto = $neto;
-
-        return $this;
-    }
-
-    /**
-     * Get neto
-     *
-     * @return float
-     */
-    public function getNeto()
-    {
-        return $this->neto;
-    }
 }
+

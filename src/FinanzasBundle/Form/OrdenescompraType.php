@@ -23,11 +23,10 @@ class OrdenescompraType extends AbstractType {
 //                        'class' => 'form-control'
 //                    )
 //                ))
-                ->add('fechaEstimadaCompra', DateType::class,array(
-                    'attr'  => array(
-                    'class' =>  'form-control',
-                        
-                )
+                ->add('fechaEstimadaCompra', DateType::class, array(
+                    'attr' => array(
+                        'class' => 'form-control',
+                    )
                 ))
                 ->add('proveedoresClientes', EntityType::class, array(
                     'class' => 'BackendBundle\Entity\ProveedoresClientes',
@@ -35,7 +34,17 @@ class OrdenescompraType extends AbstractType {
                     'placeholder' => 'Please choose',
                     'empty_data' => null,
                     'required' => true,
-                    
+                    'attr' => array(
+                        'class' => 'form-control'
+                    )
+                ))
+                ->add('campana', EntityType::class, array(
+                    'class' => 'BackendBundle\Entity\Campana',
+                    'choice_label' => 'nombre',
+                    'placeholder' => 'Please choose',
+                    'empty_data' => null,
+                    'required' => true,
+                    'label' => 'Campaña / Proyecto',
                     'attr' => array(
                         'class' => 'form-control'
                     )
@@ -49,7 +58,7 @@ class OrdenescompraType extends AbstractType {
                     'attr' => array(
                         'class' => 'form-control'
                     ),
-                     'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+                    'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
                         return $co->createQueryBuilder('u')
                                 ->where('u.pertenece=31')
                                 ->orderBy('u.titulo', 'asc');

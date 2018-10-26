@@ -17,6 +17,9 @@ BackendBundle\Entity\Ordenescompra:
         fk_ordenescompra_config2_idx:
             columns:
                 - estado
+        fk_ordenescompra_campana1_idx:
+            columns:
+                - campana
     id:
         id:
             type: integer
@@ -57,6 +60,16 @@ BackendBundle\Entity\Ordenescompra:
             precision: 10
             scale: 0
     manyToOne:
+        campana:
+            targetEntity: Campana
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                campana:
+                    referencedColumnName: id
+            orphanRemoval: false
         tipoOc:
             targetEntity: Config
             cascade: {  }

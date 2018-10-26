@@ -57,6 +57,7 @@
                                             <th>Numero Factura</th>
                                             <th>Total Neto</th>
                                             <th>Estado</th>
+                                            <th>Empresa</th>
                                         </thead>
                                         <tbody>
                                             {% for facturas in facturas %}
@@ -65,6 +66,7 @@
                                                     <td>{{facturas.numerofactura|number_format(0,',','.')}}</td>
                                                     <td>{{facturas.neto|number_format(0,',','.')}}</td>
                                                     <td>{{facturas.estadopago}}</td>
+                                                    <td>{{facturas.ordenescompra.empresa}}</td>
                                                 </tr>
                                                 {% endfor %}
                                      </tbody>

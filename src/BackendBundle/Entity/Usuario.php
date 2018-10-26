@@ -1,15 +1,17 @@
 <?php
 
 namespace BackendBundle\Entity;
+
 use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * Usuario
  */
-class Usuario implements UserInterface, \Serializable
-{
+class Usuario implements UserInterface, \Serializable {
+
     /**
      * @var integer
-     */ 
+     */
     private $id;
 
     /**
@@ -37,14 +39,12 @@ class Usuario implements UserInterface, \Serializable
      */
     private $empresa;
 
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -55,8 +55,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return Usuario
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -67,8 +66,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -79,8 +77,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return Usuario
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -91,8 +88,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -103,8 +99,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return Usuario
      */
-    public function setRole($role)
-    {
+    public function setRole($role) {
         $this->role = $role;
 
         return $this;
@@ -115,8 +110,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return string
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
@@ -127,8 +121,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return Usuario
      */
-    public function setRrhh(\BackendBundle\Entity\Rrhh $rrhh = null)
-    {
+    public function setRrhh(\BackendBundle\Entity\Rrhh $rrhh = null) {
         $this->rrhh = $rrhh;
 
         return $this;
@@ -139,8 +132,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return \BackendBundle\Entity\Rrhh
      */
-    public function getRrhh()
-    {
+    public function getRrhh() {
         return $this->rrhh;
     }
 
@@ -151,8 +143,7 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return Usuario
      */
-    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null)
-    {
+    public function setEmpresa(\BackendBundle\Entity\Empresa $empresa = null) {
         $this->empresa = $empresa;
 
         return $this;
@@ -163,28 +154,26 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return \BackendBundle\Entity\Empresa
      */
-    public function getEmpresa()
-    {
-        return $this->empresa;
+    public function __toString() {
+        return $this->username;
     }
-     public function __toString() {
-        return (string)$this->username;
-    }
+
     public function serialize() {
         return serialize(array(
-        $this->id,
-        $this->username,
-        $this->password,
-        $this->empresa,
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->rrhh
         ));
     }
+
     public function unserialize($serialized) {
         list(
-        $this->id,
-        $this->username,
-        $this->password
-                )= unserialize($serialized);
-        
+                $this->id,
+                $this->username,
+                $this->password,
+                    $this->rrhh
+                ) = unserialize($serialized);
     }
 
     public function eraseCredentials() {
@@ -193,10 +182,10 @@ class Usuario implements UserInterface, \Serializable
 
     public function getRoles() {
         return array("ROLE_ADMIN");
-        
     }
 
     public function getSalt() {
         return null;
     }
+
 }

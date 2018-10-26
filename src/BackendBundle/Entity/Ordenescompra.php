@@ -43,6 +43,11 @@ class Ordenescompra
     private $subtotal;
 
     /**
+     * @var \BackendBundle\Entity\Campana
+     */
+    private $campana;
+
+    /**
      * @var \BackendBundle\Entity\Config
      */
     private $tipoOc;
@@ -223,6 +228,30 @@ class Ordenescompra
     }
 
     /**
+     * Set campana
+     *
+     * @param \BackendBundle\Entity\Campana $campana
+     *
+     * @return Ordenescompra
+     */
+    public function setCampana(\BackendBundle\Entity\Campana $campana = null)
+    {
+        $this->campana = $campana;
+
+        return $this;
+    }
+
+    /**
+     * Get campana
+     *
+     * @return \BackendBundle\Entity\Campana
+     */
+    public function getCampana()
+    {
+        return $this->campana;
+    }
+
+    /**
      * Set tipoOc
      *
      * @param \BackendBundle\Entity\Config $tipoOc
@@ -345,3 +374,4 @@ class Ordenescompra
         return (string) $this->numeroOc;
     }
 }
+

@@ -109,4 +109,7 @@ class Departamentos
     {
         return $this->empresa;
     }
+    public function __toString() {
+        return $this->nombreDepartamento;
+    }
 }
