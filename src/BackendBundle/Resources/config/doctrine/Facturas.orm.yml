@@ -20,7 +20,7 @@ BackendBundle\Entity\Facturas:
         fk_facturas_campana1_idx:
             columns:
                 - campana
-        fk_facturas_ordenescompra2_idx:
+        fk_facturas_config2_idx:
             columns:
                 - item_gasto
     id:
@@ -56,6 +56,16 @@ BackendBundle\Entity\Facturas:
             precision: 10
             scale: 0
     manyToOne:
+        itemGasto:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                item_gasto:
+                    referencedColumnName: id
+            orphanRemoval: false
         campana:
             targetEntity: Campana
             cascade: {  }
@@ -64,16 +74,6 @@ BackendBundle\Entity\Facturas:
             inversedBy: null
             joinColumns:
                 campana:
-                    referencedColumnName: id
-            orphanRemoval: false
-        itemGasto:
-            targetEntity: Ordenescompra
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                item_gasto:
                     referencedColumnName: id
             orphanRemoval: false
         estadoPago:

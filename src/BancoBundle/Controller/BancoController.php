@@ -1,6 +1,6 @@
 <?php
 
-namespace BackendBundle\Controller;
+namespace BancoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,30 +9,30 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
-use BackendBundle\Entity\Facturas;
+use BackendBundle\Entity\Banco;
 
 /**
- * Facturas controller.
+ * Banco controller.
  *
  */
-class FacturasController extends Controller
+class BancoController extends Controller
 {
     /**
-     * Lists all Facturas entities.
+     * Lists all Banco entities.
      *
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('BackendBundle:Facturas')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('BackendBundle:Banco')->createQueryBuilder('e');
 
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
-        list($facturas, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        list($bancos, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
-        return $this->render('facturas/index.html.twig', array(
-            'facturas' => $facturas,
+        return $this->render('BancoBundle:banco:index.html.twig', array(
+            'bancos' => $bancos,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
             'totalOfRecordsString' => $totalOfRecordsString,
@@ -47,11 +47,11 @@ class FacturasController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('BackendBundle\Form\FacturasFilterType');
+        $filterForm = $this->createForm('BancoBundle\Form\BancoFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
-            $session->remove('FacturasControllerFilter');
+            $session->remove('BancoControllerFilter');
         }
 
         // Filter action
@@ -64,12 +64,12 @@ class FacturasController extends Controller
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
                 // Save filter to session
                 $filterData = $filterForm->getData();
-                $session->set('FacturasControllerFilter', $filterData);
+                $session->set('BancoControllerFilter', $filterData);
             }
         } else {
             // Get filter from session
-            if ($session->has('FacturasControllerFilter')) {
-                $filterData = $session->get('FacturasControllerFilter');
+            if ($session->has('BancoControllerFilter')) {
+                $filterData = $session->get('BancoControllerFilter');
                 
                 foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
                     if (is_object($filter)) {
@@ -77,7 +77,7 @@ class FacturasController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('BackendBundle\Form\FacturasFilterType', $filterData);
+                $filterForm = $this->createForm('BancoBundle\Form\BancoFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -114,7 +114,7 @@ class FacturasController extends Controller
         {
             $requestParams = $request->query->all();
             $requestParams['pcg_page'] = $page;
-            return $me->generateUrl('facturas', $requestParams);
+            return $me->generateUrl('banco', $requestParams);
         };
 
         // Paginator - view
@@ -150,43 +150,43 @@ class FacturasController extends Controller
     
 
     /**
-     * Displays a form to create a new Facturas entity.
+     * Displays a form to create a new Banco entity.
      *
      */
     public function newAction(Request $request)
     {
     
-        $factura = new Facturas();
-        $form   = $this->createForm('BackendBundle\Form\FacturasType', $factura);
+        $banco = new Banco();
+        $form   = $this->createForm('BancoBundle\Form\BancoType', $banco);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($factura);
+            $em->persist($banco);
             $em->flush();
             
-            $editLink = $this->generateUrl('facturas_edit', array('id' => $factura->getId()));
-            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New factura was created successfully.</a>" );
+            $editLink = $this->generateUrl('banco_edit', array('id' => $banco->getId()));
+            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New banco was created successfully.</a>" );
             
-            $nextAction=  $request->get('submit') == 'save' ? 'facturas' : 'facturas_new';
+            $nextAction=  $request->get('submit') == 'save' ? 'banco' : 'banco_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('facturas/new.html.twig', array(
-            'factura' => $factura,
+        return $this->render('BancoBundle:banco:new.html.twig', array(
+            'banco' => $banco,
             'form'   => $form->createView(),
         ));
     }
     
 
     /**
-     * Finds and displays a Facturas entity.
+     * Finds and displays a Banco entity.
      *
      */
-    public function showAction(Facturas $factura)
+    public function showAction(Banco $banco)
     {
-        $deleteForm = $this->createDeleteForm($factura);
-        return $this->render('facturas/show.html.twig', array(
-            'factura' => $factura,
+        $deleteForm = $this->createDeleteForm($banco);
+        return $this->render('BancoBundle:banco:show.html.twig', array(
+            'banco' => $banco,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -194,25 +194,25 @@ class FacturasController extends Controller
     
 
     /**
-     * Displays a form to edit an existing Facturas entity.
+     * Displays a form to edit an existing Banco entity.
      *
      */
-    public function editAction(Request $request, Facturas $factura)
+    public function editAction(Request $request, Banco $banco)
     {
-        $deleteForm = $this->createDeleteForm($factura);
-        $editForm = $this->createForm('BackendBundle\Form\FacturasType', $factura);
+        $deleteForm = $this->createDeleteForm($banco);
+        $editForm = $this->createForm('BancoBundle\Form\BancoType', $banco);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($factura);
+            $em->persist($banco);
             $em->flush();
             
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
-            return $this->redirectToRoute('facturas_edit', array('id' => $factura->getId()));
+            return $this->redirectToRoute('banco_edit', array('id' => $banco->getId()));
         }
-        return $this->render('facturas/edit.html.twig', array(
-            'factura' => $factura,
+        return $this->render('BancoBundle:banco:edit.html.twig', array(
+            'banco' => $banco,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -221,59 +221,59 @@ class FacturasController extends Controller
     
 
     /**
-     * Deletes a Facturas entity.
+     * Deletes a Banco entity.
      *
      */
-    public function deleteAction(Request $request, Facturas $factura)
+    public function deleteAction(Request $request, Banco $banco)
     {
     
-        $form = $this->createDeleteForm($factura);
+        $form = $this->createDeleteForm($banco);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($factura);
+            $em->remove($banco);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Facturas was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Banco was deleted successfully');
         } else {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Facturas');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Banco');
         }
         
-        return $this->redirectToRoute('facturas');
+        return $this->redirectToRoute('banco');
     }
     
     /**
-     * Creates a form to delete a Facturas entity.
+     * Creates a form to delete a Banco entity.
      *
-     * @param Facturas $factura The Facturas entity
+     * @param Banco $banco The Banco entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Facturas $factura)
+    private function createDeleteForm(Banco $banco)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('facturas_delete', array('id' => $factura->getId())))
+            ->setAction($this->generateUrl('banco_delete', array('id' => $banco->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
     
     /**
-     * Delete Facturas by id
+     * Delete Banco by id
      *
      */
-    public function deleteByIdAction(Facturas $factura){
+    public function deleteByIdAction(Banco $banco){
         $em = $this->getDoctrine()->getManager();
         
         try {
-            $em->remove($factura);
+            $em->remove($banco);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Facturas was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Banco was deleted successfully');
         } catch (Exception $ex) {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Facturas');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Banco');
         }
 
-        return $this->redirect($this->generateUrl('facturas'));
+        return $this->redirect($this->generateUrl('banco'));
 
     }
     
@@ -289,22 +289,22 @@ class FacturasController extends Controller
         if ($action == "delete") {
             try {
                 $em = $this->getDoctrine()->getManager();
-                $repository = $em->getRepository('BackendBundle:Facturas');
+                $repository = $em->getRepository('BackendBundle:Banco');
 
                 foreach ($ids as $id) {
-                    $factura = $repository->find($id);
-                    $em->remove($factura);
+                    $banco = $repository->find($id);
+                    $em->remove($banco);
                     $em->flush();
                 }
 
-                $this->get('session')->getFlashBag()->add('success', 'facturas was deleted successfully!');
+                $this->get('session')->getFlashBag()->add('success', 'bancos was deleted successfully!');
 
             } catch (Exception $ex) {
-                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the facturas ');
+                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the bancos ');
             }
         }
 
-        return $this->redirect($this->generateUrl('facturas'));
+        return $this->redirect($this->generateUrl('banco'));
     }
     
 

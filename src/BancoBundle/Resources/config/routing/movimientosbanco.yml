@@ -1,0 +1,42 @@
+movimientosbanco:
+    path:  /
+    defaults: { _controller: "BancoBundle:MovimientosBanco:index" }
+
+movimientosbanco_show:
+    path:  /{id}/show
+    defaults: { _controller: "BancoBundle:MovimientosBanco:show" }
+
+movimientosbanco_new:
+    path:  /new
+    defaults: { _controller: "BancoBundle:MovimientosBanco:new" }
+
+movimientosbanco_create:
+    path:  /create
+    defaults: { _controller: "BancoBundle:MovimientosBanco:create" }
+    requirements: { _method: post }
+
+movimientosbanco_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BancoBundle:MovimientosBanco:edit" }
+
+movimientosbanco_update:
+    path:  /{id}/update
+    defaults: { _controller: "BancoBundle:MovimientosBanco:update" }
+    requirements: { _method: post|put }
+
+movimientosbanco_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BancoBundle:MovimientosBanco:delete" }
+    requirements: { _method: post|delete }
+    
+movimientosbanco_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BancoBundle:MovimientosBanco:deleteById" }
+    requirements: { _method: get }
+    
+
+movimientosbanco_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BancoBundle:MovimientosBanco:bulk" }
+    requirements: { _method: post }
+    

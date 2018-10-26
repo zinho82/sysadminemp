@@ -1,0 +1,7 @@
+backend_banco:
+    resource: "@BancoBundle/Resources/config/routing/banco.yml"
+    prefix:   /banco
+
+backend_movimientosbanco:
+    resource: "@BancoBundle/Resources/config/routing/movimientosbanco.yml"
+    prefix:   /movimientosbanco

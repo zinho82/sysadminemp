@@ -30,7 +30,7 @@ class AppKernel extends Kernel {
             new InventarioBundle\InventarioBundle(),
             new IncidenciasBundle\IncidenciasBundle(),
             new NotificacionesBundle\NotificacionesBundle(),
-            
+            new BancoBundle\BancoBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

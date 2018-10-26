@@ -1,0 +1,61 @@
+BackendBundle\Entity\MovimientosBanco:
+    type: entity
+    table: movimientos_banco
+    indexes:
+        fk_movimientos_banco_banco1_idx:
+            columns:
+                - banco
+        fk_movimientos_banco_config1_idx:
+            columns:
+                - tipo_moviemiento
+        fk_movimientos_banco_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        detalle:
+            type: string
+            nullable: true
+            length: 450
+            options:
+                fixed: false
+    manyToOne:
+        banco:
+            targetEntity: Banco
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banco:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoMoviemiento:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_moviemiento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

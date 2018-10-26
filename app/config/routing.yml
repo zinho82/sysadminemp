@@ -1,3 +1,7 @@
+banco:
+    resource: "@BancoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 notificaciones:
     resource: "@NotificacionesBundle/Resources/config/routing.yml"
     prefix:   /

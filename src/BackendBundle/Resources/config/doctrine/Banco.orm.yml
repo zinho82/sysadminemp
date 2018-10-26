@@ -1,0 +1,62 @@
+BackendBundle\Entity\Banco:
+    type: entity
+    table: banco
+    indexes:
+        fk_banco_config1_idx:
+            columns:
+                - nombre_banco
+        fk_banco_config2_idx:
+            columns:
+                - tipo_cuenta
+        fk_banco_empresa1_idx:
+            columns:
+                - empresa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        numeroCuenta:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: numero_cuenta
+    manyToOne:
+        nombreBanco:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nombre_banco:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoCuenta:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_cuenta:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

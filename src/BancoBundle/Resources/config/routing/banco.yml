@@ -1,0 +1,42 @@
+banco:
+    path:  /
+    defaults: { _controller: "BancoBundle:Banco:index" }
+
+banco_show:
+    path:  /{id}/show
+    defaults: { _controller: "BancoBundle:Banco:show" }
+
+banco_new:
+    path:  /new
+    defaults: { _controller: "BancoBundle:Banco:new" }
+
+banco_create:
+    path:  /create
+    defaults: { _controller: "BancoBundle:Banco:create" }
+    requirements: { _method: post }
+
+banco_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BancoBundle:Banco:edit" }
+
+banco_update:
+    path:  /{id}/update
+    defaults: { _controller: "BancoBundle:Banco:update" }
+    requirements: { _method: post|put }
+
+banco_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BancoBundle:Banco:delete" }
+    requirements: { _method: post|delete }
+    
+banco_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BancoBundle:Banco:deleteById" }
+    requirements: { _method: get }
+    
+
+banco_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BancoBundle:Banco:bulk" }
+    requirements: { _method: post }
+    

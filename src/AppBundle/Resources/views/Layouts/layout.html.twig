@@ -7,14 +7,15 @@
         </title>
         {%block stylesheets %}
             <link rel="icon" type="image/png" href="{{asset('assets/images/Logo.png')}}" />
-            <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet" />
+           
             <link href="{{ asset('assets/css/styles.css')}}" type="text/css" rel="stylesheet" />
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
             <link href="{{ asset('assets/css/bootstrap.cosmo.min.css')}}" type="text/css" rel="stylesheet" />
+             <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet" />
         {% endblock %}
         {%block javascript %}
             <script type="text/javascript">
-                var URL = "{{ app.request.getSchemeAndHttpHost()}}/frutas/web/app_dev.php";
+                var URL = "{{ app.request.getSchemeAndHttpHost()}}/sysadminemp/web/app_dev.php";
 
             </script>
             <script src=" {{ asset('assets/js/jquery.min.js')}}"></script>

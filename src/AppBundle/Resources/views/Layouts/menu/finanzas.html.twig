@@ -6,35 +6,59 @@
                 <span class="caret"></span> 
             </a>
             <ul class="dropdown-menu">
-               <li class="dropdown"><a href="{{path('proveedoresclientes')}}">
+                <li class="menu-item dropdown dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-clipboard-list" aria-hidden="true" ></span>&nbsp
+                        Banco
+                    </a>  
+                    <ul class="dropdown-menu">
+                        <li class="dropdown"><a href="{{path('banco')}}">
+                                <span class="fa fa-clipboard-list" aria-hidden="true" ></span>&nbsp
+                                Registro Cuentas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fab fa-quora" aria-hidden="true" ></span>&nbsp
+                                Quality
+                            </a>
+                        </li>
+                        <li class="dropdown"><a href="">
+                                <span class="fa fa-clipboard-list" aria-hidden="true" ></span>&nbsp
+                                Condition
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="{{path('proveedoresclientes')}}">
                         <span class="fas fa-file-contract" aria-hidden="true" ></span>&nbsp
                         Proveedores / Clientes
                     </a>
                 </li>
-                        <li><a href="{{path('ordenescompra')}}">
-                                <span class="fas fa-file-contract" aria-hidden="true" ></span>&nbsp
-                                Ordenes de Compra / Pedido
-                            </a>
-                        </li>
-                      <li><a href="{{path('ordenescompraautorizacion')}}">
-                                <span class="fa fa-hands-helping" aria-hidden="true" ></span>&nbsp
-                                Autorizar Solicitudes OC/OP 
-                            </a>
-                        </li>
-                        <li><a href="{{path('facturas')}}">
-                                <span class="fa fa-list-ol" aria-hidden="true" ></span>&nbsp
-                               Facturas
-                            </a>
-                        </li>
-                     <!--   
-                     <li><a href="">
-                                <span class="fa fa-building" aria-hidden="true" ></span>&nbsp
-                                Sponsor
-                            </a>
-                        </li>
+                <li><a href="{{path('ordenescompra')}}">
+                        <span class="fas fa-file-contract" aria-hidden="true" ></span>&nbsp
+                        Ordenes de Compra / Pedido
+                    </a>
+                </li>
+                <li><a href="{{path('ordenescompraautorizacion')}}">
+                        <span class="fa fa-hands-helping" aria-hidden="true" ></span>&nbsp
+                        Autorizar Solicitudes OC/OP 
+                    </a>
+                </li>
+                <li><a href="{{path('facturas')}}">
+                        <span class="fa fa-list-ol" aria-hidden="true" ></span>&nbsp
+                        Facturas
+                    </a>
+                </li>
+                <!--   
+                <li><a href="">
+                           <span class="fa fa-building" aria-hidden="true" ></span>&nbsp
+                           Sponsor
+                       </a>
+                   </li>
 
-                    </ul>
-                </li>-->
+               </ul>
+           </li>-->
 
             </ul>
     </ul>

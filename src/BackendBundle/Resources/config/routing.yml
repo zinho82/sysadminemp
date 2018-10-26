@@ -1,16 +1,3 @@
-backend_facturas:
-    resource: "@BackendBundle/Resources/config/routing/facturas.yml"
-    prefix:   /facturas
-
-
-
-
-
-
-
-
-
-
 
 backend_homepage:
     path:     /
