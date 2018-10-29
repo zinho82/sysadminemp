@@ -2,10 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 body{
     background: #fdfdfd;
+    margin: 0 auto;
 }
 /*HEADER*/
 .btn-success{
     color: #000 !important;
+}
+.col-center{
+    float: none;
+    margin: 0 auto;
+}
+.center-block{
+    float: none;
 }
 .navbar-inverse{
     background-color: #1e2d44 !important;
