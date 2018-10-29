@@ -4,3 +4,6 @@ backend_empresa:
 backend_departamentos:
     resource: "@EmpresaBundle/Resources/config/routing/departamentos.yml"
     prefix:   /
+backend_campana:
+    resource: "@EmpresaBundle/Resources/config/routing/campana.yml"
+    prefix:   /campana

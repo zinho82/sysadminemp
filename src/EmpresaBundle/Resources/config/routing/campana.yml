@@ -1,0 +1,42 @@
+campana:
+    path:  /
+    defaults: { _controller: "EmpresaBundle:Campana:index" }
+
+campana_show:
+    path:  /{id}/show
+    defaults: { _controller: "EmpresaBundle:Campana:show" }
+
+campana_new:
+    path:  /new
+    defaults: { _controller: "EmpresaBundle:Campana:new" }
+
+campana_create:
+    path:  /create
+    defaults: { _controller: "EmpresaBundle:Campana:create" }
+    requirements: { _method: post }
+
+campana_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "EmpresaBundle:Campana:edit" }
+
+campana_update:
+    path:  /{id}/update
+    defaults: { _controller: "EmpresaBundle:Campana:update" }
+    requirements: { _method: post|put }
+
+campana_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "EmpresaBundle:Campana:delete" }
+    requirements: { _method: post|delete }
+    
+campana_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "EmpresaBundle:Campana:deleteById" }
+    requirements: { _method: get }
+    
+
+campana_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "EmpresaBundle:Campana:bulk" }
+    requirements: { _method: post }
+    

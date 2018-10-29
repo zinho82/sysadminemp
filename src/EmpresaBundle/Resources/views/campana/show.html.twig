@@ -1,0 +1,87 @@
+{% extends 'AppBundle:Layouts:layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - campana
+{% endblock %}
+
+{% block body %}
+<div class="col-lg-12 col-sm-12 col-md-12">
+<div id="top" class="row">
+    <div class="page-header">
+        <h2>View campana <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <p><strong>Id</strong></p>
+        <p>
+            {{ campana.id }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Descripcion</strong></p>
+        <p>
+            {{ campana.descripcion }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Nombre</strong></p>
+        <p>
+            {{ campana.nombre }}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Fechafacturacion</strong></p>
+        <p>
+            {% if campana.fechaFacturacion %}{{ campana.fechaFacturacion|date('Y-m-d H:i:s') }}{% endif %}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Fechainicio</strong></p>
+        <p>
+            {% if campana.fechaInicio %}{{ campana.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}
+        </p>
+
+    </div>
+    <div class="col-md-6">
+        <p><strong>Fechatermino</strong></p>
+        <p>
+            {% if campana.fechaTermino %}{{ campana.fechaTermino|date('Y-m-d H:i:s') }}{% endif %}
+        </p>
+
+    </div></div>
+
+<hr/>
+
+
+<div class="form-group">
+    <a class="btn btn-default" href="{{ path('campana') }}">
+        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        Back to list
+    </a>
+    <a class="btn btn-primary" href="{{ path('campana_edit', { 'id':  campana.id }) }}">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        Edit
+    </a>
+    <a class="btn btn-info" href="{{ path('campana_new') }}">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        New
+    </a>
+    <form action="{{ path('campana_delete', { 'id': campana.id }) }}" method="post" style="display: inline-block">
+        <input type="hidden" name="_method" value="DELETE" />
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            Delete
+        </button>
+    </form>
+</div>
+
+</div>
+{% endblock %}
+
