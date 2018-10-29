@@ -55,4 +55,5 @@ security:
         - { path: ^/proveedores-cliente, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/oc-op, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/banco, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/campana, roles: [ROLE_USER, ROLE_ADMIN ] }
         
