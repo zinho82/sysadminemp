@@ -37,26 +37,22 @@
         </header>
         <section id="content">
             <div id="cointainer">
-                <div class="center-block ">
-                    <div class="col-lg-10 col-sm-10 col-md-10">
-                        {% for message in app.session.flashbag().get('status')%}
-                            <div class="alert alert-success"> {{message|raw}} </div>
-                        {% endfor%}
-                        {% for message in app.session.flashbag().get('success')%}
-                            <div class="alert alert-success"> {{message|raw}} </div>
-                        {% endfor%}
-                        {% for message in app.session.flashbag().get('danger')%}
-                            <div class="alert alert-danger"> {{message|raw}} </div>
-                        {% endfor%}
-                        {% for message in app.session.flashbag().get('info')%}
-                            <div class="alert alert-info"> {{message|raw}} </div>
-                        {% endfor%}
-                        <div class="clearfix"></div>
-                        {% block body %}
-                            Body default
-                        {% endblock %}
-                    </div>
-                </div>
+                {% for message in app.session.flashbag().get('status')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('success')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('danger')%}
+                    <div class="alert alert-danger"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('info')%}
+                    <div class="alert alert-info"> {{message|raw}} </div>
+                {% endfor%}
+                <div class="clearfix"></div>
+                {% block body %}
+                    Body default
+                {% endblock %}
             </div>
         </section>
         <footer class="col-lg-12 col-md-12 col-sm-12">

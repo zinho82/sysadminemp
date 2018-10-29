@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 body{
     background: #fdfdfd;
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
 /*HEADER*/
 .btn-success{
@@ -311,6 +311,9 @@ footer{
 .ribbon .ribbon-content:before {
     left: 0;
     border-width: 1em 0 0 1em;
+}
+.content{
+    margin: 0 auto !important;
 }
 .ribbon .ribbon-content:after {
     right: 0;

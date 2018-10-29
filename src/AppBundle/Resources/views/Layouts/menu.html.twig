@@ -15,27 +15,27 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar"> 
                 {% if app.user ==null %}
-                 <li class="dropdown"><a href="{{path("login")}}">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" ></span>&nbsp
-                        Login
-                    </a>
-                </li>
+                    <li class="dropdown"><a href="{{path("login")}}">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true" ></span>&nbsp
+                            Login
+                        </a>
+                    </li>
                 {% else %}
-                 <li class="dropdown"><a href="{{path("user_home")}}">
-                        <span class="glyphicon glyphicon-home" aria-hidden="true" ></span>&nbsp
-                        Home
-                    </a>
-                </li>
+                    <li class="dropdown"><a href="{{path("user_home")}}">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true" ></span>&nbsp
+                            Home
+                        </a>
+                    </li>
                 {% endif %}
-            {% if app.user !=null %}
-                {% include 'AppBundle:Layouts/menu:administrador.html.twig' %}
-                 {% include 'AppBundle:Layouts/menu:rrhh.html.twig' %}
-                  {% include 'AppBundle:Layouts/menu:finanzas.html.twig' %}
-                  {% include 'AppBundle:Layouts/menu:inventario.html.twig' %}
-                  {% include 'AppBundle:Layouts/menu:sistemas.html.twig' %}
-                 {% include 'AppBundle:Layouts/menu:usuario.html.twig' %}
-            {% endif %}
-        </ul>
+                {% if app.user !=null %}
+                    {% include 'AppBundle:Layouts/menu:administrador.html.twig' %}
+                    {% include 'AppBundle:Layouts/menu:rrhh.html.twig' %}
+                    {% include 'AppBundle:Layouts/menu:finanzas.html.twig' %}
+                    {% include 'AppBundle:Layouts/menu:inventario.html.twig' %}
+                    {% include 'AppBundle:Layouts/menu:sistemas.html.twig' %}
+                    {% include 'AppBundle:Layouts/menu:usuario.html.twig' %}
+                {% endif %}
+            </ul>
         </div>
     </div>
 </nav>
