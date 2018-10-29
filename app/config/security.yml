@@ -44,7 +44,7 @@ security:
         - { path: ^/finanzas, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/inventario, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/config, roles: [ROLE_USER, ROLE_ADMIN ] }
-        - { path: ^/incidenias, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/incidencias, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/notificaciones, roles: [ROLE_USER, ROLE_ADMIN  ] }
         - { path: ^/banco, roles: [ROLE_USER, ROLE_ADMIN ] }
         - { path: ^/facturas, roles: [ROLE_USER, ROLE_ADMIN ] }
