@@ -1,0 +1,42 @@
+cheques:
+    path:  /
+    defaults: { _controller: "BancoBundle:Cheques:index" }
+
+cheques_show:
+    path:  /{id}/show
+    defaults: { _controller: "BancoBundle:Cheques:show" }
+
+cheques_new:
+    path:  /new/{rp}
+    defaults: { _controller: "BancoBundle:Cheques:new",rp:null }
+    methods: [post|get]
+cheques_create:
+    path:  /create
+    defaults: { _controller: "BancoBundle:Cheques:create" }
+    requirements: { _method: post }
+
+cheques_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BancoBundle:Cheques:edit" }
+
+cheques_update:
+    path:  /{id}/update
+    defaults: { _controller: "BancoBundle:Cheques:update" }
+    requirements: { _method: post|put }
+
+cheques_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BancoBundle:Cheques:delete" }
+    requirements: { _method: post|delete }
+    
+cheques_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BancoBundle:Cheques:deleteById" }
+    requirements: { _method: get }
+    
+
+cheques_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BancoBundle:Cheques:bulk" }
+    requirements: { _method: post }
+    

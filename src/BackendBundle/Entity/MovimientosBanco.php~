@@ -138,4 +138,120 @@ class MovimientosBanco
     {
         return $this->empresa;
     }
+    /**
+     * @var \DateTime
+     */
+    private $fecha;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaIngreso;
+
+    /**
+     * @var float
+     */
+    private $monto;
+
+    /**
+     * @var string
+     */
+    private $numeroOperacion;
+
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return MovimientosBanco
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set fechaIngreso
+     *
+     * @param \DateTime $fechaIngreso
+     *
+     * @return MovimientosBanco
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fechaIngreso = $fechaIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngreso
+     *
+     * @return \DateTime
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
+    }
+
+    /**
+     * Set monto
+     *
+     * @param float $monto
+     *
+     * @return MovimientosBanco
+     */
+    public function setMonto($monto)
+    {
+        $this->monto = $monto;
+
+        return $this;
+    }
+
+    /**
+     * Get monto
+     *
+     * @return float
+     */
+    public function getMonto()
+    {
+        return $this->monto;
+    }
+
+    /**
+     * Set numeroOperacion
+     *
+     * @param string $numeroOperacion
+     *
+     * @return MovimientosBanco
+     */
+    public function setNumeroOperacion($numeroOperacion)
+    {
+        $this->numeroOperacion = $numeroOperacion;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroOperacion
+     *
+     * @return string
+     */
+    public function getNumeroOperacion()
+    {
+        return $this->numeroOperacion;
+    }
 }

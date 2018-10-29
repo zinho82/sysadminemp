@@ -167,4 +167,33 @@ class Banco
     {
         return $this->numeroCuenta;
     }
+    /**
+     * @var float
+     */
+    private $saldo;
+
+
+    /**
+     * Set saldo
+     *
+     * @param float $saldo
+     *
+     * @return Banco
+     */
+    public function setSaldo($saldo)
+    {
+        $this->saldo = $saldo;
+
+        return $this;
+    }
+
+    /**
+     * Get saldo
+     *
+     * @return float
+     */
+    public function getSaldo()
+    {
+        return $this->saldo;
+    }
 }

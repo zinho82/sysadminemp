@@ -1,0 +1,56 @@
+BackendBundle\Entity\Registropago:
+    type: entity
+    table: registropago
+    indexes:
+        fk_registropago_facturas1_idx:
+            columns:
+                - factura
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        fechaPago:
+            type: datetime
+            nullable: true
+            column: fecha_pago
+        fechaCobroCheque:
+            type: datetime
+            nullable: true
+            column: fecha_cobro_cheque
+        codigoTransferencia:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: codigo_transferencia
+        numeroTc:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: numero_tc
+    manyToOne:
+        factura:
+            targetEntity: Facturas
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                factura:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

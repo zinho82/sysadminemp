@@ -5,3 +5,11 @@ backend_banco:
 backend_movimientosbanco:
     resource: "@BancoBundle/Resources/config/routing/movimientosbanco.yml"
     prefix:   /movimientosbanco
+
+backend_registropago:
+    resource: "@BancoBundle/Resources/config/routing/registropago.yml"
+    prefix:   /registropago
+
+backend_cheques:
+    resource: "@BancoBundle/Resources/config/routing/cheques.yml"
+    prefix:   /cheques

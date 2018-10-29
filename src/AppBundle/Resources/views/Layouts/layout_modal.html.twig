@@ -1,0 +1,54 @@
+<!DOCTIPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/> 
+        <title>
+            {%block title %} Asisto SPA{% endblock %}
+        </title>
+        {%block stylesheets %}
+            <link rel="icon" type="image/png" href="{{asset('assets/images/Logo.png')}}" />
+           
+            <link href="{{ asset('assets/css/styles.css')}}" type="text/css" rel="stylesheet" />
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/regular.css" integrity="sha384-4e3mPOi7K1/4SAx8aMeZqaZ1Pm4l73ZnRRquHFWzPh2Pa4PMAgZm8/WNh6ydcygU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/brands.css" integrity="sha384-Px1uYmw7+bCkOsNAiAV5nxGKJ0Ixn5nChyW8lCK1Li1ic9nbO5pC/iXaq27X5ENt" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I" crossorigin="anonymous">
+            <link href="{{ asset('assets/css/bootstrap.cosmo.min.css')}}" type="text/css" rel="stylesheet" />
+             <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        {%block javascript %}
+            <script type="text/javascript">
+                var URL = "{{ app.request.getSchemeAndHttpHost()}}/sysadminemp/web/app_dev.php";
+
+            </script>
+            <script src=" {{ asset('assets/js/jquery.min.js')}}"></script>
+            <script src=" {{ asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+            <script src=" {{ asset('assets/js/jquery-ias.min.js')}}"></script>
+            <script src=" {{ asset('assets/js/custom/common.js')}}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <section id="content">
+            <div id="cointainer">
+                {% for message in app.session.flashbag().get('status')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('success')%}
+                    <div class="alert alert-success"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('danger')%}
+                    <div class="alert alert-danger"> {{message|raw}} </div>
+                {% endfor%}
+                {% for message in app.session.flashbag().get('info')%}
+                    <div class="alert alert-info"> {{message|raw}} </div>
+                {% endfor%}
+            </div>
+            <div class="clearfix"></div>
+            {% block body %}
+                conetnt default
+            {% endblock %}
+        </section>
+        
+    </body>
+
+</html>

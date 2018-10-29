@@ -1,0 +1,44 @@
+registropago:
+    path:  /{factura}
+    defaults: { _controller: "BancoBundle:Registropago:index",factura:null }
+    methods: [get|post]
+
+registropago_show:
+    path:  /{id}/show
+    defaults: { _controller: "BancoBundle:Registropago:show" }
+
+registropago_new:
+    path:  /new/{factura}
+    defaults: { _controller: "BancoBundle:Registropago:new",'factura':null }
+    methods: [get|post]
+    
+registropago_create:
+    path:  /create
+    defaults: { _controller: "BancoBundle:Registropago:create" }
+    requirements: { _method: post }
+
+registropago_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BancoBundle:Registropago:edit" }
+
+registropago_update:
+    path:  /{id}/update
+    defaults: { _controller: "BancoBundle:Registropago:update" }
+    requirements: { _method: post|put }
+
+registropago_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BancoBundle:Registropago:delete" }
+    requirements: { _method: post|delete }
+    
+registropago_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BancoBundle:Registropago:deleteById" }
+    requirements: { _method: get }
+    
+
+registropago_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BancoBundle:Registropago:bulk" }
+    requirements: { _method: post }
+    

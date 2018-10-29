@@ -1,0 +1,66 @@
+BackendBundle\Entity\Cheques:
+    type: entity
+    table: cheques
+    indexes:
+        fk_cheques_registropago1_idx:
+            columns:
+                - registropago_id
+        fk_cheques_config1_idx:
+            columns:
+                - banco
+        fk_cheques_config2_idx:
+            columns:
+                - estado
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        numeroCheque:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: numero_cheque
+        fechaCobro:
+            type: datetime
+            nullable: true
+            column: fecha_cobro
+    manyToOne:
+        registropago:
+            targetEntity: Registropago
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                registropago_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        banco:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banco:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estado:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
