@@ -1,0 +1,42 @@
+tarjetacredito:
+    path:  /
+    defaults: { _controller: "BancoBundle:TarjetaCredito:index" }
+
+tarjetacredito_show:
+    path:  /{id}/show
+    defaults: { _controller: "BancoBundle:TarjetaCredito:show" }
+
+tarjetacredito_new:
+    path:  /new
+    defaults: { _controller: "BancoBundle:TarjetaCredito:new" }
+
+tarjetacredito_create:
+    path:  /create
+    defaults: { _controller: "BancoBundle:TarjetaCredito:create" }
+    requirements: { _method: post }
+
+tarjetacredito_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BancoBundle:TarjetaCredito:edit" }
+
+tarjetacredito_update:
+    path:  /{id}/update
+    defaults: { _controller: "BancoBundle:TarjetaCredito:update" }
+    requirements: { _method: post|put }
+
+tarjetacredito_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BancoBundle:TarjetaCredito:delete" }
+    requirements: { _method: post|delete }
+    
+tarjetacredito_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "BancoBundle:TarjetaCredito:deleteById" }
+    requirements: { _method: get }
+    
+
+tarjetacredito_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "BancoBundle:TarjetaCredito:bulk" }
+    requirements: { _method: post }
+    

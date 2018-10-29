@@ -13,3 +13,7 @@ backend_registropago:
 backend_cheques:
     resource: "@BancoBundle/Resources/config/routing/cheques.yml"
     prefix:   /cheques
+
+backend_tarjetacredito:
+    resource: "@BancoBundle/Resources/config/routing/tarjetacredito.yml"
+    prefix:   /tarjetacredito

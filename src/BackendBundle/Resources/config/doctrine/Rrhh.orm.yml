@@ -92,16 +92,6 @@ BackendBundle\Entity\Rrhh:
                 fixed: false
             column: correo_electronico
     manyToOne:
-        departamento:
-            targetEntity: Departamentos
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                departamento:
-                    referencedColumnName: id
-            orphanRemoval: false
         cargo:
             targetEntity: Config
             cascade: {  }
@@ -130,6 +120,16 @@ BackendBundle\Entity\Rrhh:
             inversedBy: null
             joinColumns:
                 institucion_salud:
+                    referencedColumnName: id
+            orphanRemoval: false
+        departamento:
+            targetEntity: Departamentos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                departamento:
                     referencedColumnName: id
             orphanRemoval: false
         empresa:

@@ -35,16 +35,6 @@ BackendBundle\Entity\ItemsOc:
             precision: 10
             scale: 0
     manyToOne:
-        ordenescompra:
-            targetEntity: Ordenescompra
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                ordenescompra:
-                    referencedColumnName: id
-            orphanRemoval: false
         inventario:
             targetEntity: Inventario
             cascade: {  }
@@ -53,6 +43,16 @@ BackendBundle\Entity\ItemsOc:
             inversedBy: null
             joinColumns:
                 inventario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        ordenescompra:
+            targetEntity: Ordenescompra
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ordenescompra:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -225,33 +225,5 @@ class Registropago
     {
         return $this->tipooperacion;
     }
-    /**
-     * @var \BackendBundle\Entity\TarjetaCredito
-     */
-    private $tarjetaCredito;
-
-
-    /**
-     * Set tarjetaCredito
-     *
-     * @param \BackendBundle\Entity\TarjetaCredito $tarjetaCredito
-     *
-     * @return Registropago
-     */
-    public function setTarjetaCredito(\BackendBundle\Entity\TarjetaCredito $tarjetaCredito = null)
-    {
-        $this->tarjetaCredito = $tarjetaCredito;
-
-        return $this;
-    }
-
-    /**
-     * Get tarjetaCredito
-     *
-     * @return \BackendBundle\Entity\TarjetaCredito
-     */
-    public function getTarjetaCredito()
-    {
-        return $this->tarjetaCredito;
-    }
 }
+

@@ -37,16 +37,6 @@ BackendBundle\Entity\ProveedoresClientes:
             options:
                 fixed: false
     manyToOne:
-        empresa:
-            targetEntity: Empresa
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                empresa:
-                    referencedColumnName: id
-            orphanRemoval: false
         proveedorCliente:
             targetEntity: Config
             cascade: {  }
@@ -55,6 +45,16 @@ BackendBundle\Entity\ProveedoresClientes:
             inversedBy: null
             joinColumns:
                 proveedor_cliente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        empresa:
+            targetEntity: Empresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                empresa:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

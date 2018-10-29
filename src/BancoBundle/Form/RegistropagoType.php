@@ -30,12 +30,22 @@ class RegistropagoType extends AbstractType
                 ),
                 'required'  =>  false,
             ))
-            ->add('numeroTc', TextType::class,array(
+            ->add('numeroTc', EntityType::class,array(
                 'attr'  => array(
                     'class' =>  'form-control',
                 ),
                 'required'  =>  false,
-                'label' =>  'Numero Tarjeta Credito'
+                'label' =>  'Numero Tarjeta Credito',
+                'class' => 'BackendBundle\Entity\TarjetaCredito',
+                'choice_label' => 'numerotarjetacredito',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => true,
+//                'query_builder' => function(\Doctrine\ORM\EntityRepository $co) {
+//                        return $co->createQueryBuilder('u')
+//                                ->where('u.pertenece=81')
+//                                ->orderBy('u.titulo', 'asc');
+//                    },
             ))
             ->add('tipooperacion', EntityType::class, array(
                 'class' => 'BackendBundle\Entity\Config',

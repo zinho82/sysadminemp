@@ -33,16 +33,6 @@ BackendBundle\Entity\Cheques:
             nullable: true
             column: fecha_cobro
     manyToOne:
-        registropago:
-            targetEntity: Registropago
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                registropago_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         banco:
             targetEntity: Config
             cascade: {  }
@@ -61,6 +51,16 @@ BackendBundle\Entity\Cheques:
             inversedBy: null
             joinColumns:
                 estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        registropago:
+            targetEntity: Registropago
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                registropago_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -69,14 +69,14 @@ BackendBundle\Entity\ItemPresupuesto:
             options:
                 fixed: false
     manyToOne:
-        presupuesto:
-            targetEntity: Presupuesto
+        campana:
+            targetEntity: Campana
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                presupuesto:
+                campana:
                     referencedColumnName: id
             orphanRemoval: false
         tipoIngresoGasto:
@@ -89,16 +89,6 @@ BackendBundle\Entity\ItemPresupuesto:
                 tipo_ingreso_gasto:
                     referencedColumnName: id
             orphanRemoval: false
-        campana:
-            targetEntity: Campana
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                campana:
-                    referencedColumnName: id
-            orphanRemoval: false
         itemGasto:
             targetEntity: Config
             cascade: {  }
@@ -107,6 +97,16 @@ BackendBundle\Entity\ItemPresupuesto:
             inversedBy: null
             joinColumns:
                 item_gasto:
+                    referencedColumnName: id
+            orphanRemoval: false
+        presupuesto:
+            targetEntity: Presupuesto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                presupuesto:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

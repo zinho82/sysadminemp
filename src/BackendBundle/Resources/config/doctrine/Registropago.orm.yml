@@ -5,6 +5,15 @@ BackendBundle\Entity\Registropago:
         fk_registropago_facturas1_idx:
             columns:
                 - factura
+        fk_registropago_config1_idx:
+            columns:
+                - forma_pago
+        fk_registropago_config2_idx:
+            columns:
+                - tipooperacion
+        fk_registropago_tarjeta_credito1_idx:
+            columns:
+                - tarjeta_credito
     id:
         id:
             type: integer
@@ -24,25 +33,44 @@ BackendBundle\Entity\Registropago:
             type: datetime
             nullable: true
             column: fecha_pago
-        fechaCobroCheque:
-            type: datetime
-            nullable: true
-            column: fecha_cobro_cheque
-        codigoTransferencia:
+        codigoOperacion:
             type: string
             nullable: true
             length: 45
             options:
                 fixed: false
-            column: codigo_transferencia
-        numeroTc:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
-            column: numero_tc
+            column: codigo_operacion
     manyToOne:
+        tarjetaCredito:
+            targetEntity: TarjetaCredito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tarjeta_credito:
+                    referencedColumnName: id
+            orphanRemoval: false
+        formaPago:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                forma_pago:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipooperacion:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipooperacion:
+                    referencedColumnName: id
+            orphanRemoval: false
         factura:
             targetEntity: Facturas
             cascade: {  }

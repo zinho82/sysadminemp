@@ -56,16 +56,6 @@ BackendBundle\Entity\Facturas:
             precision: 10
             scale: 0
     manyToOne:
-        itemGasto:
-            targetEntity: Config
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                item_gasto:
-                    referencedColumnName: id
-            orphanRemoval: false
         campana:
             targetEntity: Campana
             cascade: {  }
@@ -84,6 +74,16 @@ BackendBundle\Entity\Facturas:
             inversedBy: null
             joinColumns:
                 estado_pago:
+                    referencedColumnName: id
+            orphanRemoval: false
+        itemGasto:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                item_gasto:
                     referencedColumnName: id
             orphanRemoval: false
         departamento:
