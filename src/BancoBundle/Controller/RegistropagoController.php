@@ -179,6 +179,7 @@ echo "factura: ".$factura;
         return $this->render('BancoBundle:registropago:new_modal.html.twig', array(
             'registropago' => $registropago,
             'form'   => $form->createView(),
+            'factura'   =>  $factura,
         ));
     }
     

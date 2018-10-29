@@ -37,3 +37,22 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/, roles: IS_AUTHENTICATED_ANONIMOUSLY }
+        - { path: ^/home, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/finanzas, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/inventario, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/config, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/incidenias, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/notificaciones, roles: [ROLE_USER, ROLE_ADMIN  ] }
+        - { path: ^/banco, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/facturas, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/departamentos, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/rrhh, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/usuario, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/movimientosbanco, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/proveedores-cliente, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/oc-op, roles: [ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/banco, roles: [ROLE_USER, ROLE_ADMIN ] }
+        

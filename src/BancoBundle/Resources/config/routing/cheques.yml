@@ -16,9 +16,10 @@ cheques_create:
     requirements: { _method: post }
 
 cheques_edit:
-    path:  /{id}/edit
-    defaults: { _controller: "BancoBundle:Cheques:edit" }
-
+    path:  /{id}/edit/{rp}
+    defaults: { _controller: "BancoBundle:Cheques:edit",rp:null }
+    methods: [get|post]
+    
 cheques_update:
     path:  /{id}/update
     defaults: { _controller: "BancoBundle:Cheques:update" }

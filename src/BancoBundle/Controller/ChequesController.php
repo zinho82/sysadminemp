@@ -153,7 +153,7 @@ class ChequesController extends Controller
      * Displays a form to create a new Cheques entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,$rp=null)
     {
     
         $cheque = new Cheques();
@@ -174,6 +174,7 @@ class ChequesController extends Controller
         return $this->render('BancoBundle:cheques:new_modal.html.twig', array(
             'cheque' => $cheque,
             'form'   => $form->createView(),
+            'facctura'  =>  $rp,
         ));
     }
     
